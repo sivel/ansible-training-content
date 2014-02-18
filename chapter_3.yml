@@ -12,23 +12,40 @@ slides:
         - h1: Understand the concepts of Ansible
         - h3: Getting to know the components that makes up Ansibe
 
-      -
-        - h1: content slide
-        - p: content content content
+      - 
+        - h1: Topics covered in this slide
+        - ol:
+          - Inventory
+          - Modules/Tasks
+          - Plays
+          - Playbooks
 
+      -
+        - h1: Inventory
+        - p: Ansible works against multiople systems in your infrastructure
+             at the same time. It does this by selecting portions of systems
+             listed in Ansible's inventory. This topic covers
+        - ol:
+          - Understanding Hosts and Groups
+          - Inventory Sources
+
+      -
+        - h1: Inventory (continued)
+        - ol:
+          - hosts
+          - groupings
+          - inventory-specific data
+          - static or dynamic sources
         - class_notes:
-            these are speaker notes that will be hidden
-
-      -
-        - h1: content slide
-        - p: more content
+          Talk about how host, groupings, and inventory sources work
 
       - 
-        - h3: This is how ordered lists work
+        - h1: Modules and Tasks
+        - p: Modules and Tasks are the workhorse of Ansible. This
+             topic will cover
         - ol:
-          - alpha
-          - beta
-          - gamma 
+          - Understanding what a module is
+          - Understanding how tasks make use of modules
 
       - 
         - h3: And unordered lists are also a thing
