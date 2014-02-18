@@ -1,0 +1,23 @@
+---
+header:
+  author: Mike Martin and Justin Phelps
+  title: Ansible Use Cases
+  description: Who is your use case and what does he do?
+
+slides:
+
+  -
+    - nested:
+      -
+        - h1: Ansible Use Cases
+        - p: Ask not what you can do for Ansible, but rather what Ansible can do for you!
+      -
+        - h3: Remote Execution
+        - p: Ansible provides a command-line tool and framework capable of executing over a large number of hosts, eliminating the need for systems administrators to multiplex terminal sessions via SSH to execute concurrent tasks across multiple hosts.  What may have been done in bash scripts, rsync scripts, etc. can be done via ad-hoc one-liners in the shell.  For example, adding a user to all webservers
+      -
+        - h3: Config Management
+        - p: Servers need to be configured; Ansible configures servers.  Using a combination of imperative and declarative syntax [described in detail--maybe using the GPS analogy], using concepts such as tasks, roles, plays, and playbooks, complex machine configurations are being assembled and converged by the Ansible toolchain rather than manually by administrators.  Configuration is either set manually by the author or dynamically at runtime by Ansible, resulting in consistent configuration across large server sets
+      -
+        - h3: Application Deployment & Orchestration
+      -
+        - h3: Provisioning Infrastructure Dynamically
