@@ -1,0 +1,44 @@
+---
+header:
+  author: Tim G
+  title: Chapter Title
+  description: Description of the chapter
+
+slides:
+
+  -
+    - h1: chapter title slide
+    - h3: subtitle/info
+
+  -
+    - h1: content slide
+    - p: content content content
+
+    - class_notes:
+        these are speaker notes that will be hidden
+
+  -
+    - h1: content slide
+    - p: more content
+
+  - 
+    - h3: This is how ordered lists work
+    - ol:
+      - alpha
+      - beta
+      - gamma 
+
+  - 
+    - h3: And unordered lists are also a thing
+    - ul:
+      - duck
+      - duck
+      - goose 
+      - cow
+
+  -
+    - h3: Code highlighting demo
+    - code: |
+        import ansible
+        ansible.all_the_things() 
+
