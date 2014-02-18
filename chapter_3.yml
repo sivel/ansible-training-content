@@ -14,7 +14,7 @@ slides:
 
       - 
         - h1: Topics covered in this slide
-        - ol:
+        - ul:
           - Inventory
           - Modules/Tasks
           - Plays
@@ -25,13 +25,13 @@ slides:
         - p: Ansible works against multiople systems in your infrastructure
              at the same time. It does this by selecting portions of systems
              listed in Ansible's inventory. This topic covers
-        - ol:
+        - ul:
           - Understanding Hosts and Groups
           - Inventory Sources
 
       -
         - h1: Inventory (continued)
-        - ol:
+        - ul:
           - hosts
           - groupings
           - inventory-specific data
@@ -43,7 +43,7 @@ slides:
         - h1: Modules and Tasks
         - p: Modules and Tasks are the workhorse of Ansible. This
              topic will cover
-        - ol:
+        - ul:
           - Understanding what a module is
           - Understanding how tasks make use of modules
 
