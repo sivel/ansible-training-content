@@ -37,7 +37,7 @@ slides:
           - inventory-specific data
           - static or dynamic sources
         - class_notes:
-          Talk about how host, groupings, and inventory sources work
+            Talk about how host groupings and inventory sources work
 
       - 
         - h1: Modules and Tasks
