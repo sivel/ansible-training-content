@@ -22,9 +22,10 @@ slides:
 
       -
         - h1: Inventory
-        - p: Ansible works against multiople systems in your infrastructure
-             at the same time. It does this by selecting portions of systems
-             listed in Ansible's inventory. This topic covers
+        - p: | 
+            Ansible works against multiple systems in your infrastructure
+            at the same time. It does this by selecting portions of systems
+            listed in Ansible's inventory. This topic covers:
         - ul:
           - Understanding Hosts and Groups
           - Inventory Sources
@@ -36,17 +37,28 @@ slides:
           - groupings
           - inventory-specific data
           - static or dynamic sources
-        - class_notes: Let's start with Hosts and Groupings, delve into inventory-specific 
-                       data and discuss briefly the differences between static and dynamic
-                       inventory sources.
+        - class_notes: "Breaking down by topic, we'll cover four parts (Note the listed)""
 
       -
-        - h1: "Inventory: Hosts and Groups"
+        - h1: "Inventory: Hosts"
+        - p: "Things you can do with host entries in Inventory:"
         - ul:
-          - Hosts in Groups
-          - Groups can be any predetermined organizational pattern
-          - Groups can have groups of groups.
-          - 
+          - Hosts can have host-specific attributes specified for Ansible to use.
+          - Things such as static IP addresses, FQDN, alternate SSH ports can be set.
+          - Set remote user to ssh as, and what sudo user you want to use per host.
+          - Set connection types to the host (Paramiko, OpenSSH, local connection, etc.)
+        - class_notes: |
+            You have a lot of flexibility when you specify hosts in Inventory. You can
+            set variables to determine connection types, host ip addresses and fully-qualified
+            domain names, remote users and sudo users as well as any other variable you may 
+            come up with to use when interacting with your hosts, such as "apache_port" or 
+            "mysql ports".
+        - h1: "Inventory Groups"
+          - p: "Inventory Host Organization: Groups"
+          - ul:
+            - Groups allow targeted operations against different types of hosts.
+            - Groups can also have variables that apply to all hosts within them.
+            - 
       - 
         - h1: Modules and Tasks
         - p: Modules and Tasks are the workhorse of Ansible. This
@@ -54,18 +66,4 @@ slides:
         - ul:
           - Understanding what a module is
           - Understanding how tasks make use of modules
-
-      - 
-        - h3: And unordered lists are also a thing
-        - ul:
-          - duck
-          - duck
-          - goose 
-          - cow
-
-      -
-        - h3: Code highlighting demo
-        - code: |
-            import ansible
-            ansible.all_the_things() 
 
