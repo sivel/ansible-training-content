@@ -15,3 +15,9 @@
 ### Dependencies
 
 * PyYAML
+
+## Syntax Checking
+
+```
+python syntax_check.py *.yml
+```
