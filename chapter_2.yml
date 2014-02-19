@@ -10,7 +10,10 @@ slides:
     - nested:
       -
         - h1: Ansible Use Cases
-        - p: Ask not what you can do for Ansible, but rather what Ansible can do for you!
+        - h3: Chapter 3
+        - p: Ask not what you can do for Ansible, but what Ansible can do for you!
+      -
+        - h3: Ansible Use Cases
         - ul:
           - Remote Execution / Ad-hoc Tasks
           - Configuration Management
