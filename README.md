@@ -11,3 +11,7 @@
 1. `cd revelator`
 1. `./write_it ../whatever.yml whatever/`
 1. Open whatever/index.html in your browser
+
+### Dependencies
+
+* PyYAML
