@@ -14,6 +14,8 @@
 1. `./write_it ../whatever.yml whatever/`
 1. Open whatever/index.html in your browser
 
+Autobuilding on Jenkins [here](http://jenkins.onitato.com:8080/job/Slides/ws/output/index.html#/).
+
 ### Dependencies
 
 * PyYAML
