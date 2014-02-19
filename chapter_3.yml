@@ -10,7 +10,7 @@ slides:
     - nested:
       - 
         - h1: Ansible concepts
-        - h3: What makes Ansible tick!
+        - p: What makes Ansible tick!
 
       - 
         - h1: Key components of Ansible
@@ -25,7 +25,8 @@ slides:
         - p: | 
             Ansible works against multiple systems in your infrastructure
             at the same time. It does this by selecting portions of systems
-            listed in Ansible's inventory. This topic covers:
+            listed in Ansible's inventory.
+        - p: This topic covers:
         - ul:
           - Understanding Hosts and Groups
           - Inventory Sources
@@ -168,6 +169,12 @@ slides:
             > ACL
 
               Sets and retrieves file ACL information.
+
+              Options (= is mandatory):
+
+              - entry
+                      The acl to set or remove.  This must always be quoted in the
+
         - class_notes: Modules and tasks represent the core function of
                        ansible. Modules are capable of idempotence -- 
                        can be ran successively and understand change vs
