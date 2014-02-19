@@ -12,6 +12,6 @@ before_script:
 
 script:
   - python syntax_check.py *.yml
-  - python build_single.py > fundamentals.yml; cd revelator; ./write_it ../fundamentals.yml fundamentals/
+  - python build_single.py > fundamentals.yml; cd revelator; ./write_it ../fundamentals.yml fundamentals/; cd ..
   - python syntax_check.py operational/*.yml
-  - python build_single.py operational/ > operational.yml; cd revelator; ./write_it ../operational.yml operational/
+  - python build_single.py operational/ > operational.yml; cd revelator; ./write_it ../operational.yml operational/; cd ..
