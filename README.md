@@ -1,5 +1,7 @@
 # yaml-slide-template
 
+[![Build Status](https://travis-ci.org/sivel/yaml-slide-template.png)](https://travis-ci.org/sivel/yaml-slide-template)
+
 ## Build Instructions
 
 1. `git clone https://github.com/sivel/yaml-slide-template.git`
