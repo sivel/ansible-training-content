@@ -37,6 +37,7 @@ slides:
           - inventory-specific data
           - static or dynamic sources
         - class_notes:
+
           We'll break down our discussion of Inventory further by  
           discussing the various parts of inventory.  We'll start with Hosts 
           and Groupings, delve into inventory-specific data and discuss briefly
