@@ -358,8 +358,42 @@ slides:
           - inventory limits
           - inclusions
           - roles
-          - tasks
-          - concurrency and order of operations
-          - conditionals
-          - error handling
-          - inclusions
+      -
+        - h1: inventory selection
+        - code: |
+            $ ansible-playbook -i production play.yaml
+            $ ansible-playbook -i pre-prod play.yaml
+            $ ansible-playbook -i hosts/dfw/ play.yaml
+      -
+        - h1: global variables
+        - code: |
+            $ ansible-playbook -i pre-prod -e "cache_dir=/srv/cache/" play.yaml
+      -
+        - h1: forks
+        - code: |
+            $ ansible-playbook -f 30 -i pre-prod -e "cache_dir=/srv/cache/" play.yaml
+      -
+        - h1: inventory-limits
+        - code: |
+            $ ansible-playbook --limit dfw -f 30 -i pre-prod -e "cache_dir=/srv/cache/" play.yaml
+      -
+        - h1: inclusions
+        - code: |
+            - name: This is a Play
+              hosts: web-servers
+              remote_user: fred
+              sudo: yes
+              connection: ssh
+              gather_facts: no
+              vars:
+                http_port: 80
+                cache_dir: /opt/cache
+
+              tasks:
+                - name: create cache dir
+                  file: path={{ cache_dir }} state=directory
+
+            - include: playbook2.yaml
+      -
+        - h1: roles
+        - p: lots of good stuff about roles here
