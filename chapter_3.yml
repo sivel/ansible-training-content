@@ -37,7 +37,7 @@ slides:
           - groupings
           - inventory-specific data
           - static or dynamic sources
-        - class_notes: "Breaking down by topic, we'll cover four parts (Note the listed)""
+        - class_notes: "Breaking down by topic, we'll cover four parts (Note the listed)"
 
       -
         - h1: "Inventory: Hosts"
@@ -54,6 +54,8 @@ slides:
             domain names, remote users and sudo users as well as any other variable you may 
             come up with to use when interacting with your hosts, such as "apache_port" or 
             "mysql ports".
+
+      -
         - h1: "Inventory Groups"
           - p: "Inventory Host Organization: Groups"
           - ul:
