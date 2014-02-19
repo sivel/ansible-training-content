@@ -1,7 +1,10 @@
 import os
 import sys
-import yaml
-import json
+
+try:
+    import yaml
+except ImportError:
+    raise SystemExit('PyYAML python module is missing')
 
 
 allfiles = os.listdir(os.path.dirname(os.path.abspath(__file__)))
