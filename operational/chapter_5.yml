@@ -12,3 +12,26 @@ slides:
       -
         - h1: Variables
         - p: Understand the basics of variables, where they come from, how they get set, and how to evaluate and manipulate them
+
+      -
+        - h1: Host Variables
+        - p: Host variables are "facts" about a server
+
+      -
+        - h1: Host Variables (Continued)
+        - p: Where do they come from?
+        - ul:
+          - inventory
+          - fact gathering (setup)
+          - host_vars directory
+
+      -
+        - h1: Group Variables
+        - p: '"facts" that apply to a grouping of servers'
+
+      -
+        - h1: Group Variables (Continued)
+        - p: Where do they come from?
+        - ul:
+          - inventory
+          - group_vars directory
