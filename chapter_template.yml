@@ -6,39 +6,44 @@ header:
 
 slides:
 
-  -
-    - h1: chapter title slide
-    - h3: subtitle/info
+slides:
 
   -
-    - h1: content slide
-    - p: content content content
+    - nested:
 
-    - class_notes:
-        these are speaker notes that will be hidden
+      -
+        - h1: chapter title slide
+        - h3: subtitle/info
 
-  -
-    - h1: content slide
-    - p: more content
+      -
+        - h1: content slide
+        - p: content content content
 
-  - 
-    - h3: This is how ordered lists work
-    - ol:
-      - alpha
-      - beta
-      - gamma 
+        - class_notes:
+            these are speaker notes that will be hidden
 
-  - 
-    - h3: And unordered lists are also a thing
-    - ul:
-      - duck
-      - duck
-      - goose 
-      - cow
+      -
+        - h1: content slide
+        - p: more content
 
-  -
-    - h3: Code highlighting demo
-    - code: |
-        import ansible
-        ansible.all_the_things() 
+      - 
+        - h3: This is how ordered lists work
+        - ol:
+          - alpha
+          - beta
+          - gamma 
+
+      - 
+        - h3: And unordered lists are also a thing
+        - ul:
+          - duck
+          - duck
+          - goose 
+          - cow
+
+      -
+        - h3: Code highlighting demo
+        - code: |
+            import ansible
+            ansible.all_the_things() 
 
