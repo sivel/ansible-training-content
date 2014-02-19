@@ -59,3 +59,6 @@ slides:
         - p: You can provision to various clouds.
         - p: Dynamic Inventory plugins for various providers (OpenStack, Google CE, Amazon)
         - class_notes: Cover the various ways that infrastructure can be provisioned using Ansible. Mention that there are modules that provide the ability to deploy to various clouds. Include a high level overview of the dynamic inventory plugin system. (Creating Infrastructure is the same as Configuring Infrastructure.)
+      -
+        - h3: Who is your Ansible, and what does he do?
+        - class_notes: Have the class search the ansible documention and come up with something that Ansible does. Be that a specific module, or a high level concept.
