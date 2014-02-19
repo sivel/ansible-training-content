@@ -14,7 +14,7 @@ slides:
           - Application Deployment & Orchestration
           - Provisioning Infrastructure Dynamically
       -
-        - h1: Remote Execution
+        - h3: Remote Execution
         - ul:
           - Replacement for traditional systems administration tasks. (i.e., SSH)
           - Checking system responsiveness and uptime.
@@ -22,41 +22,41 @@ slides:
           - Replace one off rsync scripts, fabric, or terminal multiplexing.
         - class_notes: Ansible provides a command-line tool and framework capable of executing over a large number of hosts, eliminating the need for systems administrators to multiplex terminal sessions via SSH to execute concurrent tasks across multiple hosts.  What may have been done in bash scripts, rsync scripts, etc. can be done via ad-hoc one-liners in the shell.
       -
-        - h1: Remote Execution
+        - h3: Remote Execution
         - code: | 
             ansible -m user -a "name=bob state=present" webservers
         - code: |
             ansible -m apt -a "pkg=apache2 state=present" webservers
         - class_notes: Example 1 is adding a user to all the systems defined in the webservers group. Example 2 is installing the apache2 package on all systems defined in the webservers group.
       -
-        - h1: Config Management
+        - h3: Config Management
         - ul:
           - Lengthy system configuration, to include adding users, ssh keys, installing and configuring services, and bootstrapping systems to a given state.
           - '"Configuration remediation" Consistent server configuration. Removes manual configuration errors.'
         - class_notes: Servers need to be configured; Ansible configures servers.  Using a combination of imperative and declarative syntax [described in detail--maybe using the GPS analogy], using concepts such as tasks, roles, plays, and playbooks, complex machine configurations are being assembled and converged by the Ansible toolchain rather than manually by administrators.  Configuration is either set manually by the author or dynamically at runtime by Ansible, resulting in consistent configuration across large server sets.
       -
-        - h1: Application Deployment & Orchestration
+        - h3: Application Deployment & Orchestration
         - p: Ansible can be used to replace various deployment and orchestration tools.
         - ul:
           - Deploy your custom application.
           - Replacement for Capistrano and Fabric (i.e., git deployments)
           - Good for large, complex environments
       -
-        - h1: Application Deployment & Orchestration
+        - h3: Application Deployment & Orchestration
         - p: Application deployment includes two main schools of thought.
         - h3: Rolling Release
           ul:
             - Remove node from production, update components, and put back into rotation.
         - class_notes: Make the point that you deploy often in the DevOps world, and why this is important for application development.
       -
-        - h1: Application Deployment & Orchestration
+        - h3: Application Deployment & Orchestration
         - p: Application deployment includes two main schools of thought.
         - h3: Fresh Start 
         - ul:
           - Deploy entirely new infrastructure and replace current environment wholesale.
         - class_notes: Make the point that you deploy often in the DevOps world, and why this is important for application development.
       -
-        - h1: Provisioning Infrastructure Dynamically
+        - h3: Provisioning Infrastructure Dynamically
         - ul:
             - Infrastructure is Data.
             - You can provision to various clouds.
