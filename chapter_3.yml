@@ -90,6 +90,21 @@ slides:
             [webservers]
             www[01:50].example.com ansible_ssh_port=5555 
 
+      -
+        - h1: "Dynamic Inventory: Ansible and the Cloud"
+        - p: "Inventory can also be gathered on demand from other sources dynamically.  Those sources include:"
+        - ul:
+          - Cloud API (Rackspace, Amazon, Digital Ocean, etc.)
+          - Cobbler
+          - Create your own for fun and profit!
+        - class_notes: |
+            So we can also take inventory from a wide variety of sources on the fly.  We can touch Rackspace, 
+            Openstack, Amazon EC2, Digital Ocean, and other provisioning systems like Cobbler.  You can also
+            create your own inventory module to interface with any custom CMDB systems you may have.
+
+      -
+        - 
+
       - 
         - h1: Tasks and Modules
         - p: Tasks and Modules are the workhorse of Ansible.
