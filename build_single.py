@@ -43,7 +43,10 @@ for chapter_file in chapter_files:
     except:
         errors.append('*** Could not load/parse %s ***\n' % chapter_file)
     else:
-        root['slides'].extend(chapter['slides'])
+        try:
+            root['slides'].extend(chapter['slides'])
+        except:
+            errors.append('*** Could not find slides in %s ***\n' % chapter_file)
 
 print yaml.dump(root, indent=4, allow_unicode=True, default_flow_style=False)
 
