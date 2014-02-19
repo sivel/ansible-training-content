@@ -1,7 +1,8 @@
 # yaml-slide-template
 
 [![Build Status](https://travis-ci.org/sivel/yaml-slide-template.png)](https://travis-ci.org/sivel/yaml-slide-template)
-Autobuilding on Jenkins [here](http://jenkins.onitato.com:8080/job/Slides/ws/output/index.html#/).
+
+[Autobuilding](http://jenkins.onitato.com:8080/job/Slides/buildTimeTrend) on Jenkins. [Current Render](http://jenkins.onitato.com:8080/job/Slides/ws/output/index.html#/).
 
 ## Build Instructions
 
