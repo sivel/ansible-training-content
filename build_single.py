@@ -31,13 +31,16 @@ except:
 if 'slides' not in root:
     root['slides'] = []
 
+errors = []
 for chapter_file in chapter_files:
     try:
         with open(os.path.join(path, chapter_file)) as f:
             chapter = yaml.load(f)
     except:
-        sys.stderr.write('*** Could not load/parse %s ***\n' % chapter_file)
+        errors.append('*** Could not load/parse %s ***\n' % chapter_file)
     else:
         root['slides'].extend(chapter['slides'])
 
 print yaml.dump(root, indent=4, allow_unicode=True, default_flow_style=False)
+
+sys.stderr.write('\n'.join(errors))
