@@ -40,7 +40,7 @@ slides:
           - '"Configuration remediation" Consistent server configuration. Removes manual configuration errors.'
         - class_notes: Servers need to be configured; Ansible configures servers.  Using a combination of imperative and declarative syntax [described in detail--maybe using the GPS analogy], using concepts such as tasks, roles, plays, and playbooks, complex machine configurations are being assembled and converged by the Ansible toolchain rather than manually by administrators.  Configuration is either set manually by the author or dynamically at runtime by Ansible, resulting in consistent configuration across large server sets.
       -
-        - h3: Application Deployment & Orchestration
+        - h1: Application Deployment & Orchestration
         - p:
         - p: Ansible can be used to replace various deployment and orchestration tools.
         - p:
