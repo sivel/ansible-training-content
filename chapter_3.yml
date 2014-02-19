@@ -102,9 +102,6 @@ slides:
             Openstack, Amazon EC2, Digital Ocean, and other provisioning systems like Cobbler.  You can also
             create your own inventory module to interface with any custom CMDB systems you may have.
 
-      -
-        - 
-
       - 
         - h1: Tasks and Modules
         - p: Tasks and Modules are the workhorse of Ansible.
