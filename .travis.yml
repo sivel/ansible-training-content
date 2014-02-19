@@ -9,3 +9,4 @@ install:
 
 script:
   - python syntax_check.py *.yml
+  - python syntax_check.py operational/*.yml
