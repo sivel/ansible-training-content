@@ -32,7 +32,7 @@ slides:
           - Inventory Sources
 
       -
-        - h1: Inventory (continued)
+        - h1: Inventory concepts
         - ul:
           - hosts
           - groupings
