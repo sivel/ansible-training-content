@@ -1,0 +1,85 @@
+---
+header:
+  author: CC, PI
+  title: Chapter 1, Ansible Fundamentals
+  description: Ansible Fundamentals Course
+
+slides:
+
+   - set_global:
+       transition: rotate
+       background: '#007777'
+       #background: 'black'
+
+   -
+     - nested:
+         -
+           - h2: Chapter 01 - DevOps and Ansible
+           - ul: 
+             - What is DevOps?
+             - The DevOps World
+             - Some DevOps Tools
+             - Ansible
+
+         -
+           - h2: What is DevOps?
+           - ul:
+             - 'What do you do with Hundreds or Thousands of servers to manage?'
+             - Sysadmins are expensive
+             - Sysadmins make mistakes
+             - Sysadmins incur latency to configure
+             - Customer needs predictable, scalable app deployment
+             - "Customer needs to grow horizontally into cloud"
+             - "Solution: DevOps"
+           - class_notes:
+             - Instructor notes for this slide
+               "s" on keyboard
+
+         -
+           - h2: Meaning of the word DevOps
+           - ul:
+             - Lots of definitions around this term
+             - Usually means app developers work hand in hand with operations staff
+             - At Rackspace, means leveraging a tool specifically designed for the task
+           - class_notes:
+             - Instructor notes for this slide
+
+         -
+           - h2: Meaning of the word DevOps
+           - ul:
+             - Uses a management computer to manage legions of other computers
+             - Puppet, Chef, SaltStack, ... Ansible
+
+           - link: ['http://www.rackspace.com/blog/accelerate-devops-adoption-for-faster-innovation/',
+                    'http://www.rackspace.com/blog/accelerate-devops-adoption-for-faster-innovation/']
+           - class_notes:
+             - There are lots of definitions around this term.  We will define how what we mean by this phrase, to clarify its usage throughout the course.
+
+         -
+           - h2: DevOps World We Live In
+           - ul:
+             - History of traditional deployments
+             - "Understanding today's architectural shift"
+             - Problems that arise in this new era
+           - class_notes:
+             - The story of a world in transition from yesterdays rigid iron infrastructures to todays cloud based, API driven elastic deployments have changed the way we think about building solutions.  
+
+         -
+           - h2: Brief Tool Introduction
+           - ul:
+             - Orchestration vs. Orchestration
+             - Chef
+             - SaltStack
+           - class_notes:
+             - Many choices exist to handle orchestration.  We will describe each briefly and differentiate their usage.
+
+         -
+           - h2: What is Ansible?
+           - ul:
+             - History of Ansible 
+             - Why was Ansible created?
+           - link: ['http://blog.ansibleworks.com/2013/12/08/the-origins-of-ansible/','http://blog.ansibleworks.com/2013/12/08/the-origins-of-ansible/']
+           - class_notes:
+             - There was a world where many tools needed to be leveraged to bolt together true orchestration.  Ansible was created with the mission to solve for as much of that, as possible, in a single tool.  From provisioning, through deployment and into orchestration. 
+
+
