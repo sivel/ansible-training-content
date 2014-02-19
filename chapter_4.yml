@@ -25,7 +25,12 @@ slides:
       -
         - h1: Write the tasks
         - code: |
-            tasks:
+            ---
+            - name: this is the name of a play
+              hosts: all
+              user: root
+
+              tasks:
               - name: install nginx
                 yum: package=nginx state=present
 
