@@ -26,7 +26,7 @@ slides:
             Ansible works against multiple systems in your infrastructure
             at the same time. It does this by selecting portions of systems
             listed in Ansible's inventory.
-        - p: This topic covers:
+        - p: "This topic covers:"
         - ul:
           - Understanding Hosts and Groups
           - Inventory Sources
