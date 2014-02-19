@@ -10,7 +10,7 @@ slides:
     - nested:
       - 
         - h1: Ansible concepts
-        - h3: What makes Ansible tick!
+        - p: What makes Ansible tick!
 
       - 
         - h1: Key components of Ansible
