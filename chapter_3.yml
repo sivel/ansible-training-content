@@ -47,7 +47,7 @@ slides:
           - Things such as static IP addresses, FQDN, alternate SSH ports can be set.
           - Set remote user to ssh as, and what sudo user you want to use per host.
           - Set connection types to the host (Paramiko, OpenSSH, local connection, etc.)
-          - "--limit" allows you to specify only certain host entries to act against
+          - --limit allows you to specify only certain host entries to act against
         - class_notes: |
             You have a lot of flexibility when you specify hosts in Inventory. You can
             set variables to determine connection types, host ip addresses and fully-qualified
@@ -57,17 +57,17 @@ slides:
 
       -
         - h1: "Inventory: Hosts (Continued)"
-        - p: This is an example of a host entry in an inventory file:
-        - p: |
+        - p: "This is an example of a host entry in an inventory file:"
+        - code: |
             web1.example.com ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
         - class_notes: As you can see, we have a host name, a specified SSH port and IP Address.
 
       -
         - h1: "Inventory: Host Entries Using Ranges."
-        - p: You can have ranges of machine names or letters like this:
-        - p: |
-          www[01:50].example.com ansible_ssh_port=5555 
-          db-[a-f].example.com ansible_ssh_port=5555
+        - p: "You can have ranges of machine names or letters like this:"
+        - code: |
+            www[01:50].example.com ansible_ssh_port=5555
+            db-[a-f].example.com ansible_ssh_port=5555
         - class_notes: Here we see that we can bracket a range of alpha-numeric characters to shorten our entries in the file.
 
       -
