@@ -47,4 +47,8 @@ for chapter_file in chapter_files:
 
 print yaml.dump(root, indent=4, allow_unicode=True, default_flow_style=False)
 
-sys.stderr.write('\n'.join(errors))
+if errors:
+    sys.stderr.write('\n'.join(errors))
+    sys.exit(len(errors))
+
+sys.exit(0)
