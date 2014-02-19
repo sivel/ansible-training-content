@@ -76,19 +76,19 @@ slides:
         - ul:
           - Groups allow targeted operations against different types of hosts.
           - Groups can also have variables that apply to all hosts within them.
-          - "--limit" allows you to specify only certain groups to act against
+          - --limit allows you to specify only certain groups to act against
         - class_notes: |
-          We can also act against groups of hosts in a similar manner to single hosts.
-          This allows you to also have standard settings for lots of similar hosts, such
-          as a standard set of ports for apache on all web servers. You can limit the execution of
-          Ansible jobs just as you can single hosts with the "--limit" option.
+            We can also act against groups of hosts in a similar manner to single hosts.
+            This allows you to also have standard settings for lots of similar hosts, such
+            as a standard set of ports for apache on all web servers. You can limit the execution of
+            Ansible jobs just as you can single hosts with the "--limit" option.
 
       -
         - h1: "Inventory: Groups (Continued)"
         - p: Groups are represented in brackets above host lists in the inventory file.
-        - p: |
-          [webservers]
-          www[01:50].example.com ansible_ssh_port=5555 
+        - code: |
+            [webservers]
+            www[01:50].example.com ansible_ssh_port=5555 
 
       - 
         - h1: Modules and Tasks
