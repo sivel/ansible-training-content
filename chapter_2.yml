@@ -11,9 +11,24 @@ slides:
       -
         - h1: Ansible Use Cases
         - p: Ask not what you can do for Ansible, but rather what Ansible can do for you!
+        - ul:
+          - Remote Execution / Ad-hoc Tasks
+          - Configuration Management
+          - Application Deployment & Orchestration
+          - Provisioning Infrastructure Dynamically
       -
         - h3: Remote Execution
-        - p: Ansible provides a command-line tool and framework capable of executing over a large number of hosts, eliminating the need for systems administrators to multiplex terminal sessions via SSH to execute concurrent tasks across multiple hosts.  What may have been done in bash scripts, rsync scripts, etc. can be done via ad-hoc one-liners in the shell.  For example, adding a user to all webservers
+        - ul:
+          - Replacement for traditional systems administration tasks. (ie, SSH)
+          - Checking system responsiveness and uptime.
+          - Gathering information about a collection of systems.
+          - Replace one off rsync scripts, fabric, or terminal multiplexing.
+        - class_notes: Ansible provides a command-line tool and framework capable of executing over a large number of hosts, eliminating the need for systems administrators to multiplex terminal sessions via SSH to execute concurrent tasks across multiple hosts.  What may have been done in bash scripts, rsync scripts, etc. can be done via ad-hoc one-liners in the shell.
+      -
+        - h3: Remote Execution
+        - p: ansible -m user -a "name=bob state=present" webservers
+        - p: ansible -m apt -a "pkg=apache2 state=present" webservers
+        - class_notes: Example 1 is adding a user to all the systems defined in the webservers group. Example 2 is installing the apache2 package on all systems defined in the webservers group.
       -
         - h3: Config Management
         - p: Servers need to be configured; Ansible configures servers.  Using a combination of imperative and declarative syntax [described in detail--maybe using the GPS analogy], using concepts such as tasks, roles, plays, and playbooks, complex machine configurations are being assembled and converged by the Ansible toolchain rather than manually by administrators.  Configuration is either set manually by the author or dynamically at runtime by Ansible, resulting in consistent configuration across large server sets.
@@ -21,6 +36,7 @@ slides:
         - h3: Application Deployment & Orchestration
         - p: Ansible can be used to replace various deployment and orchestration tools.
       -
+        - h3: Application Deployment & Orchestration
         - p: Application deployment includes two main schools of thought.
         - ul:
           - Rolling Release - Remove node from production, update components, and put back into rotation.
