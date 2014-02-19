@@ -1,0 +1,11 @@
+---
+language: python
+
+python:
+ - 2.7
+
+install:
+  - pip install PyYAML
+
+script:
+  - python syntax_check.py *.yml
