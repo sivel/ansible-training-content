@@ -109,16 +109,12 @@ slides:
           - Cloud Instance should exist
       -
         - h1: "Tasks: Examples"
-        - p: "Code examples of simple tasks:"
+        - p: ansible can execute single tasks on sets of hosts
+             to fullfill an ad-hoc declarations
         - code: |
-            - name: add cache dir
-              file: path=/opt/cache state=directory
-
-            - name: install nginx
-              yum: name=nginx state=present
-
-            - name: start nginx
-              service: name=nginx enabled=yes state=started
+            $ ansible web-hosts -m file -a "path=/opt/cache state=directory"
+            $ ansible web-hosts -m yum -a "name=nginx state=present"
+            $ ansible web-hosts -m service -a "name=nginx enabled=yes state=started"
       -
         - h1: "Tasks: Sources"
         - p: "Code for tasks can come from:"
@@ -140,10 +136,6 @@ slides:
           - raw module exists for executing raw commands over ssh
       -
         - h1: Module Interactions
-        - p: ansible can execute single modules on sets of hosts
-             to fullfill an ad-hoc task
-        - code: |
-            $ ansible web-hosts -m service -a "name=nginx state=restarted"
         - p: Module listing and documentation via ansible-doc
         - code: |
             $ ansible-doc -l
@@ -157,5 +149,18 @@ slides:
         - class_notes: Modules and tasks represent the core function of
                        ansible. Modules are capable of idempotence -- 
                        can be ran successively and understand change vs
-                       no change. An ordered series of tasks can be described
+                       no change. 
+      -
+        - h1: Module Interactions in Tasks
+        - p: A series of tasks
+        - code: |
+            - name: add cache dir
+              file: path=/opt/cache state=directory
+
+            - name: install nginx
+              yum: name=nginx state=present
+
+            - name: start nginx
+              service: name=nginx enabled=yes state=started
+        - class_notes: An ordered series of tasks can be described
                        to form a play
