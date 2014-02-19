@@ -1,0 +1,24 @@
+---
+header:
+  author: Mike Martin, Justin Phelps, Paul Durivage
+  title: Chapter 3, Ansible Operations
+  description: Ansible Operational Course
+
+slides: 
+  - 
+    - nested:
+      - 
+        - h1: Ansible Ad-Hoc Commands
+        - h3: Chapter 2
+      -
+        - h1: Targeting Hosts
+        - ul:
+            - all / *
+            - Groups (webservers)
+            - Exclusion (webservers:!nginxservers)
+            - Intersection (webservers:&staging)
+            - Combos
+            - Hostname / IP
+            - Regex
+            - "--limit"
+
