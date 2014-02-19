@@ -1,0 +1,14 @@
+---
+header:
+  author: Matt Martz
+  title: Variables
+  description: Understand the basics of variables, where they come from, how they get set, and how to evaluate and manipulate them
+
+slides:
+
+  -
+    - nested:
+
+      -
+        - h1: Variables
+        - p: Understand the basics of variables, where they come from, how they get set, and how to evaluate and manipulate them
