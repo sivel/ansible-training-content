@@ -1,0 +1,20 @@
+---
+header:
+  author: Matt Martz
+  title: Managing Inventory
+  description: Understand and discuss concepts around managing inventory through static INI formatted files or through dynamic inventory scripts
+
+slides:
+
+  -
+    - nested:
+
+      -
+        - h1: Inventory
+        - p: Understand and discuss concepts around managing inventory through static INI formatted files or through dynamic inventory scripts
+
+      -
+        - h1: Static INI
+        - p: Create an INI inventory file based off of instructor provided servers, specifying a human readable name and a connection IP address or hostname 
+        - class_notes: We should use a human readable name as the inventory hostname, and specify ansible_ssh_host for the actual IP
+
