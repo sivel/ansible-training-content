@@ -193,3 +193,17 @@ slides:
               service: name=nginx enabled=yes state=started
         - class_notes: An ordered series of tasks can be described
                        to form a play
+      -
+        - h1: Plays
+        - p: Plays are ordered sets of tasks to execute against host selections from your inventory.
+        - p: "This topic will cover:"
+        - ul:
+          - hosts selection
+          - play arguments
+          - variables
+          - fact gathering
+          - concurrency
+          - order of execution
+          - conditionals
+          - error handling
+          - inclusions
