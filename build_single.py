@@ -36,7 +36,7 @@ for chapter_file in chapter_files:
         with open(os.path.join(path, chapter_file)) as f:
             chapter = yaml.load(f)
     except:
-        sys.stderr.write('Could not load/parse %s\n' % chapter_file)
+        sys.stderr.write('*** Could not load/parse %s ***\n' % chapter_file)
     else:
         root['slides'].extend(chapter['slides'])
 
