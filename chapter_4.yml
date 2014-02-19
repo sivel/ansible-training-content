@@ -3,7 +3,6 @@ header:
   author: Tim G
   title: Write and run a simple playbook 
   description: "We have already shown a simple playbook in Chapter 3. Here we will write a playbook from scratch, incrementally, and the students can follow along if they are able."
-  theme: solarized
 
 slides:
 

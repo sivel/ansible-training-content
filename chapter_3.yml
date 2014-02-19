@@ -1,6 +1,6 @@
 ---
 header:
-  author: Jesse K and DFed
+  author: Jesse K and the DFed Experience
   title: Understand the concepts of Ansible
   description: Description of the chapter
 
@@ -77,11 +77,14 @@ slides:
           - Groups allow targeted operations against different types of hosts.
           - Groups can also have variables that apply to all hosts within them.
           - --limit allows you to specify only certain groups to act against
+          - Hosts can exist in more than one group at once.
         - class_notes: |
             We can also act against groups of hosts in a similar manner to single hosts.
             This allows you to also have standard settings for lots of similar hosts, such
             as a standard set of ports for apache on all web servers. You can limit the execution of
-            Ansible jobs just as you can single hosts with the "--limit" option.
+            Ansible jobs just as you can single hosts with the "--limit" option. Hosts can exist
+            in more than one group at once, letting you do interesting operations on the intersections
+            of groups. For example, target all of the east coast web servers.
 
       -
         - h1: "Inventory: Groups (Continued)"
