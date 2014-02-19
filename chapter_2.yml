@@ -10,7 +10,6 @@ slides:
     - nested:
       -
         - h1: Ansible Use Cases
-        - h3: Chapter 3
         - p: Ask not what you can do for Ansible, but what Ansible can do for you!
       -
         - h3: Ansible Use Cases
