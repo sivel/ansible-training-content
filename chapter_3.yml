@@ -347,3 +347,19 @@ slides:
                   command: /bin/fail
                   ignore_errors: yes
         - class_notes: variables and tasks inclusions
+      -
+        - h1: Playbooks
+        - p: Playbooks are ordered sets of plays to execute against inventory selections.
+        - p: "This topic will cover:"
+        - ul:
+          - inventory selection
+          - global variables
+          - forks
+          - inventory limits
+          - inclusions
+          - roles
+          - tasks
+          - concurrency and order of operations
+          - conditionals
+          - error handling
+          - inclusions
