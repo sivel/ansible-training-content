@@ -91,10 +91,71 @@ slides:
             www[01:50].example.com ansible_ssh_port=5555 
 
       - 
-        - h1: Modules and Tasks
-        - p: Modules and Tasks are the workhorse of Ansible. This
-             topic will cover
+        - h1: Tasks and Modules
+        - p: Tasks and Modules are the workhorse of Ansible.
+        - p: "This topic will cover:"
         - ul:
-          - Understanding what a module is
+          - Understanding what a task is
           - Understanding how tasks make use of modules
+      -
+        - h1: Tasks
+        - p: A task is a discrete action that is a declaration about
+             the state of a system.
+        - p: "Example Tasks:"
+        - ul:
+          - Directory should exist
+          - Package should be installed
+          - Service should be running
+          - Cloud Instance should exist
+      -
+        - h1: "Tasks: Examples"
+        - p: "Code examples of simple tasks:"
+        - code: |
+            - name: add cache dir
+              file: path=/opt/cache state=directory
 
+            - name: install nginx
+              yum: name=nginx state=present
+
+            - name: start nginx
+              service: name=nginx enabled=yes state=started
+      -
+        - h1: "Tasks: Sources"
+        - p: "Code for tasks can come from:"
+        - ul:
+          - existing modules
+          - custom modules
+          - raw ssh commands
+      -
+        - h1: Modules
+        - p: Modules are the bits of code copied to the target system
+             to be executed to satisfy the task declaration.
+        - p: "Key points:"
+        - ul:
+          - Code need not exist on remote host -- ansible copies it over
+          - Many modules come with Ansible -- batteries included
+          - Custom modules can be developed easily
+          - command/shell modules exists for simple commands
+          - script module exists for using existing code
+          - raw module exists for executing raw commands over ssh
+      -
+        - h1: Module Interactions
+        - p: ansible can execute single modules on sets of hosts
+             to fullfill an ad-hoc task
+        - code: |
+            $ ansible web-hosts -m service -a "name=nginx state=restarted"
+        - p: Module listing and documentation via ansible-doc
+        - code: |
+            $ ansible-doc -l
+            acl                  Sets and retrieves file ACL information.
+            apt                  Manages apt-packages
+        - code: |
+            $ ansible-doc acl
+            > ACL
+
+              Sets and retrieves file ACL information.
+        - class_notes: Modules and tasks represent the core function of
+                       ansible. Modules are capable of idempotence -- 
+                       can be ran successively and understand change vs
+                       no change. An ordered series of tasks can be described
+                       to form a play
