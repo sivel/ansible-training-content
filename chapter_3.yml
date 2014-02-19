@@ -168,6 +168,12 @@ slides:
             > ACL
 
               Sets and retrieves file ACL information.
+
+              Options (= is mandatory):
+
+              - entry
+                      The acl to set or remove.  This must always be quoted in the
+
         - class_notes: Modules and tasks represent the core function of
                        ansible. Modules are capable of idempotence -- 
                        can be ran successively and understand change vs
