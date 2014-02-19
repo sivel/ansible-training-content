@@ -37,8 +37,13 @@ slides:
           - inventory-specific data
           - static or dynamic sources
         - class_notes:
-          Talk about how host, groupings, and inventory sources work
+          We'll break down our discussion of Inventory further by  
+          discussing the various parts of inventory.  We'll start with Hosts 
+          and Groupings, delve into inventory-specific data and discuss briefly
+          the differences between static and dynamic inventory sources.
 
+        - h1: Inventory: Hosts and Groups
+        - p: 
       - 
         - h1: Modules and Tasks
         - p: Modules and Tasks are the workhorse of Ansible. This
