@@ -36,13 +36,12 @@ slides:
           - groupings
           - inventory-specific data
           - static or dynamic sources
-        - class_notes:
+        - class_notes: Let's start with Hosts and Groupings, delve into inventory-specific 
+                       data and discuss briefly the differences between static and dynamic
+                       inventory sources.
 
-          Let's start with Hosts and Groupings, delve into inventory-specific 
-          data and discuss briefly the differences between static and dynamic
-          inventory sources.
-
-        - h1: Inventory: Hosts and Groups
+      -
+        - h1: "Inventory: Hosts and Groups"
         - ul:
           - Hosts in Groups
           - Groups can be any predetermined organizational pattern
