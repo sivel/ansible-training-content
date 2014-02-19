@@ -6,6 +6,8 @@ try:
 except ImportError:
     raise SystemExit('PyYAML python module is missing')
 
+# Allow specification of a path to look for YAML files
+# Fallback to dirname of this script itself
 try:
     path = sys.argv[1]
 except IndexError:
@@ -13,6 +15,7 @@ except IndexError:
 
 allfiles = os.listdir(path)
 
+# Find all YAML chapter files.  Files should have "chapter" in the name
 chapter_files = []
 for f in allfiles:
     root, ext = os.path.splitext(f)
@@ -22,6 +25,7 @@ for f in allfiles:
 
 chapter_files.sort()
 
+# Open the root.yml file that is the root of the slides
 try:
     with open(os.path.join(path, 'root.yml')) as f:
         root = yaml.load(f)
