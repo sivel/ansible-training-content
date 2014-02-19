@@ -45,9 +45,9 @@ slides:
            - h1: Installation
            - ul:
              - Getting Started
+             - Installation
            - link: ['http://docs.ansible.com/intro_getting_started.html',
                     'http://docs.ansible.com/intro_getting_started.html']
-             - Installation
            - link: ['http://docs.ansible.com/intro_installation.html',
                     'http://docs.ansible.com/intro_installation.html']
            - link: ['http://releases.ansible.com/ansible/',
