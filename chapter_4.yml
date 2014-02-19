@@ -1,0 +1,34 @@
+---
+header:
+  author: Tim G
+  title: Write and run a simple playbook 
+  description: "We have already shown a simple playbook in Chapter 3. Here we will write a playbook from scratch, incrementally, and the students can follow along if they are able."
+  theme: solarized
+
+slides:
+
+  -
+    - nested:
+      - 
+        - h1: Basic Playbook Structure
+
+      - 
+        - h1: "Play Header"
+        - code: |
+            ---
+            - name: this is the name of a play
+              hosts: all
+              user: root
+
+              tasks: []
+
+      -
+        - h1: Write the tasks
+        - code: |
+            tasks:
+              - name: install nginx
+                yum: package=nginx state=present
+
+      -
+        - h1: Run the playbook
+
