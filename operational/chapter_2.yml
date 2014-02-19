@@ -29,3 +29,7 @@ slides:
           - Limitations of a static inventory with a cloud like environment
           - Query nearly any data source for inventory
           - How ansible knows if the provided inventory is a script
+
+      -
+        - h1: Dynamic Inventory Example
+        - class_notes: Show the output of the dynamic inventory script of your choice
