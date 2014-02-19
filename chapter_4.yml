@@ -11,6 +11,8 @@ slides:
       - 
         - h1: Basic Playbook Structure
 
+      - class_notes: In this chapter we'll cover the basic playbook structure, and write a simple playbook from scratch.
+
       - 
         - h1: "Play Header"
         - code: |
