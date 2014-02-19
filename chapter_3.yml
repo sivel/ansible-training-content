@@ -10,7 +10,7 @@ slides:
     - nested:
       - 
         - h1: Understand the concepts of Ansible
-        - h3: Getting to know the components that makes up Ansibe
+        - h3: Getting to know the components that makes up Ansible
 
       - 
         - h1: Topics covered in this slide
