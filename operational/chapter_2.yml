@@ -15,6 +15,17 @@ slides:
 
       -
         - h1: Static INI
-        - p: Create an INI inventory file based off of instructor provided servers, specifying a human readable name and a connection IP address or hostname 
-        - class_notes: We should use a human readable name as the inventory hostname, and specify ansible_ssh_host for the actual IP
+        - p: Create an INI inventory file based off of instructor provided servers, specifying a human readable name and a connection IP address or hostname
+        - class_notes: We should use a human readable name as the inventory hostname, and specify ansible_ssh_host for the actual IP.  Ungrouped for now.
 
+      -
+        - h1: Groups
+        - p: Create groups in the inventory file
+
+      -
+        - h1: Dynamic Inventory
+        - p: What are the use cases for dynamic inventory scripts
+        - ul:
+          - Limitations of a static inventory with a cloud like environment
+          - Query nearly any data source for inventory
+          - How ansible knows if the provided inventory is a script
