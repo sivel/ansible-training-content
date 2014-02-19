@@ -10,7 +10,10 @@ slides:
     - nested:
       -
         - h1: Ansible Use Cases
-        - p: Ask not what you can do for Ansible, but rather what Ansible can do for you!
+        - h3: Chapter 3
+        - p: Ask not what you can do for Ansible, but what Ansible can do for you!
+      -
+        - h3: Ansible Use Cases
         - ul:
           - Remote Execution / Ad-hoc Tasks
           - Configuration Management
@@ -33,10 +36,16 @@ slides:
         - class_notes: Example 1 is adding a user to all the systems defined in the webservers group. Example 2 is installing the apache2 package on all systems defined in the webservers group.
       -
         - h3: Config Management
-        - p: Servers need to be configured; Ansible configures servers.  Using a combination of imperative and declarative syntax [described in detail--maybe using the GPS analogy], using concepts such as tasks, roles, plays, and playbooks, complex machine configurations are being assembled and converged by the Ansible toolchain rather than manually by administrators.  Configuration is either set manually by the author or dynamically at runtime by Ansible, resulting in consistent configuration across large server sets.
+        - p: Lengthy system configuration, to include adding users, ssh keys, installing and configuring services, and bootstrapping systems to a given state.
+        - p: "Configuration remediation" Consistent server configuration. Removes manual configuration errors.
+        - class_notes: Servers need to be configured; Ansible configures servers.  Using a combination of imperative and declarative syntax [described in detail--maybe using the GPS analogy], using concepts such as tasks, roles, plays, and playbooks, complex machine configurations are being assembled and converged by the Ansible toolchain rather than manually by administrators.  Configuration is either set manually by the author or dynamically at runtime by Ansible, resulting in consistent configuration across large server sets.
       -
         - h3: Application Deployment & Orchestration
         - p: Ansible can be used to replace various deployment and orchestration tools.
+        - ul:
+          - Deploy your custom application.
+          - Replacement for Capistrano and Fabric (ie, git deployments)
+          - Good for large, complex environments
       -
         - h3: Application Deployment & Orchestration
         - p: Application deployment includes two main schools of thought.
@@ -46,3 +55,7 @@ slides:
         - class_notes: Make the point that you deploy often in the DevOps world, and why this is important for application development.
       -
         - h3: Provisioning Infrastructure Dynamically
+        - p: Infrastructure is Data.
+        - p: You can provision to various clouds.
+        - p: Dynamic Inventory plugins for various providers (OpenStack, Google CE, Amazon)
+        - class_notes: Cover the various ways that infrastructure can be provisioned using Ansible. Mention that there are modules that provide the ability to deploy to various clouds. Include a high level overview of the dynamic inventory plugin system. (Creating Infrastructure is the same as Configuring Infrastructure.)
