@@ -6,8 +6,12 @@ try:
 except ImportError:
     raise SystemExit('PyYAML python module is missing')
 
+try:
+    path = sys.argv[1]
+except IndexError:
+    path = os.path.dirname(os.path.abspath(__file__))
 
-allfiles = os.listdir(os.path.dirname(os.path.abspath(__file__)))
+allfiles = os.listdir(path)
 
 chapter_files = []
 for f in allfiles:
@@ -19,7 +23,7 @@ for f in allfiles:
 chapter_files.sort()
 
 try:
-    with open('root.yml') as f:
+    with open(os.path.join(path, 'root.yml')) as f:
         root = yaml.load(f)
 except:
     raise SystemExit('root.yml file not found')
@@ -29,7 +33,7 @@ if 'slides' not in root:
 
 for chapter_file in chapter_files:
     try:
-        with open(chapter_file) as f:
+        with open(os.path.join(path, chapter_file)) as f:
             chapter = yaml.load(f)
     except:
         sys.stderr.write('Could not load/parse %s\n' % chapter_file)
