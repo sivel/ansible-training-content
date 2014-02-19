@@ -107,7 +107,7 @@ slides:
         - p: "Dynamic inventories also respect groups and other details."
         - ul:
           - Groups are auto-determined by instance tags, regions and other attributes.
-          - 
+          - Dynamic Inventories can be used alongside Static Inventories for a hybrid cloud approach.
 
       - 
         - h1: Tasks and Modules
