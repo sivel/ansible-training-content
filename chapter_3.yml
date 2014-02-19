@@ -47,6 +47,7 @@ slides:
           - Things such as static IP addresses, FQDN, alternate SSH ports can be set.
           - Set remote user to ssh as, and what sudo user you want to use per host.
           - Set connection types to the host (Paramiko, OpenSSH, local connection, etc.)
+          - "--limit" allows you to specify only certain host entries to act against
         - class_notes: |
             You have a lot of flexibility when you specify hosts in Inventory. You can
             set variables to determine connection types, host ip addresses and fully-qualified
@@ -58,6 +59,7 @@ slides:
           - ul:
             - Groups allow targeted operations against different types of hosts.
             - Groups can also have variables that apply to all hosts within them.
+            - "--limit" allows you to specify only certain groups to act against
             - 
       - 
         - h1: Modules and Tasks
