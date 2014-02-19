@@ -59,24 +59,37 @@ slides:
         - h1: "Inventory: Hosts (Continued)"
         - p: This is an example of a host entry in an inventory file:
         - p: |
-              web1.example.com ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
+            web1.example.com ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
         - class_notes: As you can see, we have a host name, a specified SSH port and IP Address.
+
       -
         - h1: "Inventory: Host Entries Using Ranges."
         - p: You can have ranges of machine names or letters like this:
         - p: |
-              www[01:50].example.com ansible_ssh_port=5555 
-              db-[a-f].example.com ansible_ssh_port=5555
+          www[01:50].example.com ansible_ssh_port=5555 
+          db-[a-f].example.com ansible_ssh_port=5555
         - class_notes: Here we see that we can bracket a range of alpha-numeric characters to shorten our entries in the file.
 
       -
-        - h1: "Inventory Groups"
-          - p: "Inventory Host Organization: Groups"
-          - ul:
-            - Groups allow targeted operations against different types of hosts.
-            - Groups can also have variables that apply to all hosts within them.
-            - "--limit" allows you to specify only certain groups to act against
-            - 
+        - h1: "Inventory: Groups"
+        - p: "Inventory Host Organization: Groups"
+        - ul:
+          - Groups allow targeted operations against different types of hosts.
+          - Groups can also have variables that apply to all hosts within them.
+          - "--limit" allows you to specify only certain groups to act against
+        - class_notes: |
+          We can also act against groups of hosts in a similar manner to single hosts.
+          This allows you to also have standard settings for lots of similar hosts, such
+          as a standard set of ports for apache on all web servers. You can limit the execution of
+          Ansible jobs just as you can single hosts with the "--limit" option.
+
+      -
+        - h1: "Inventory: Groups (Continued)"
+        - p: Groups are represented in brackets above host lists in the inventory file.
+        - p: |
+          [webservers]
+          www[01:50].example.com ansible_ssh_port=5555 
+
       - 
         - h1: Modules and Tasks
         - p: Modules and Tasks are the workhorse of Ansible. This
