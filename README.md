@@ -8,6 +8,8 @@
  * [Fundamentals](http://jenkins.onitato.com:8080/job/Slides/ws/output/fundamentals/index.html#/)
  * [Operational](http://jenkins.onitato.com:8080/job/Slides/ws/output/operational/index.html#/)
 
+DNS is wonky: 162.209.96.62
+
 ## Build Instructions
 
 1. `git clone https://github.com/sivel/yaml-slide-template.git`
