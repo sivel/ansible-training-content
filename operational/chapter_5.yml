@@ -156,7 +156,7 @@ slides:
                 }
             }
 
-        -
-          - h1: Module Output Structure
-          - p: All modules should return a key titled "changed" with a boolean value of "true" or "false" defining whether the module made a change
-          - p: Additionally, under a failure scenario, a module would set a key of "failed" with a boolean value of "true"
+      -
+        - h1: Module Output Structure
+        - p: All modules should return a key titled "changed" with a boolean value of "true" or "false" defining whether the module made a change
+        - p: Additionally, under a failure scenario, a module would set a key of "failed" with a boolean value of "true"
