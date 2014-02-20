@@ -345,7 +345,10 @@ slides:
                 - name: failing command
                   command: /bin/fail
                   ignore_errors: yes
-        - class_notes: Talk about ignore_errors, failed_when, etc.
+        - class_notes: |
+            In this example we see the use of the "ignore_errors" setting, allowing users to dictate to ansible
+            to ignore when the return codes of ansible-initiated tasks indicate failures or errors.  Another way
+            to do this is by using the "failed_when" options.
       -
         - h1: inclusions
         - code: |
@@ -366,7 +369,11 @@ slides:
                 - name: failing command
                   command: /bin/fail
                   ignore_errors: yes
-        - class_notes: variables and tasks inclusions
+        - class_notes: |
+            Take note of the "include" task: This allows us to include other playbooks at specific points in our
+            run allowing for complicated aspects of orchestration to be seamless based on function or type of 
+            playbook.  While this is useful, most often now you will use Roles for this functionality.  We'll talk
+            more about those in a bit.
       -
         - h1: Playbooks
         - p: Playbooks are ordered sets of plays to execute against inventory selections.
@@ -384,18 +391,27 @@ slides:
             $ ansible-playbook -i production play.yaml
             $ ansible-playbook -i pre-prod play.yaml
             $ ansible-playbook -i hosts/dfw/ play.yaml
+        - class_notes: |
+            As you can see, we can specify different inventories to run the playbook "play.yaml" against.
       -
         - h1: global variables
         - code: |
             $ ansible-playbook -i pre-prod -e "cache_dir=/srv/cache/" play.yaml
+      - class_notes: Variables declared in this manner from the command line override other values.
       -
         - h1: forks
         - code: |
             $ ansible-playbook -f 30 -i pre-prod -e "cache_dir=/srv/cache/" play.yaml
+      - class_notes: |
+          This shows us declaring this playbook to be run against 30 hosts at a time by delcaring 
+          "-f 30" which is the flag for "forks equals 30 at a time."
       -
         - h1: inventory-limits
         - code: |
             $ ansible-playbook --limit dfw -f 30 -i pre-prod -e "cache_dir=/srv/cache/" play.yaml
+        - class_notes: |
+            This shows us running a playbook while declaring a limit to run only against "DFW" 
+            which could mean a single host named DFW, or a host group DFW.
       -
         - h1: inclusions
         - code: |
@@ -414,6 +430,9 @@ slides:
                   file: path={{ cache_dir }} state=directory
 
             - include: playbook2.yaml
+        - class_notes: |
+            In this example we see that at the end of the playbook, we include another playbook.  This allows
+            us to continue against other playbooks using the already discovered facts and variables declared.
       -
         - h1: roles
-        - p: lots of good stuff about roles here
+        - p: 
