@@ -177,3 +177,21 @@ slides:
             - set_fact: ansible_ssh_port=2222
               when: port_test|failed
         - class_notes: This example uses the wait_for module to attempt communication with port 22 on the remote host via a local action. Don't fail if wait_for fails, and if wait_for fails, set ansible_ssh_port to port 2222 for future communciation with the server.
+
+      -
+        - h1: Magic Variables
+        - p: There are several standard variables that are created and exposed by ansible
+        - ul:
+          - inventory_dir
+          - inventory_hostname
+          - inventory_hostname_short
+          - inventory_file
+          - playbook_dir
+          - play_hosts
+          - hostvars
+          - groups
+          - group_names
+          - ansible_ssh_user
+        - class_notes: |
+            play_hosts is new to 1.5, there is also 'vars' and 'environment' but are not widely used or discussed
+            http://docs.ansible.com/playbooks_variables.html#magic-variables-and-how-to-access-information-about-other-hosts
