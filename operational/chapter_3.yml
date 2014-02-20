@@ -28,7 +28,7 @@ slides:
             ‘-i localhost,’ for a quick way to target a single host without 
             specifying an inventory file.
 
-     -
+      -
         - h1: Module Documentation
         - code: |
             ansible-doc -l
@@ -36,4 +36,42 @@ slides:
             ansible-doc <module-name>
         - class_notes: |
             ansible-doc -l lists all the modules. ansible-doc <module-name> 
-            to see the documentation for a specific module.
+            to see the documentation for a specific module. The ansible-doc 
+            ommand makes it extremely easy to see all of the available ansible 
+            modules with corresponding documentation and examples.
+      
+      -
+        - h2: Example Use Cases
+        - code: |
+            ansible all -m command -a "/sbin/reboot"
+            ansible webservers -f 10
+            ansible dbservers-m copy -a "src=/path/to/file dest=/path/to/dest"
+            ansible all -m apt -a "pkg=nginx state=present"
+            ansible all -m user -a "name=bob state=present"
+            ansible appservers -m git -a "repo=https://github.com/ansible/ansible dest=/home/user/ansible"
+
+      -
+        - h2: Example Use Cases
+        - code: |
+            ansible -m service -a "name=httpd state=started"
+            ansible all -B 3600 -a "/usr/bin/long_running_operation --do-stuff"
+            ansible all -B 1800 -P 60 -a "/usr/bin/long_running_operation --do-stuff"
+            ansible web1.example.com -m setup
+
+
+      -
+        - h2: Cowsay
+        - code: |
+             ______________________
+            < TASK: Ping localhost >
+             ----------------------
+                    \   ^__^
+                     \  (oo)\_______
+                        (__)\       )\/\
+                            ||----w |
+                            ||     ||
+            ok: [127.0.0.1]
+
+
+
+
