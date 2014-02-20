@@ -13,7 +13,7 @@ slides:
    -
      - nested:
          -
-           - h1: Chapter 01 - Installing Ansible
+           - h1: Installing Ansible
            - ul: 
              - Assessment Review
              - Environment
