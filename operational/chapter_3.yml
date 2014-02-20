@@ -25,7 +25,7 @@ slides:
         - class_notes: |
             Go over the various methods for targeting hosts for ad-hoc commands. 
             Include information on rolling release and complex targeting.  Use 
-            ‘-i localhost,’ for a quick way to target a single host without 
+            '-i localhost,' for a quick way to target a single host without 
             specifying an inventory file.
 
       -
