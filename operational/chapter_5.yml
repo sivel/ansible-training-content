@@ -23,6 +23,7 @@ slides:
           - CPU, Disk, Memory
           - Hardware Architecture
           - Operating System Information
+        - class_notes: For an example the students can run 'ansible all -i localhost, -c local -m setup'
 
       -
         - h1: Host Variables (Continued)
