@@ -44,9 +44,14 @@ slides:
             ansible all -m command -a "/sbin/reboot"
       -
         - h2: Example Use Cases
-        - p: Partial command; setting fork level to 10
+        - p: Setting fork level to 10
         - code: |
-            ansible webservers -f 10
+            ansible webservers -f 10 -m setup
+        - class_notes: |
+            Fork level means that Ansible will fork 10 times, and then reach out
+            to up to 10 machines concurrently.  Choose carefully the level of concurrency:
+            higher concurrency executes tasks runs fasters, but results in more resources being
+            consumed.  
       -
         - h2: Example Use Cases
         - p: Copy a file from the local host to inventory hosts
@@ -63,6 +68,10 @@ slides:
         - p: Cloning a git repo to a path
         - code: |
             ansible appservers -m git -a "repo=https://github.com/ansible/ansible dest=/home/user/ansible"
+        - class_notes: |
+            This is cloning a repo to a directory, optionally accepting tags and versions.  Allows you
+            to install software (or anything stored in Git) from source control, a cornerstone 
+            piece of functionality for any automation/config mgmt/orchestration tool.
       -
         - h2: Example Use Cases
         - p: Ensure httpd is started
@@ -74,16 +83,25 @@ slides:
         - code: |
             ansible all -B 3600 -a "/usr/bin/long_running_operation --do-stuff"
             ansible all -B 1800 -P 60 -a "/usr/bin/long_running_operation --do-stuff"
+        - class_notes: |
+            Initiate long running tasks with polling.  Optionally kick off long running tasks
+            with backgrounding and no polling, returning you to the shell, with the option of
+            checking back in on the operation by setting -P to 0, which is otherwise a default of 15.
       -
         - h2: Example Use Cases
         - p: Running setup module to gather and display all facts about a machine known to Ansible
         - code: |
             ansible web1.example.com -m setup
+        - class_notes: |
+            Gathers a very large JSON object's worth of data about servers, to include
+            network information, distro information, shell environment, devices,
+            CPU, memory, etc.  All facts returned by setup are prefixed with ansible_
       -
         - h2: Cowsay
         - image: 'http://i.imgur.com/rRBp5Ln.png?1'
         - class_notes: |
-            Cowsay is used by default if enabled on the system, but can be1
+            Cowsay is used by default if enabled on the system, but can be disabled
+            permanently in the ansible.cfg file.  Or don't install cowsay.
 
 
 
