@@ -55,5 +55,5 @@ slides:
            - link: ['https://github.com/ansible/ansible/releases',
                     'https://github.com/ansible/ansible/releases']
            - class_notes:
-             - Given the chosen environment, install Ansible using best practices.
+             - Given the chosen environment, install Ansible using best practices. The recommended installation method is using your operating systems package manager where applicable.
 
