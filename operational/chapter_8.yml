@@ -1,0 +1,220 @@
+---
+header:
+  author: Jesse K and David F
+  title: Best Practices
+  description: A discussion of the best operational practices to use with Ansible.
+
+slides:
+
+  -
+    - nested:
+      - 
+        - h1: Best Practices
+        - ul:
+          - content organization
+          - version control
+          - role based access control
+          - platform variance in playbooks
+          - proper naming of plays, tasks, and handlers
+          - playbook formatting
+        - class_notes: Notes notes notes
+      - 
+        - h1: Content Organization
+        - p: Magic happens when you put your files in the right locations
+        - ul:
+          - ansible.cfg
+          - inventory
+          - variables and inclusions
+          - tasks
+          - handlers
+          - playbooks
+          - templates and files for use in tasks
+          - custom modules
+          - roles
+        - class_notes: Notes notes notes
+      - 
+        - h1: Version Control
+        - p: Version control and Ansible go hand in hand. This topic will walk through many of the benefits of storing your ansible content in SCM and why this is itself a best practice.
+      - 
+        - h1: Version Control
+        - h3: audit trail / RBAC
+        - class_notes: The who changed what and when
+      - 
+        - h1: Version Control
+        - h3: collaboration and preservation
+        - class_notes: using SCM for collaboration means you also get work preservation in the face of local disaster
+      - 
+        - h1: Version Control
+        - h3: DevOps tie-in
+        - class_notes: DevOps best practices dictate code to be deployed is already in SCM, natural extension to put code that does the deploying in SCM as well
+      - 
+        - h1: Version Control
+        - h3: Galaxy, Git, and You!
+        - ul:
+          - role sharing
+          - joys of modular playbooks
+          - deploying code with the git module in a role
+        - class_notes: GALAXY!
+      - 
+        - h1: Version Control
+        - h3: Sensitive information handling
+        - class_notes: VAULT!
+      - 
+        - h1: Version Control
+        - h3: Barriers to entry
+        - ul:
+          - pull requests
+          - automatic gateway tests
+          - local validation checks
+        - class_notes: Notes notes notes
+      - 
+        - h1: RBAC and execution model
+        - p: A discussion of RBAC, Ansible, and your team, as well as a comparison of execution stratagies
+        - class_notes: Notes notes notes
+      - 
+        - h1: RBAC and execution model
+        - h3: Why it mastters
+        - class_notes: Notes notes notes
+      - 
+        - h1: RBAC and execution model
+        - h3: Execution models
+        - ul:
+          - centralized
+          - distributed
+        - class_notes: Notes notes notes
+      - 
+        - h1: RBAC and execution model
+        - h3: Centralized
+        - ul:
+          - access defined by company standards
+          - layer of protection against accidents and malice
+          - repeatability and guaranteed working environment
+          - ITIL/Change Control process friendly
+        - class_notes: Notes notes notes
+      - 
+        - h1: RBAC and execution model
+        - h3: Distributed
+        - ul:
+          - rapid development and execution loop
+          - change control put in hands of playbook/code devs
+          - turns operational support from gatekeeping to enabling
+          - aligns with other self-service IT services
+          - you built it, you deploy it
+        - class_notes: Notes notes notes
+      - 
+        - h1: Platform Variance in playbooks
+        - p: Best practices for dealing with the challenge of heterogeneous environments
+        - class_notes: Notes notes notes
+      - 
+        - h1: Platform Variance in playbooks
+        - h3: group_by
+        - p: Create dyanmic groups matching certain criteria
+        - code: |
+            - name: grouping play
+              hosts: all
+              tasks:
+                 - name: create distro groups
+                   group_by: key={{ ansible_distribution }}
+
+            - name: CentOS play
+              hosts: CentOS
+              gather_facts: False
+              tasks:
+                 - # tasks that only happen on CentOS go here
+        - class_notes: Notes notes notes
+      - 
+        - h1: Platform Variance in playbooks
+        - h3: task conditionals
+        - code: |
+             - name: install nginx
+               yum: name=nginx state=present
+               when: ansible_distribution == 'CentOS'
+
+             - name: install nginx
+               apt: pkg=nginx state=present
+               when: ansible_distribution == 'Debian'
+        - class_notes: Notes notes notes
+      - 
+        - h1: Proper naming of plays, tasks, and handlers
+        - p: Names have significance
+        - ul:
+          - --start-at-task
+          - handler notification
+          - output review
+        - class_notes: Notes notes notes
+      - 
+        - h1: Playbook formatting
+        - p: whitespace, yaml, line lengths, oh my!
+        - class_notes: Notes notes notes
+      - 
+        - h1: Playbook formatting
+        - h3: order and style of playbook directives
+        - ul:
+          - use a name
+          - hosts next
+          - other options
+          - tags
+          - vars after a blank line
+          - tasks after a blank line
+        - code: |
+            - name: Generate env/cell specific content
+              hosts: localhost
+              connection: local
+              gather_facts: false
+              tags:
+                - localprep
+
+              vars:
+                - cachedir: cache/
+
+              tasks:
+                - name: stuff
+        - class_notes: Notes notes notes
+      - 
+        - h1: Playbook formatting
+        - h3: whitespace, line lengths, continuations
+        - ul:
+          - blank lines encouraged
+          - less than 80 chars wide
+          - blocks can continue on new lines with proper spacing
+        - code: |
+            tasks:
+              - name: one task
+                command: echo
+
+              - name: lots of arguments
+                rax_dns_record: credentials=/path/to/my/creds type=A
+                                data=4.2.2.2 name=www.nodomain.not
+        - class_notes: Notes notes notes
+      - 
+        - h1: Playbook formatting
+        - h3: to quote or not to quote
+        - ul:
+          - "quote strings that have a : in them"
+          - "quote variables if they come directly after a :"
+          - "quote strings that use * directly after a :"
+          - quote entire string if first character is a quote
+        - code: |
+            - name: "My name has a : in it"
+              command: "{{ variable_here }}"
+              when: "'some_string' in varaible_here"
+
+            hosts: "*-webs"
+        - class_notes: Notes notes notes
+      - 
+        - h1: Playbook formatting
+        - h3: variable referencing
+        - ul:
+          - use {{ }} almost always
+          - do not use {{ }} in conditionals and other task controllers
+        - code: |
+            - name: name here
+              command: echo {{ variable here }}
+              register: output
+              when: variable != "derp"
+              failed_when: output.stderr == "FAILURE"
+        - class_notes: Notes notes notes
+      - 
+        - h1: Playbook formatting
+        - h3: YAML gotchas
+        - class_notes: Is there any more here?
