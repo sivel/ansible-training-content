@@ -15,7 +15,14 @@ slides:
 
       -
         - h1: Host Variables
-        - p: Host variables are "facts" about a server
+        - p: Host variables are "facts" about a server that contains info such as
+        - ul:
+          - Hostname
+          - IP addresses
+          - Date and Time information
+          - CPU, Disk, Memory
+          - Hardware Architecture
+          - Operating System Information
 
       -
         - h1: Host Variables (Continued)
