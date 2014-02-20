@@ -18,16 +18,13 @@ slides:
              - Assessment Review
              - Environment
              - Installation
-           - class_notes:
-             - Start with a brief overview of the Ansible assessment. Then orientation of users to the foundational information required to consume the course progressing directly into the Command Line Interface to begin installing Ansible.
+           - class_notes: Start with a brief overview of the Ansible assessment. Then orientation of users to the foundational information required to consume the course progressing directly into the Command Line Interface to begin installing Ansible.
 
          -
            - h1: Assessment Review
            - ul:
              - Brief review of the Ansible Fundamentals Assessment topics 
              - "Q & A"
-           - class_notes:
-             - None
 
          -
            - h1: Environment
@@ -38,8 +35,7 @@ slides:
              - Local machines (CentOS 6.4, Ubuntu LTS)
              - directly from git checkout (running from source)
 
-           - class_notes:
-             - Students will be introduced to the classroom lab environment. Explore deployment options and the ones that we will be utilizing in this classroom environment.
+           - class_notes: Students will be introduced to the classroom lab environment. Explore deployment options and the ones that we will be utilizing in this classroom environment.
 
          -
            - h1: Installation
@@ -54,6 +50,5 @@ slides:
                     'http://releases.ansible.com/ansible/']
            - link: ['https://github.com/ansible/ansible/releases',
                     'https://github.com/ansible/ansible/releases']
-           - class_notes:
-             - Given the chosen environment, install Ansible using best practices. The recommended installation method is using your operating systems package manager where applicable.
+           - class_notes: Given the chosen environment, install Ansible using best practices. The recommended installation method is using your operating systems package manager where applicable.
 
