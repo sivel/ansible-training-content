@@ -2,7 +2,11 @@
 
 [![Build Status](https://travis-ci.org/sivel/yaml-slide-template.png)](https://travis-ci.org/sivel/yaml-slide-template)
 
-[Autobuilding](http://jenkins.onitato.com:8080/job/Slides/buildTimeTrend) on Jenkins [Current Render](http://jenkins.onitato.com:8080/job/Slides/ws/output/index.html#/)
+[Autobuilding](http://jenkins.onitato.com:8080/job/Slides/buildTimeTrend) on Jenkins.
+
+**Current Renders**
+ * [Fundamentals](http://jenkins.onitato.com:8080/job/Slides/ws/output/fundamentals/index.html#/)
+ * [Operational](http://jenkins.onitato.com:8080/job/Slides/ws/output/operational/index.html#/)
 
 ## Build Instructions
 
