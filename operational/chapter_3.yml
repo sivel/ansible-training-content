@@ -35,13 +35,17 @@ slides:
         - class_notes: |
             ansible-doc -l lists all the modules. ansible-doc <module-name> 
             to see the documentation for a specific module. The ansible-doc 
-            ommand makes it extremely easy to see all of the available ansible 
+            command makes it extremely easy to see all of the available ansible 
             modules with corresponding documentation and examples.
       -
         - h2: Example Use Cases
         - p: Rebooting all servers
         - code: |
             ansible all -m command -a "/sbin/reboot"
+        - class_notes: |
+            This is a simple command that uses the command module to issue a reboot
+            to all servers in your inventory.
+            The -m dictates the module, the -a for arguments.
       -
         - h2: Example Use Cases
         - p: Setting fork level to 10
@@ -57,12 +61,18 @@ slides:
         - p: Copy a file from the local host to inventory hosts
         - code: |
             ansible dbservers-m copy -a "src=/path/to/file dest=/path/to/dest"
+        - class_notes: |
+            Uses the copy moudle to copy a file from the local machine, where the ansible
+            command is being run, to the destination.
       -
         - h2: Example Use Cases
         - p: Install nginx and add a user
         - code: |
             ansible all -m apt -a "pkg=nginx state=present"
             ansible all -m user -a "name=bob state=present"
+        - class_notes: |
+            Very simple; this uses the apt module to install nginx, and uses
+            the user module to add user bob.
       -
         - h2: Example Use Cases
         - p: Cloning a git repo to a path
@@ -77,6 +87,9 @@ slides:
         - p: Ensure httpd is started
         - code: |
             ansible -m service -a "name=httpd state=started"
+        - class_notes: |
+            The service module is used to ensure httpd is started.  It does not restart, stop, reload
+            or do anything but check that the process is running; if it is not running, it starts.
       -    
         - h2: Example Use Cases
         - p: Backgrounding tasks, with optional polling every 60 seconds
@@ -101,8 +114,7 @@ slides:
         - image: 'http://i.imgur.com/rRBp5Ln.png?1'
         - class_notes: |
             Cowsay is used by default if enabled on the system, but can be disabled
-            permanently in the ansible.cfg file.  Or don't install cowsay.
-
+            permanently in the ansible.cfg file, or skill installation of cowsay.
 
 
 
