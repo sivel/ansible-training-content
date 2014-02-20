@@ -5,12 +5,11 @@ header:
   description: Ansible Operational Course
 
 slides: 
-  - 
+  -
     - nested:
       - 
         - h1: Ansible Ad-Hoc Commands
         - h3: Chapter 2
-
       -
         - h1: Targeting Hosts
         - ul:
@@ -27,7 +26,6 @@ slides:
             Include information on rolling release and complex targeting.  Use 
             '-i localhost,' for a quick way to target a single host without 
             specifying an inventory file.
-
       -
         - h1: Module Documentation
         - code: |
@@ -39,60 +37,53 @@ slides:
             to see the documentation for a specific module. The ansible-doc 
             ommand makes it extremely easy to see all of the available ansible 
             modules with corresponding documentation and examples.
-
       -
         - h2: Example Use Cases
         - p: Rebooting all servers
         - code: |
             ansible all -m command -a "/sbin/reboot"
-
       -
         - h2: Example Use Cases
         - p: Partial command; setting fork level to 10
         - code: |
             ansible webservers -f 10
-
       -
         - h2: Example Use Cases
         - p: Copy a file from the local host to inventory hosts
         - code: |
             ansible dbservers-m copy -a "src=/path/to/file dest=/path/to/dest"
-
       -
         - h2: Example Use Cases
         - p: Install nginx and add a user
         - code: |
             ansible all -m apt -a "pkg=nginx state=present"
             ansible all -m user -a "name=bob state=present"
-
       -
         - h2: Example Use Cases
         - p: Cloning a git repo to a path
         - code: |
             ansible appservers -m git -a "repo=https://github.com/ansible/ansible dest=/home/user/ansible"
-
       -
         - h2: Example Use Cases
         - p: Ensure httpd is started
         - code: |
             ansible -m service -a "name=httpd state=started"
-
       -    
         - h2: Example Use Cases
         - p: Backgrounding tasks, with optional polling every 60 seconds
         - code: |
             ansible all -B 3600 -a "/usr/bin/long_running_operation --do-stuff"
             ansible all -B 1800 -P 60 -a "/usr/bin/long_running_operation --do-stuff"
-
-       -
+      -
         - h2: Example Use Cases
         - p: Running setup module to gather and display all facts about a machine known to Ansible
         - code: |
             ansible web1.example.com -m setup
-
       -
         - h2: Cowsay
         - image: 'http://i.imgur.com/rRBp5Ln.png?1'
+        - class_notes: |
+            Cowsay is used by default if enabled on the system, but can be1
 
 
 
