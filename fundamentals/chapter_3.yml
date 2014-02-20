@@ -9,7 +9,7 @@ slides:
   -
     - nested:
       - 
-        - h1: Ansible concepts
+        - h1: Ansible Concepts
         - p: What makes Ansible tick!
         - class_notes: Let's delve into the concepts that drive Ansible.
       - 
