@@ -11,7 +11,7 @@ slides:
       - 
         - h1: Ansible concepts
         - p: What makes Ansible tick!
-
+        - class_notes: Let's delve into the concepts that drive Ansible.
       - 
         - h1: Key components of Ansible
         - ul:
@@ -19,17 +19,16 @@ slides:
           - Modules/Tasks
           - Plays
           - Playbooks
-
+        - class_notes: These are some very key components you'll need to understand for using Ansible.
       -
         - h1: Inventory
-        - p: | 
-            Ansible works against multiple systems in your infrastructure
-            at the same time. It does this by selecting portions of systems
-            listed in Ansible's inventory.
-        - p: "This topic covers:"
         - ul:
           - Understanding Hosts and Groups
           - Inventory Sources
+        - class_notes:  | 
+            Ansible works against multiple systems in your infrastructure
+            at the same time. It does this by selecting portions of systems
+            listed in Ansible's inventory.
 
       -
         - h1: Inventory concepts
@@ -93,6 +92,7 @@ slides:
         - code: |
             [webservers]
             www[01:50].example.com ansible_ssh_port=5555 
+        - class_notes: This is an example of a range of hosts specified via the bracket nomenclature.
 
       -
         - h1: "Dynamic Inventory: Ansible and the Cloud"
@@ -112,7 +112,9 @@ slides:
         - ul:
           - Groups are auto-determined by instance tags, regions and other attributes.
           - Dynamic Inventories can be used alongside Static Inventories for a hybrid cloud approach.
-
+        - class_notes: |
+            Tagged instances automatically are put in a group based on that tag.  Other attributes also 
+            become groups, such as regions deployed to, or other custom attributes.
       - 
         - h1: Tasks and Modules
         - p: Tasks and Modules are the workhorse of Ansible.
@@ -130,6 +132,7 @@ slides:
           - Package should be installed
           - Service should be running
           - Cloud Instance should exist
+        - class_notes: These are examples of declarative tasks where the beginning state is disregarded in favor of ensuring end-state.
       -
         - h1: "Tasks: Examples"
         - p: ansible can execute single tasks on sets of hosts
@@ -138,6 +141,7 @@ slides:
             $ ansible web-hosts -m file -a "path=/opt/cache state=directory"
             $ ansible web-hosts -m yum -a "name=nginx state=present"
             $ ansible web-hosts -m service -a "name=nginx enabled=yes state=started"
+        - class_notes: in the first we make sure opt/cache exists, the second we install nginx, third we make sure nginx is installed, chkconfig'ed on and the service is started.
       -
         - h1: "Tasks: Sources"
         - p: "Code for tasks can come from:"
