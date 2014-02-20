@@ -61,16 +61,7 @@ slides:
 
       -
         - h2: Cowsay
-        - code: |
-             ______________________
-            < TASK: Ping localhost >
-             ----------------------
-                    \   ^__^
-                     \  (oo)\_______
-                        (__)\       )\/\
-                            ||----w |
-                            ||     ||
-            ok: [127.0.0.1]
+        - image: http://i.imgur.com/rRBp5Ln.png?1
 
 
 
