@@ -227,4 +227,4 @@ slides:
       - 
         - h1: Playbook formatting
         - h3: YAML gotchas
-        - class_notes: Is there any more here?
+        - class_notes: booleans
