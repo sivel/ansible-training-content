@@ -214,12 +214,13 @@ slides:
         - h1: Play naming
         - code: |
             - name: This is a Play
-        - class_notes: Names are important yo, explain why here
-      -
+        - class_notes: General best practices are to name tasks in a way that shows what they do.
+      - 
         - h1: hosts selection
         - code: |
             - name: This is a Play
               hosts: web-servers
+        - class_notes: This is how we specify in a play/plabook what hosts we will act upon based on group.
       -
         - h1: play arguments
         - code: |
@@ -228,6 +229,9 @@ slides:
               remote_user: fred
               sudo: yes
               connection: ssh
+        - class_notes: |
+            Furthermore, we can specify other variables as arguments.  
+            Such as what remote user to connect as, or whether we sudo to root to complete our task.
       -
         - h1: variables
         - code: |
@@ -239,7 +243,9 @@ slides:
               vars:
                 http_port: 80
                 cache_dir: /opt/cache
-        - class_notes: Talk about fact gathering here
+        - class_notes: |
+            We gather facts before every run from hosts we are acting on.  Facts become variables that
+            contain information such as kernel level, host name, ip addresses and other standard information.
       -
         - h1: tasks
         - code: |
@@ -259,6 +265,10 @@ slides:
 
                 - name: install nginx
                   yum: name=nginx state=installed
+        - class_notes: |
+            This is a compelte example of a play within a playbook.  It contains arguments, variables,
+            host groups to act on, two tasks and wheteher we use sudo on those tasks.  It also uses the variables
+            specified for the cache directory.  Variables are represented in the Jinja2 format with double curly braces.
       -
         - h1: concurrency and order of operations
         - code: |
@@ -277,7 +287,9 @@ slides:
 
                 - name: install nginx
                   yum: name=nginx state=installed
-        - class_notes: Talk about forks, serial, and whatnot
+        - class_notes: |
+            You can specify number of concurrent machines to act upon via setting a number of forks.  That will act upon 
+            that number of hosts at once, however the tasks within the play complete from top to botton, in order, one at a time.
       -
         - h1: conditionals
         - code: |
@@ -301,6 +313,10 @@ slides:
                 - name: install nginx
                   apt: pkg=nginx state=installed
                   when: ansible_os_family == "Debian"
+        - class_notes: |
+            This is an example of a conditional. Conditionals allow for actions to be dependant on some fact or variable set.
+            In this case, we see that we install nginx via Linux-Distro specific package managers. The variable "ansible_os_family"
+            is a discovered fact gathered when we first run the play or playbook against hosts.
       -
         - h1: error handling
         - code: |
