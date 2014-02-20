@@ -55,8 +55,8 @@ slides:
         - class_notes: |
             Fork level means that Ansible will fork 10 times, and then reach out
             to up to 10 machines concurrently.  Choose carefully the level of concurrency:
-            higher concurrency executes tasks runs fasters, but results in more resources being
-            consumed.  
+            higher concurrency executes tasks/plays/playbooks faster, but results in more 
+            resources being consumed.  
       -
         - h2: Example Use Cases
         - p: Copy a file from the local host to inventory hosts
