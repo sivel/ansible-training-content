@@ -61,7 +61,7 @@ slides:
 
       -
         - h2: Cowsay
-        - image: http://i.imgur.com/rRBp5Ln.png?1
+        - image: 'http://i.imgur.com/rRBp5Ln.png?1'
 
 
 
