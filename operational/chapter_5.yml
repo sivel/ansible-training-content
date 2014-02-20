@@ -134,5 +134,29 @@ slides:
         - code: |
             - git: repo=git://github.com/ansible/ansible.git dest=/tmp/ansible
               register: ansible_git
+        - class_notes: |
+            Different modules produce different data structures. For example, command and shell return a data structure containing the return code of the command, the contents of stderr and stdout, etc. The next section talks about how to explore the contents of a register variable.
 
+      -
+        - h1: Inspecting Variables
+        - p: Different modules produce different data structures. The 'debug' module will help you inspect that data structure.
+        - code: |
             - debug: var=ansible_git
+        - h4: Output Sample
+        - code: |
+            ok: [someserver] => {
+                "ansible_git": {
+                    "after": "1b4ba5431b1070c63b9069d310f42e16f302db10",
+                    "before": "69b2d82be6ffe20f04070cddf11b7629aa8420e5",
+                    "changed": true,
+                    "invocation": {
+                        "module_args": "repo=git://github.com/ansible/ansible.git dest=/tmp/ansible",
+                        "module_name": "git"
+                    }
+                }
+            }
+
+        -
+          - h1: Module Output Structure
+          - p: All modules should return a key titled "changed" with a boolean value of "true" or "false" defining whether the module made a change
+          - p: Additionally, under a failure scenario, a module would set a key of "failed" with a boolean value of "true"
