@@ -93,6 +93,7 @@ slides:
         - h1: Module Output Structure
         - p: All modules should return a key titled "changed" with a boolean value of "true" or "false" defining whether the module made a change
         - p: Additionally, under a failure scenario, a module would set a key of "failed" with a boolean value of "true"
+        - class_notes: A failed module may not have a changed key
 
       -
         - h1: Dynamically Adding Host Facts
