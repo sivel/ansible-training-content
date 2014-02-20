@@ -35,3 +35,104 @@ slides:
         - ul:
           - inventory
           - group_vars directory
+        - p: ""
+        - p: The name of the files in the group_vars directory line up with the group name being targeted. "all" is a special keyword to apply facts to all hosts.
+
+      -
+        - h1: Variable Precedence
+        - p: Precedence should simply feel natural
+        - p: The most specific applied variable wins
+
+      -
+        - h1: YAML
+        - p: Plays, roles and tasks are formatted in YAML
+
+      -
+        - h1: YAML (Continued)
+        - p: A play is a "list" of "dictionaries" that looks simialr to
+        - code: |
+            ---
+            - name: Web Servers
+              hosts: web
+              tasks:
+                - name: Install apache
+                  apt: name=apache2 state=present
+
+            - name: Database Servers
+              hosts: database
+              tasks:
+                - name: Install mysql
+                  apt: name=mysql-server state=present
+
+      -
+        - h1: YAML (Continued)
+        - p: This play YAML becomes
+        - code: |
+            [
+              {
+                "name": "Web Servers",
+                "hosts": "web",
+                "tasks": [
+                  {
+                     "name": "Install apache",
+                     "apt": "name=apache2 state=present"
+                  }
+                ]
+              },
+              {
+                "name": "Database Servers",
+                ...
+              }
+            ]
+
+      -
+        - h1: YAML (Continued)
+        - p: Boolean Values
+        - ul:
+          - "y"
+          - "yes"
+          - "n"
+          - "no"
+          - "true"
+          - "false"
+          - "on"
+          - "off"
+        - p: The above are case insensitive
+        - class_notes: |
+            These are a list of all the values that YAML treats as boolean (true/false).
+            If you need to use one of the above as a literal string, make sure you quote it.
+
+      -
+        - h1: YAML (Continued)
+        - h4: key=value
+        - code: |
+            apt: name=apache2 state=present
+        - h4: Pure YAML
+        - code: |
+            apt:
+              name: apache2
+              state: present
+
+      -
+        - h1: YAML (Continued)
+        - p: The biggest biggest difference to note with key=value is that all values are treated as strings
+        - class_notes: The reason for treating everything as a string, is due to the use of the shlex module in python. It has no way of knowing what you actually mean, so it takes the safe route and makes everything a string. Filters may be needed to evaluate values as you expect, such as the 'int' and 'bool' filters.
+
+      -
+        - h1: Using Variables in YAML
+        - p: Ansible uses "mustache" like variable expansion
+        - h4: group_vars/all
+        - code: |
+            ---
+            apache2_version: 2.2.22-1ubuntu1
+        - h4: Task
+        - code: '- apt: name="apache2={{ apache2_version }}" state=present'
+
+      -
+        - h1: register
+        - p: A special keyword "register" exists for all tasks, that will assign the output from a module to the variable of the specified name, for later manipulation or evaluation in use with other tasks
+        - code: |
+            - git: repo=git://github.com/ansible/ansible.git dest=/tmp/ansible
+              register: ansible_git
+
+            - debug: var=ansible_git
