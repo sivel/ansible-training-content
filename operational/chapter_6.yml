@@ -10,7 +10,7 @@ slides:
     - nested:
 
       -
-        - h1: Understanding Variable Inclusion
+        - h1: Variable Inclusion
         - h3: How to properly use include_vars and vars_files to include variables in your playbooks
 
       -
@@ -22,12 +22,13 @@ slides:
 
       -
         - h1: include_vars
-        - p: The include_vars module is similar to vars_files and allows for dynamic inclusion of variables within the context of a role. Examples:
+        - p: "The include_vars module is similar to vars_files and allows for dynamic inclusion of variables within the context of a role."
         - ul:
-          - code: |
-            include appropriate vars based on OS
-            include_vars: “../vars/{{ansible_os_family}}.yml”
+          - |
+            <strong>include variables based on the target Linux Distribution</strong><br>
+            include_vars: "../vars/{{ansible_os_family}}.yml"
 
-          - code: |
-            include_vars: "{{ item }}.yml"
+          - |
+            <strong>include a directory of variable fragments</strong><br>
+            include_vars: "{{ item }}.yml"<br>
             with_fileglob: "../vars/*.yml"
