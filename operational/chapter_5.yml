@@ -49,7 +49,7 @@ slides:
 
       -
         - h1: YAML (Continued)
-        - p: A play is a "list" of "dictionaries" that looks simialr to
+        - p: A play is a YAML structure consisting of "lists" of "dictionaries"
         - code: |
             ---
             - name: Web Servers
