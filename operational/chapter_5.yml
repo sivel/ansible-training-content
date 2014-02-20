@@ -160,3 +160,20 @@ slides:
         - h1: Module Output Structure
         - p: All modules should return a key titled "changed" with a boolean value of "true" or "false" defining whether the module made a change
         - p: Additionally, under a failure scenario, a module would set a key of "failed" with a boolean value of "true"
+
+      -
+        - h1: Dynamically Adding Host Facts
+        - p: During runtime you can run add additional host vars using the "set_fact" module
+        - code: |
+            - local_action:
+                module: wait_for
+                host: "{{ ansible_default_ipv4.address }}"
+                port: 22
+                delay: 1
+                timeout: 1
+              register: port_test
+              failed_when: False
+
+            - set_fact: ansible_ssh_port=2222
+              when: port_test|failed
+        - class_notes: This example uses the wait_for module to attempt communication with port 22 on the remote host via a local action. Don't fail if wait_for fails, and if wait_for fails, set ansible_ssh_port to port 2222 for future communciation with the server.
