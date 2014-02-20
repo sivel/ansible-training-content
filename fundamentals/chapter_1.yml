@@ -14,7 +14,7 @@ slides:
    -
      - nested:
          -
-           - h1: Chapter 01 - DevOps and Ansible
+           - h1: DevOps and Ansible
            - ul: 
              - What is DevOps?
              - The DevOps World
