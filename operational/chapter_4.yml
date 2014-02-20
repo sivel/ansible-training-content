@@ -1,0 +1,69 @@
+---
+header:
+  author: CC, PI
+  title: Chapter 4, Ansible Operational
+  description: Ansible Operational Course
+
+slides:
+
+   - set_global:
+       transition: rotate
+       background: '#007777'
+
+   -
+     - nested:
+         -
+           - h1: Ansible in Action - A Walkthrough
+           - ul: 
+             - Running a Playbook
+             - Plays
+             - Tasks
+             - Modules
+             - Actions in modules
+             - Commands in Actions
+           - class_notes:
+             - Students will walk through the process Ansible goes through to execute the desired jobs on targeted hosts when a Playbook gets run. 
+
+         -
+           - h1: Running a Playbook 
+           - ul: 
+             - A Playbook gets run...
+             - "Q & A"
+           - class_notes:
+             - Show a Playbook and its included Play.
+
+         -
+           - h1: Plays
+           - ul:
+             - ...composed of 1 or more Plays...
+           - class_notes:
+             - Explain the ordering of Plays and the Tasks they contain. 
+
+         -
+           - h1: Tasks
+           - ul:
+             - ...that perfom task(s)...
+           - class_notes:
+             - "Show how Tasks leverage a Module to perform an action defined within the Module's code to result in a specified state, based on that module's functions "
+
+         -
+           - h1: Modules 
+           - ul: 
+             - ... that leverage Modules...
+           - class_notes:
+             - Modules are Python coded components that interact with a managed node to run the appropriate actions resulting in a specified state defined in the Task.
+
+         -
+           - h1: Actions 
+           - ul:
+             - ...that interact with targeted hosts...
+           - class_notes:
+             - The Inventory file is how you will target a host.
+
+         -
+           - h1: Commands
+           - ul:
+             - ...and run the correctly identified commands/actions... 
+           - class_notes:
+             - A action/command set is executed via the Module code base. 
+
