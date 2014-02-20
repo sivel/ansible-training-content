@@ -194,8 +194,10 @@ slides:
 
             - name: start nginx
               service: name=nginx enabled=yes state=started
-        - class_notes: An ordered series of tasks can be described
-                       to form a play
+        - class_notes: |
+            An ordered series of tasks can be described to form plays.  Tasks, however, utilize modules to act upon remote hosts.
+            Modules essentially create python code out of the descriptions given via the tasks that are then sent to the remote machine
+            and executed.
       -
         - h1: Plays
         - p: Plays are ordered sets of tasks to execute against host selections from your inventory.
