@@ -31,7 +31,8 @@ slides:
         - code: |
             ansible-doc -l
         - code: |
-            ansible-doc <module-name>
+            ansible-doc setup
+            ansible-doc copy
         - class_notes: |
             ansible-doc -l lists all the modules. ansible-doc <module-name> 
             to see the documentation for a specific module. The ansible-doc 
