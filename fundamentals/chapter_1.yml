@@ -62,7 +62,7 @@ slides:
              - "Understanding today's architectural shift"
              - Problems that arise in this new era
            - class_notes:
-             - The story of a world in transition from yesterdays rigid iron infrastructures to todays cloud based, API driven elastic deployments have changed the way we think about building solutions.  
+             - The story of a world in transition from yesterdays rigid iron infrastructures to todays cloud based, API driven elastic deployments have changed the way we think about building solutions.
 
          -
            - h1: Brief Tool Introduction
@@ -71,7 +71,7 @@ slides:
              - Chef
              - SaltStack
            - class_notes:
-             - Many choices exist to handle orchestration.  We will describe each briefly and differentiate their usage.
+             - Many choices exist to handle orchestration.  We will describe each briefly and differentiate their usage. Some tools (puppet) use "Orchestration" to mean sending a command out to a bunch of servers at once: ad-hoc command execution. Orchestration in Ansible is more like conducting an orchestra--doing the right things at the right time, and moving on to the next steps in the correct order. A common example is a rolling upgrade of a web application. Modern web apps have many components, including load balancers, monitoring, etc. So, to achieve a zero-downtime rolling upgrade, you need to talk to the load balancers at the right time to take the web server you're updating, signal the monitoring, etc, in the right sequence and order.
 
          -
            - h1: What is Ansible?
@@ -80,6 +80,5 @@ slides:
              - Why was Ansible created?
            - link: ['http://blog.ansibleworks.com/2013/12/08/the-origins-of-ansible/','http://blog.ansibleworks.com/2013/12/08/the-origins-of-ansible/']
            - class_notes:
-             - There was a world where many tools needed to be leveraged to bolt together true orchestration.  Ansible was created with the mission to solve for as much of that, as possible, in a single tool.  From provisioning, through deployment and into orchestration. 
-
+             - There was a world where many tools needed to be leveraged to create true end-to-end automated deployment and update of apps Ansible was created with the mission to solve for as much of that, as possible, in a single tool. From provisioning and initial system configuration management, through app deployment and into orchestration for ongoing maintenance and updates. All of those tasks are highly related, and Ansible was designed to solve this problem from the beginning.
 

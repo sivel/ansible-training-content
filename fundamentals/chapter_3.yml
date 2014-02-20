@@ -11,7 +11,7 @@ slides:
       - 
         - h1: Ansible concepts
         - p: What makes Ansible tick!
-
+        - class_notes: Let's delve into the concepts that drive Ansible.
       - 
         - h1: Key components of Ansible
         - ul:
@@ -19,18 +19,16 @@ slides:
           - Modules/Tasks
           - Plays
           - Playbooks
-
+        - class_notes: These are some very key components you'll need to understand for using Ansible.
       -
         - h1: Inventory
-        - p: | 
-            Ansible works against multiple systems in your infrastructure
-            at the same time. It does this by selecting portions of systems
-            listed in Ansible's inventory.
-        - p: "This topic covers:"
         - ul:
           - Understanding Hosts and Groups
           - Inventory Sources
-
+        - class_notes:  | 
+            Ansible works against multiple systems in your infrastructure
+            at the same time. It does this by selecting portions of systems
+            listed in Ansible's inventory.
       -
         - h1: Inventory concepts
         - ul:
@@ -39,7 +37,6 @@ slides:
           - inventory-specific data
           - static or dynamic sources
         - class_notes: "Breaking down by topic, we'll cover four parts (Note the listed)"
-
       -
         - h1: "Inventory: Hosts"
         - p: "Things you can do with host entries in Inventory:"
@@ -55,14 +52,12 @@ slides:
             domain names, remote users and sudo users as well as any other variable you may 
             come up with to use when interacting with your hosts, such as "apache_port" or 
             "mysql ports".
-
       -
         - h1: "Inventory: Hosts (Continued)"
         - p: "This is an example of a host entry in an inventory file:"
         - code: |
             web1.example.com ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
         - class_notes: As you can see, we have a host name, a specified SSH port and IP Address.
-
       -
         - h1: "Inventory: Host Entries Using Ranges."
         - p: "You can have ranges of machine names or letters like this:"
@@ -70,7 +65,6 @@ slides:
             www[01:50].example.com ansible_ssh_port=5555
             db-[a-f].example.com ansible_ssh_port=5555
         - class_notes: Here we see that we can bracket a range of alpha-numeric characters to shorten our entries in the file.
-
       -
         - h1: "Inventory: Groups"
         - p: "Inventory Host Organization: Groups"
@@ -86,14 +80,13 @@ slides:
             Ansible jobs just as you can single hosts with the "--limit" option. Hosts can exist
             in more than one group at once, letting you do interesting operations on the intersections
             of groups. For example, target all of the east coast web servers.
-
       -
         - h1: "Inventory: Groups (Continued)"
         - p: Groups are represented in brackets above host lists in the inventory file.
         - code: |
             [webservers]
             www[01:50].example.com ansible_ssh_port=5555 
-
+        - class_notes: This is an example of a range of hosts specified via the bracket nomenclature.
       -
         - h1: "Dynamic Inventory: Ansible and the Cloud"
         - p: "Inventory can also be gathered on demand from other sources dynamically.  Those sources include:"
@@ -105,14 +98,15 @@ slides:
             So we can also take inventory from a wide variety of sources on the fly.  We can touch Rackspace, 
             Openstack, Amazon EC2, Digital Ocean, and other provisioning systems like Cobbler.  You can also
             create your own inventory module to interface with any custom CMDB systems you may have.
-
       -
         - h1: "Inventory: Ansible and the Cloud (Continued)"
         - p: "Dynamic inventories also respect groups and other details."
         - ul:
           - Groups are auto-determined by instance tags, regions and other attributes.
           - Dynamic Inventories can be used alongside Static Inventories for a hybrid cloud approach.
-
+        - class_notes: |
+            Tagged instances automatically are put in a group based on that tag.  Other attributes also 
+            become groups, such as regions deployed to, or other custom attributes.
       - 
         - h1: Tasks and Modules
         - p: Tasks and Modules are the workhorse of Ansible.
@@ -130,6 +124,7 @@ slides:
           - Package should be installed
           - Service should be running
           - Cloud Instance should exist
+        - class_notes: These are examples of declarative tasks where the beginning state is disregarded in favor of ensuring end-state.
       -
         - h1: "Tasks: Examples"
         - p: ansible can execute single tasks on sets of hosts
@@ -138,6 +133,9 @@ slides:
             $ ansible web-hosts -m file -a "path=/opt/cache state=directory"
             $ ansible web-hosts -m yum -a "name=nginx state=present"
             $ ansible web-hosts -m service -a "name=nginx enabled=yes state=started"
+        - class_notes: |
+            in the first we make sure opt/cache exists, the second we install nginx, third we make 
+            sure nginx is installed, chkconfig'ed on and the service is started.
       -
         - h1: "Tasks: Sources"
         - p: "Code for tasks can come from:"
@@ -145,6 +143,9 @@ slides:
           - existing modules
           - custom modules
           - raw ssh commands
+        - class_notes: |
+            Tasks use modules or commands to create their actions to apply to remote systems. 
+            You can create your own modules, use any of the over 200 included modules, or use the output from commands.
       -
         - h1: Modules
         - p: Modules are the bits of code copied to the target system
@@ -152,12 +153,14 @@ slides:
         - p: "Key points:"
         - ul:
           - Code need not exist on remote host -- ansible copies it over
-          - Many modules come with Ansible -- batteries included
+          - Many modules come with Ansible -- "batteries included"
           - Custom modules can be developed easily
           - command/shell modules exists for simple commands
           - script module exists for using existing code
           - raw module exists for executing raw commands over ssh
-      -
+        - class_notes: | 
+            This is an overview of modules, the meat of what tasks use to act upon hosts.
+      - 
         - h1: Module Interactions
         - p: Module listing and documentation via ansible-doc
         - code: |
