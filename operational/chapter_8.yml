@@ -141,6 +141,16 @@ slides:
           - --start-at-task
           - handler notification
           - output review
+        - code: |
+            $ ansible-playbook play.yaml --start-at-task="a good task"
+
+              - name: a good task
+                file: path=/etc/foobar state=absent
+                notify: bounce foo service
+
+            handlers:
+              - name: bounce foo service
+                service: name=foo state=restarted
         - class_notes: Notes notes notes
       - 
         - h1: Playbook formatting
