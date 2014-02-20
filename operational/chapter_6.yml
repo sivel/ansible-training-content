@@ -1,0 +1,33 @@
+---
+header:
+  author: Tim G
+  title: Chapter Title
+  description: Description of the chapter
+
+slides:
+
+  -
+    - nested:
+
+      -
+        - h1: Understanding Variable Inclusion
+        - h3: How to properly use include_vars and vars_files to include variables in your playbooks
+
+      -
+        - h1: vars_files
+        - p: content content content
+
+        - class_notes:
+            these are speaker notes that will be hidden
+
+      -
+        - h1: include_vars
+        - p: The include_vars module is similar to vars_files and allows for dynamic inclusion of variables within the context of a role. Examples:
+        - ul:
+          - code: |
+            include appropriate vars based on OS
+            include_vars: “../vars/{{ansible_os_family}}.yml”
+
+          - code: |
+            include_vars: "{{ item }}.yml"
+            with_fileglob: "../vars/*.yml"
