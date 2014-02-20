@@ -397,14 +397,14 @@ slides:
         - h1: global variables
         - code: |
             $ ansible-playbook -i pre-prod -e "cache_dir=/srv/cache/" play.yaml
-      - class_notes: Variables declared in this manner from the command line override other values.
+        - class_notes: Variables declared in this manner from the command line override other values.
       -
         - h1: forks
         - code: |
             $ ansible-playbook -f 30 -i pre-prod -e "cache_dir=/srv/cache/" play.yaml
-      - class_notes: |
-          This shows us declaring this playbook to be run against 30 hosts at a time by delcaring 
-          "-f 30" which is the flag for "forks equals 30 at a time."
+        - class_notes: |
+            This shows us declaring this playbook to be run against 30 hosts at a time by delcaring 
+            "-f 30" which is the flag for "forks equals 30 at a time."
       -
         - h1: inventory-limits
         - code: |
