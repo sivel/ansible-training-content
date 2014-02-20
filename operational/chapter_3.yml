@@ -42,12 +42,26 @@ slides:
       
       -
         - h2: Example Use Cases
+        - p: Rebooting all servers
         - code: |
             ansible all -m command -a "/sbin/reboot"
+      -
+        - h2: Example Use Cases
+        - p: Partial command; setting fork level to 10
+        - code: |
             ansible webservers -f 10
+      -
+        - h2: Example Use Cases
+        - code: |
             ansible dbservers-m copy -a "src=/path/to/file dest=/path/to/dest"
+      -
+        - h2: Example Use Cases
+        - code: |
             ansible all -m apt -a "pkg=nginx state=present"
             ansible all -m user -a "name=bob state=present"
+      -
+        - h2: Example Use Cases
+        - code: |
             ansible appservers -m git -a "repo=https://github.com/ansible/ansible dest=/home/user/ansible"
 
       -
@@ -57,7 +71,6 @@ slides:
             ansible all -B 3600 -a "/usr/bin/long_running_operation --do-stuff"
             ansible all -B 1800 -P 60 -a "/usr/bin/long_running_operation --do-stuff"
             ansible web1.example.com -m setup
-
 
       -
         - h2: Cowsay
