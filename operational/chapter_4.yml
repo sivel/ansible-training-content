@@ -13,7 +13,8 @@ slides:
    -
      - nested:
         -
-          - h1: Ansible in Action - A Walkthrough
+          - h1: Ansible in Action
+          - h2: A Walkthrough
           - ul:
             - Running a Playbook
             - Plays
@@ -24,33 +25,33 @@ slides:
           - class_notes: Students will walk through the process Ansible goes through to execute the desired jobs on targeted hosts when a Playbook gets run.
 
         -
-          - h1: Running a Playbook
+          - h2: Running a Playbook
           - ul:
             - A Playbook gets run...
             - "Q & A"
           - class_notes: Show a Playbook and its included Play.
 
         -
-          - h1: Playbooks
+          - h2: Playbooks
           - p: ...composed of 1 or more Plays...
           - class_notes: Explain the ordering of Plays and the Tasks they contain. 
 
         -
-          - h1: Plays
+          - h2: Plays
           - p: ...that perform task(s)...
 
         -
-          - h1: Tasks
+          - h2: Tasks
           - p: ...that leverage modules...
           - class_notes: "Show how Tasks leverage a Module to perform an action defined within the Module's code to result in a specified state, based on that module's functions "
 
         -
-          - h1: Modules
+          - h2: Modules
           - p: ...that interact with targeted hosts
           - class_notes: Ansible provided modules are Python coded components that interact with a managed node to run the appropriate actions resulting in a specified state defined in the Task.
 
         -
-          - h1: Modules (Continued)
+          - h2: Modules (Continued)
           - p: Ansible provided core modules are
           - ul:
             - Written in python
