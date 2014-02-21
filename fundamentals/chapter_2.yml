@@ -93,7 +93,7 @@ slides:
             overview of the dynamic inventory plugin system. (Creating 
             Infrastructure is the same as Configuring Infrastructure.)
       -
-       - h2: Who is your Ansible, and what does he do?
+        - h2: Who is your Ansible, and what does he do?
         - class_notes: |
             Have the class search the ansible documention and come up 
             with something that Ansible does. Be that a specific module, 
