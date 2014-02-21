@@ -1,0 +1,18 @@
+--
+# Lab 1
+- name: Ansible Operational Labs
+  hosts: all
+  tasks:
+    - name: Add repo for Debian based machines
+      template: src=nginx.list.j2 dest=/etc/apt/sources.list.d/nginx owner=root mode=0655
+      when: "ansible_os_family == 'Debian'"
+
+    - name: Add key for Debian based machines
+      apt_key: url=http://nginx.org/keys/nginx_signing.key state=present
+      when: "ansible_os_family == 'Debian'"
+
+    - name: Install package for Debian-based machines
+      apt: pkg=nginx state=present update_cache=yes
+      when: "ansible_os_family == 'Debian'"
+
+    - name: Add repo for EL-based machines
