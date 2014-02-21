@@ -14,68 +14,40 @@ slides:
    -
      - nested:
          -
-           - h1: DevOps and Ansible
+           - h1: What is Ansible?
            - ul: 
-             - What is DevOps?
-             - The DevOps World
-             - Some DevOps Tools
-             - Ansible
+             - Simply Clear
+             - Simply Fast
+             - Simply Complete
+             - Simply Efficient
+             - Simply Secure
 
          -
-           - h2: What is DevOps?
+           - h2: Simply Clear
+           - p: 'A simple automation language allows Ansible to be used by anyone:'
            - ul:
-             - 'What do you do with Hundreds or Thousands of servers to manage?'
-             - Sysadmins are expensive
-             - Sysadmins make mistakes
-             - Sysadmins incur latency to configure
-             - Customer needs predictable, scalable app deployment
-             - "Customer needs to grow horizontally into cloud"
-             - "Solution: DevOps"
-           - class_notes:
-             - Instructor notes for this slide
-               "s" on keyboard
-
+             - sysadmins
+             - developers
+             - IT managers
+           - p: It's easy to write, read, maintain, and evolve - without writing scripts or custom code.
          -
-           - h2: Meaning of the word DevOps
-           - ul:
-             - Lots of definitions around this term
-             - Usually means app developers work hand in hand with operations staff
-           - class_notes:
-             - Instructor notes for this slide
-
+           - h2: Simply Fast
+           - p: Ansible is fast to learn. If you are a sysadmin or a developer, you can be automating in under 30 minutes. You can forget how it works and focus on what you want to do.
+           - p: Setup is fast, because you don't have to install agents to manage machines. As long as SSH is installed, you are ready to automate.
          -
-           - h2: Meaning of the word DevOps
+           - h2: Simply Complete
+           - p: 'Ansible is a powerful automation engine - not just a point tool. In fact, it is several tools in one:'
            - ul:
-             - Uses a management computer to manage legions of other computers
-             - Puppet, Chef, SaltStack, ... Ansible
-           - class_notes:
-             - There are lots of definitions around this term.  We will define how what we mean by this phrase, to clarify its usage throughout the course.
-             - 'http://www.rackspace.com/blog/accelerate-devops-adoption-for-faster-innovation/'
-
+             - configuration management
+             - application deployment
+             - orchestration
+             - provisioning
+           - p: Hundreds of built-in modules in Ansible core provide a comprehensive toolbox to automate almost everything in your environment.
          -
-           - h2: DevOps World We Live In
-           - ul:
-             - History of traditional deployments
-             - "Understanding today's architectural shift"
-             - Problems that arise in this new era
-           - class_notes:
-             - The story of a world in transition from yesterdays rigid iron infrastructures to todays cloud based, API driven elastic deployments have changed the way we think about building solutions.
-
+           - h2: Simply Efficient
+           - p: Ansible doesn't require a custom agent or software to install. With no additional software infrastructure, you don't have to worry about managing the management tool.
+           - p: Ansible runs on OpenSSH. That means anywhere SSH goes, Ansible goes. It doesn't suck memory or CPU resources when it is not in use, and it was designed from day one to automate no-downtime rolling updates and multi-tier orchestration.
          -
-           - h2: Brief Tool Introduction
-           - ul:
-             - Orchestration vs. Orchestration
-             - Chef
-             - SaltStack
-           - class_notes:
-             - Many choices exist to handle orchestration.  We will describe each briefly and differentiate their usage. Some tools (puppet) use "Orchestration" to mean sending a command out to a bunch of servers at once: ad-hoc command execution. Orchestration in Ansible is more like conducting an orchestra--doing the right things at the right time, and moving on to the next steps in the correct order. A common example is a rolling upgrade of a web application. Modern web apps have many components, including load balancers, monitoring, etc. So, to achieve a zero-downtime rolling upgrade, you need to talk to the load balancers at the right time to take the web server you're updating, signal the monitoring, etc, in the right sequence and order.
-
-         -
-           - h2: What is Ansible?
-           - ul:
-             - History of Ansible 
-             - Why was Ansible created?
-           - link: ['http://blog.ansibleworks.com/2013/12/08/the-origins-of-ansible/','http://blog.ansibleworks.com/2013/12/08/the-origins-of-ansible/']
-           - class_notes:
-             - There was a world where many tools needed to be leveraged to create true end-to-end automated deployment and update of apps Ansible was created with the mission to solve for as much of that, as possible, in a single tool. From provisioning and initial system configuration management, through app deployment and into orchestration for ongoing maintenance and updates. All of those tasks are highly related, and Ansible was designed to solve this problem from the beginning.
-
+           - h2: Simply Secure
+           - p: Without agents, Ansible is inherently more secure. It doesn't need additional ports or root level daemons. It uses built-in OS authentication for better security - login as who you are, sudo if you want to sudo. You can work with tools like Kerberos, LDAP, and sssd. OpenSSH is the most peer-reviewed security component around.
+           - p: Additionally, Ansible plays can be read by anyone, now and in the future. This makes it auditable. You know what you're automating, and bugs have nowhere to hide.
