@@ -57,7 +57,7 @@ slides:
         - h1: Start a basic playbook
         - p: Create a playbook that only has a "hosts" specification targeting all servers and then run it
         - class_notes: |
-            ---
-            hosts: all
+            <pre><code>---
+            hosts: all</code></pre>
 
             Students should see that the playbook runs an implicit fact gathering step, and should successfully communicate with all servers.
