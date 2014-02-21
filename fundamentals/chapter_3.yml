@@ -53,7 +53,7 @@ slides:
             come up with to use when interacting with your hosts, such as "apache_port" or 
             "mysql ports".
       -
-        - h1: "Inventory: Hosts (Continued)"
+        - h1: "Inventory: Hosts"
         - p: "This is an example of a host entry in an inventory file:"
         - code: |
             web1.example.com ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
@@ -81,7 +81,7 @@ slides:
             in more than one group at once, letting you do interesting operations on the intersections
             of groups. For example, target all of the east coast web servers.
       -
-        - h1: "Inventory: Groups (Continued)"
+        - h1: "Inventory: Groups"
         - p: Groups are represented in brackets above host lists in the inventory file.
         - code: |
             [webservers]
@@ -99,7 +99,7 @@ slides:
             Openstack, Amazon EC2, Digital Ocean, and other provisioning systems like Cobbler.  You can also
             create your own inventory module to interface with any custom CMDB systems you may have.
       -
-        - h1: "Inventory: Ansible and the Cloud (Continued)"
+        - h1: "Inventory: Ansible and the Cloud"
         - p: "Dynamic inventories also respect groups and other details."
         - ul:
           - Groups are auto-determined by instance tags, regions and other attributes.
