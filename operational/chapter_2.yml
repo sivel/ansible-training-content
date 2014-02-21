@@ -14,29 +14,29 @@ slides:
         - p: Understand and discuss concepts around managing inventory through static INI formatted files or through dynamic inventory scripts
 
       -
-        - h1: Static INI
+        - h2: Static INI
         - p: Create an INI inventory file based off of instructor provided servers, specifying a human readable name and a connection IP address or hostname
         - class_notes: We should use a human readable name as the inventory hostname, and specify ansible_ssh_host for the actual IP.  Ungrouped for now.
 
       -
-        - h1: Static INI (Continued)
+        - h2: Static INI
         - code: |
             web1 ansible_ssh_host=10.10.10.10
             web2 ansible_ssh_host=20.20.20.20
 
       -
-        - h1: Groups
+        - h2: Groups
         - p: Create a web group in the inventory file
 
       -
-        - h1: Groups (Continued)
+        - h2: Groups
         - code: |
             [web]
             web1 ansible_ssh_host=10.10.10.10
             web2 ansible_ssh_host=20.20.20.20
 
       -
-        - h1: Dynamic Inventory
+        - h2: Dynamic Inventory
         - p: What are the use cases for dynamic inventory scripts
         - ul:
           - Limitations of a static inventory with a cloud like environment
@@ -50,11 +50,11 @@ slides:
             Ansible determines if the provided inventory is a script, by checking if the file is executable.  If the file is not executable it is parsed as an INI file.
 
       -
-        - h1: Dynamic Inventory Example
+        - h2: Dynamic Inventory Example
         - class_notes: Show the output of the dynamic inventory script of your choice
 
       -
-        - h1: Start a basic playbook
+        - h2: Start a basic playbook
         - p: Create a playbook that only has a "hosts" specification targeting all servers and then run it
         - class_notes: |
             <pre><code>---

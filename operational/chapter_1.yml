@@ -21,13 +21,13 @@ slides:
            - class_notes: Start with a brief overview of the Ansible assessment. Then orientation of users to the foundational information required to consume the course progressing directly into the Command Line Interface to begin installing Ansible.
 
          -
-           - h1: Assessment Review
+           - h2: Assessment Review
            - ul:
              - Brief review of the Ansible Fundamentals Assessment topics 
              - "Q & A"
 
          -
-           - h1: Environment
+           - h2: Environment
            - ul:
              - Options exist on class environments to leverage
              - Clouds (RAX, AWS, etc.)
@@ -38,7 +38,7 @@ slides:
            - class_notes: Students will be introduced to the classroom lab environment. Explore deployment options and the ones that we will be utilizing in this classroom environment.
 
          -
-           - h1: Installation
+           - h2: Installation
            - ul:
              - Getting Started
              - Installation

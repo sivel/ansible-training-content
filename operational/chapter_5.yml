@@ -14,7 +14,7 @@ slides:
         - p: Understand the basics of variables, where they come from, how they get set, and how to evaluate and manipulate them
 
       -
-        - h1: Host Variables
+        - h2: Host Variables
         - p: Host variables are "facts" about a server that contains info such as
         - ul:
           - Hostname
@@ -26,7 +26,7 @@ slides:
         - class_notes: For an example the students can run 'ansible all -i localhost, -c local -m setup'
 
       -
-        - h1: Host Variables (Continued)
+        - h2: Host Variables
         - p: Where do they come from?
         - ul:
           - inventory
@@ -34,11 +34,11 @@ slides:
           - host_vars directory
 
       -
-        - h1: Group Variables
+        - h2: Group Variables
         - p: '"facts" that apply to a grouping of servers'
 
       -
-        - h1: Group Variables (Continued)
+        - h2: Group Variables
         - p: Where do they come from?
         - ul:
           - inventory
@@ -47,12 +47,12 @@ slides:
         - p: The name of the files in the group_vars directory line up with the group name being targeted. "all" is a special keyword to apply facts to all hosts.
 
       -
-        - h1: Variable Precedence
+        - h2: Variable Precedence
         - p: Precedence should simply feel natural
         - p: The most specific applied variable wins
 
       -
-        - h1: Using Variables in YAML
+        - h2: Using Variables in YAML
         - p: Ansible uses "mustache" like variable expansion
         - h4: group_vars/all
         - code: |
@@ -62,7 +62,7 @@ slides:
         - code: '- apt: name="apache2={{ apache2_version }}" state=present'
 
       -
-        - h1: register
+        - h2: Register
         - p: A special keyword "register" exists for all tasks, that will assign the output from a module to the variable of the specified name, for later manipulation or evaluation in use with other tasks
         - code: |
             - git: repo=git://github.com/ansible/ansible.git dest=/tmp/ansible
@@ -71,7 +71,7 @@ slides:
             Different modules produce different data structures. For example, command and shell return a data structure containing the return code of the command, the contents of stderr and stdout, etc. The next section talks about how to explore the contents of a register variable.
 
       -
-        - h1: Inspecting Variables
+        - h2: Inspecting Variables
         - p: Different modules produce different data structures. The 'debug' module will help you inspect that data structure.
         - code: |
             - debug: var=ansible_git
@@ -90,13 +90,13 @@ slides:
             }
 
       -
-        - h1: Module Output Structure
+        - h2: Module Output Structure
         - p: All modules should return a key titled "changed" with a boolean value of "true" or "false" defining whether the module made a change
         - p: Additionally, under a failure scenario, a module would set a key of "failed" with a boolean value of "true"
         - class_notes: A failed module may not have a changed key
 
       -
-        - h1: Dynamically Adding Host Facts
+        - h2: Dynamically Adding Host Facts
         - p: During runtime you can run add additional host vars using the "set_fact" module
         - code: |
             - local_action:
@@ -113,7 +113,7 @@ slides:
         - class_notes: This example uses the wait_for module to attempt communication with port 22 on the remote host via a local action. Don't fail if wait_for fails, and if wait_for fails, set ansible_ssh_port to port 2222 for future communciation with the server.
 
       -
-        - h1: Magic Variables
+        - h2: Magic Variables
         - p: There are several standard variables that are created and exposed by ansible
         - ul:
           - inventory_dir

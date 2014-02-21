@@ -19,7 +19,7 @@ slides:
           - playbook formatting
         - class_notes: Notes notes notes
       - 
-        - h1: Content Organization
+        - h2: Content Organization
         - p: Magic happens when you put your files in the right locations
         - ul:
           - ansible.cfg
@@ -33,22 +33,22 @@ slides:
           - roles
         - class_notes: Notes notes notes
       - 
-        - h1: Version Control
+        - h2: Version Control
         - p: Version control and Ansible go hand in hand. This topic will walk through many of the benefits of storing your ansible content in SCM and why this is itself a best practice.
       - 
-        - h1: Version Control
+        - h2: Version Control
         - h3: audit trail / RBAC
         - class_notes: The who changed what and when
       - 
-        - h1: Version Control
+        - h2: Version Control
         - h3: collaboration and preservation
         - class_notes: using SCM for collaboration means you also get work preservation in the face of local disaster
       - 
-        - h1: Version Control
+        - h2: Version Control
         - h3: DevOps tie-in
         - class_notes: DevOps best practices dictate code to be deployed is already in SCM, natural extension to put code that does the deploying in SCM as well
       - 
-        - h1: Version Control
+        - h2: Version Control
         - h3: Galaxy, Git, and You!
         - ul:
           - role sharing
@@ -56,11 +56,11 @@ slides:
           - deploying code with the git module in a role
         - class_notes: GALAXY!
       - 
-        - h1: Version Control
+        - h2: Version Control
         - h3: Sensitive information handling
         - class_notes: VAULT!
       - 
-        - h1: Version Control
+        - h2: Version Control
         - h3: Barriers to entry
         - ul:
           - pull requests
@@ -68,22 +68,22 @@ slides:
           - local validation checks
         - class_notes: Notes notes notes
       - 
-        - h1: RBAC and execution model
+        - h2: RBAC and execution model
         - p: A discussion of RBAC, Ansible, and your team, as well as a comparison of execution stratagies
         - class_notes: Notes notes notes
       - 
-        - h1: RBAC and execution model
+        - h2: RBAC and execution model
         - h3: Why it mastters
         - class_notes: Notes notes notes
       - 
-        - h1: RBAC and execution model
+        - h2: RBAC and execution model
         - h3: Execution models
         - ul:
           - centralized
           - distributed
         - class_notes: Notes notes notes
       - 
-        - h1: RBAC and execution model
+        - h2: RBAC and execution model
         - h3: Centralized
         - ul:
           - access defined by company standards
@@ -92,7 +92,7 @@ slides:
           - ITIL/Change Control process friendly
         - class_notes: Notes notes notes
       - 
-        - h1: RBAC and execution model
+        - h2: RBAC and execution model
         - h3: Distributed
         - ul:
           - rapid development and execution loop
@@ -102,11 +102,11 @@ slides:
           - you built it, you deploy it
         - class_notes: Notes notes notes
       - 
-        - h1: Platform Variance in playbooks
+        - h2: Platform Variance in playbooks
         - p: Best practices for dealing with the challenge of heterogeneous environments
         - class_notes: Notes notes notes
       - 
-        - h1: Platform Variance in playbooks
+        - h2: Platform Variance in playbooks
         - h3: group_by
         - p: Create dyanmic groups matching certain criteria
         - code: |
@@ -123,7 +123,7 @@ slides:
                  - # tasks that only happen on CentOS go here
         - class_notes: Notes notes notes
       - 
-        - h1: Platform Variance in playbooks
+        - h2: Platform Variance in playbooks
         - h3: task conditionals
         - code: |
              - name: install nginx
@@ -135,7 +135,7 @@ slides:
                when: ansible_distribution == 'Debian'
         - class_notes: Notes notes notes
       - 
-        - h1: Proper naming of plays, tasks, and handlers
+        - h2: Proper naming of plays, tasks, and handlers
         - p: Names have significance
         - ul:
           - --start-at-task
@@ -153,11 +153,11 @@ slides:
                 service: name=foo state=restarted
         - class_notes: Notes notes notes
       - 
-        - h1: Playbook formatting
+        - h2: Playbook formatting
         - p: whitespace, yaml, line lengths, oh my!
         - class_notes: Notes notes notes
       - 
-        - h1: Playbook formatting
+        - h2: Playbook formatting
         - h3: order and style of playbook directives
         - ul:
           - use a name
@@ -181,7 +181,7 @@ slides:
                 - name: stuff
         - class_notes: Notes notes notes
       - 
-        - h1: Playbook formatting
+        - h2: Playbook formatting
         - h3: whitespace, line lengths, continuations
         - ul:
           - blank lines encouraged
@@ -197,7 +197,7 @@ slides:
                                 data=4.2.2.2 name=www.nodomain.not
         - class_notes: Notes notes notes
       - 
-        - h1: Playbook formatting
+        - h2: Playbook formatting
         - h3: to quote or not to quote
         - ul:
           - "quote strings that have a : in them"
@@ -212,7 +212,7 @@ slides:
             hosts: "*-webs"
         - class_notes: Notes notes notes
       - 
-        - h1: Playbook formatting
+        - h2: Playbook formatting
         - h3: variable referencing
         - ul:
           - use {{ }} almost always
@@ -225,6 +225,6 @@ slides:
               failed_when: output.stderr == "FAILURE"
         - class_notes: Notes notes notes
       - 
-        - h1: Playbook formatting
+        - h2: Playbook formatting
         - h3: YAML gotchas
         - class_notes: booleans

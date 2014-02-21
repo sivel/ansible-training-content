@@ -14,7 +14,7 @@ slides:
         - h3: How to properly use include_vars and vars_files to include variables in your playbooks
 
       -
-        - h1: vars_files
+        - h2: vars_files
         - p: "vars_files is used in playbooks to include a file of variables outside of the usual variable locations"
         - ul:
           - Useful for keeping secrets and site specific data outside of your Ansible repository and version control
@@ -24,7 +24,7 @@ slides:
             The vars_files directive is useful because it allows for you to keep secrets and business specific data in a location outside your Ansible repository.  This allows you to keep your Ansible playbooks very generic and portable.  This means you can continue to benefit from changes upstream if it is a community contributed playbook, or you can safely push out updates to the playbook if you are contributing it to the community.  Ultimately the variable include mechanisms are to provide flexibility in where your variables are located.
 
       -
-        - h1: include_vars
+        - h2: include_vars
         - p: "The include_vars module is similar to vars_files and allows for dynamic inclusion of variables within the context of a role."
         - ul:
           - |

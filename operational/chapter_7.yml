@@ -17,14 +17,14 @@ slides:
           - Local actions and delegation
 
       - 
-        - h1: Conditionals
+        - h2: Conditionals
         - h3: Useful for
         - ul:
           - Acting on results of previous tasks
           - Handling cross-distro/env differences
 
       - 
-        - h1: "An Example"
+        - h2: "An Example"
         - code: |
             - name: do something only on RedHat-style systems
               command: mycommand
@@ -33,7 +33,7 @@ slides:
         - class_notes: The when keyword, when applied to a task, can control execution of that task and skip it when certain conditions are set. Any variable can be used in a "when" condition, including register variables, facts, and group/host vars. Some particularly useful uses of this include skipping tasks based on the results of previous tasks, and handling cross-distro differences in package names/managers.
 
       - 
-        - h1: "Loops"
+        - h2: "Loops"
         - h3: "with_items: Loops over a list, one task per item"
 
         - class_notes: "Tasks can loop over lists using the with_items keyword. Each item in the list will be treated as a separate task, and you can use the special item variable name to access the current item. (Note: apt/yum modules collapse a list into a single package management transaction for speed)
@@ -43,7 +43,7 @@ slides:
           Class question: when would you need to use some of the other loop keywords, like with_together, with_sequence,with_random_choice, etc?"
 
       - 
-        - h1: "Status Control"
+        - h2: "Status Control"
         - ul:
           - failed_when
           - changed_when
@@ -69,7 +69,7 @@ slides:
                 changed_when: False
           "
       -
-        - h1: Local actions
+        - h2: Local actions
         - ul:
           - local_action (task)
           - "connection: local (play)"
@@ -78,7 +78,7 @@ slides:
             "Most Ansible tasks (actions) run on a remote machine: a Python program is assembled and sent across to the remote server, run, and the response is returned. But for some tasks, like API calls to remote services, it doesn't make sense to run that task on a remote machine--this is what local actions are for. This runs the task locally on the Ansible machine, but still \"on behalf\" of the machine currently being operated upon."
 
       -
-        - h1: Delegation
+        - h2: Delegation
         - p: Run a task on another server, on <i>behalf</i> of the server we are currently operating on.
 
         - class_notes: A delegated task is similar. You can be running a play that operates upon, say, "webservers", but for a particular task within that play, run the action on a different server. As an example, you may be going through an app deployment on the webservers group, but you may need to contact the monitoring server to turn off monitoring for that host while it's being updated. So, you would want to delegate_to a different server, in a play ordinarily targeting webservers.
