@@ -40,7 +40,6 @@ slides:
            - ul:
              - Lots of definitions around this term
              - Usually means app developers work hand in hand with operations staff
-             - At Rackspace, means leveraging a tool specifically designed for the task
            - class_notes:
              - Instructor notes for this slide
 
@@ -49,11 +48,9 @@ slides:
            - ul:
              - Uses a management computer to manage legions of other computers
              - Puppet, Chef, SaltStack, ... Ansible
-
-           - link: ['http://www.rackspace.com/blog/accelerate-devops-adoption-for-faster-innovation/',
-                    'http://www.rackspace.com/blog/accelerate-devops-adoption-for-faster-innovation/']
            - class_notes:
              - There are lots of definitions around this term.  We will define how what we mean by this phrase, to clarify its usage throughout the course.
+             - 'http://www.rackspace.com/blog/accelerate-devops-adoption-for-faster-innovation/'
 
          -
            - h2: DevOps World We Live In
