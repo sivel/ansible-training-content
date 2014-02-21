@@ -33,7 +33,7 @@ slides:
 
         -
           - h2: Playbooks
-          - p: ...composed of 1 or more Plays...
+          - p: ...are composed of 1 or more plays...
           - class_notes: Explain the ordering of Plays and the Tasks they contain. 
 
         -
@@ -52,7 +52,7 @@ slides:
 
         -
           - h2: Modules (Continued)
-          - p: Ansible provided core modules are
+          - p: "Ansible provided core modules are:"
           - ul:
             - Written in python
             - Are shipped by SSH to the target machine where they are executed
