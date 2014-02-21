@@ -36,7 +36,7 @@ slides:
             transfers it to the remote host and executes it (depending on
             connection method).
       -
-        - h2: Modules (Continued)
+        - h2: Modules
         - p: Ansible provided core modules are
         - ul:
           - Written in python
