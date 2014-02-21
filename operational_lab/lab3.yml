@@ -17,6 +17,11 @@
       shell: apt-get update && apt-get -y install python-apt
       when: "ansible_os_family == 'Debian' and pythonapt.stderr"
 
+      # Install python-pycurl for apt_repository because of missing python-pycurl package
+    - name: Install python-software-properties
+      apt: pkg=python-pycurl state=present
+      when: "ansible_os_family == 'Debian'"
+
     - name: Add repo for Debian based machines
       apt_repository: repo="deb http://nginx.org/packages/ubuntu/ {{ ansible_distribution_release }} nginx" state=present update_cache=yes
       when: "ansible_os_family == 'Debian'"
