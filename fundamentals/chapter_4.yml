@@ -43,5 +43,5 @@ slides:
         - class_notes: "Run the playbook. If you've written everything correctly, it should install nginx on the target systems, and return the results. Notice the \"Gathering Facts\" step that occurs at the top of the run. This is implicit, but you can turn it off with \"gather_facts: no\" in the play. At the end, a \"host recap\" will be printed out. This gives you a summary of tasks that completed successfully, tasks that changed something on the target system, any failures, or unreachable systems."
       -
         - image: "http://cdn2.hubspot.net/hub/330046/file-449187601-png/ansible_badge.png"
-        - link: ['http://www.ansible.com/home',
+        - link: ['www.ansible.com',
                  'http://www.ansible.com']
