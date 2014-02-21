@@ -445,7 +445,9 @@ slides:
             behavior among playbooks – or even with other users.
       -
         - h1: "Galaxy: Sharing is Caring"
-        - p: http://galaxy.ansible.com is a site where you can share roles.
+        - p: The Galaxy is a site where you can share roles.
+        - link: ['http://galaxy.ansible.com',
+                 'http://galaxy.ansible.com']
         - class_notes: |
             Galaxy is our repository for general roles that can be shared among users.  You can find it at the 
             address provided above.  You can share your roles, rate other people's roles, and download them
