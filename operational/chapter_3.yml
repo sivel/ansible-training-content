@@ -1,6 +1,6 @@
 ---
 header:
-  author: Mike Martin, Justin Phelps, Paul Durivage
+  author: Mike Martin, Justin Phelps, Paul Durivage, Jesse Keating
   title: Chapter 3, Ansible Operations
   description: Ansible Operational Course
 
@@ -25,6 +25,24 @@ slides:
             Include information on rolling release and complex targeting.  Use 
             '-i localhost,' for a quick way to target a single host without 
             specifying an inventory file.
+      -
+        - h2: Executing a task
+        - p: ad-hoc commands are single-task executions which leverage modules
+      -
+        - h2: Modules
+        - p: Modules are code that is executed on the remote host
+        - class_notes: |
+            Discuss how ansible takes module code and bundles it with arguments,
+            transfers it to the remote host and executes it (depending on
+            connection method).
+      -
+        - h2: Modules (Continued)
+        - p: Ansible provided core modules are
+        - ul:
+          - Written in python
+          - Are shipped by SSH to the target machine where they are executed
+          - Return JSON data that is interpreted by ansible
+        - class_notes: Modules can be written in other languages, but core ansible only uses python. We don't need to go into the mechanics of how modules are built before being shipped, just mention that they get copied to the remote machine using SCP/SFTP. The echo out JSON data, which gets interpreted by the ansible "control" machine.
       -
         - h2: Module Documentation
         - code: |
