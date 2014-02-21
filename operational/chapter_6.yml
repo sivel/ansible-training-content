@@ -35,3 +35,6 @@ slides:
             <strong>include a directory of variable fragments</strong><br>
             include_vars: "{{ item }}.yml"<br>
             with_fileglob: "../vars/*.yml"
+
+        - class_notes:
+            The include_vars module is very similar to vars_files, however include_vars is a module which means it can be used within the context of a role, whereas vars_files cannot.  Some example use cases of include_vars are shown here, in the first example include_vars is used to pull in variables based upon the Linux distribution in use.  In the second example include_vars is being used to collect a series of variables files from a directory.  Don't think of these as the "correct" ways to handle variables, but rather as yet another tool at your disposal for flexibility when needed.
