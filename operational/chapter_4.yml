@@ -46,15 +46,14 @@ slides:
 
         -
           - h1: Modules
-          - p: ... that interact with targeted hosts...
+          - p: ...that interact with targeted hosts
           - class_notes: Ansible provided modules are Python coded components that interact with a managed node to run the appropriate actions resulting in a specified state defined in the Task.
 
         -
-          - h1: Actions
-          - p: ...SOMETHING GOES HERE, NOT POSITIVE WHAT THIS IS...
-          - class_notes: The Inventory file is how you will target a host.
-
-        -
-          - h1: Commands
-          - p: ...and run the correctly identified commands/actions...
-          - class_notes: A action/command set is executed via the Module code base.
+          - h1: Modules (Continued)
+          - p: Ansible provided core modules are
+          - ul:
+            - Written in python
+            - Are shipped by SSH to the target machine where they are executed
+            - Return JSON data that is interpreted by ansible
+          - class_notes: Modules can be written in other languages, but core ansible only uses python. We don't need to go into the mechanics of how modules are built before being shipped, just mention that they get copied to the remote machine using SCP/SFTP. The echo out JSON data, which gets interpreted by the ansible "control" machine.
