@@ -1,10 +1,24 @@
---
-# Lab 1
+---
+# Lab 3
 - name: Ansible Operational Labs
   hosts: all
   tasks:
+      # This is boilerplate for dealing with an apt module that is not installing
+      # python-apt for you.  This checks for the existence of python-apt
+    - name: Check if python-apt installed on Debian-based machines
+      command: dpkg -s python-apt
+      register: pythonapt
+      when: "ansible_os_family == 'Debian'"
+      ignore_errors: yes
+
+      # This checks the output of the previous command and runs an install of
+      # python-apt if not already installed
+    - name: Install python-apt for Debian based machines
+      shell: apt-get update && apt-get -y install python-apt
+      when: "ansible_os_family == 'Debian' and pythonapt.stderr"
+
     - name: Add repo for Debian based machines
-      template: src=nginx.list.j2 dest=/etc/apt/sources.list.d/nginx owner=root mode=0655
+      apt_repository: repo="deb http://nginx.org/packages/ubuntu/ {{ ansible_distribution_release }} nginx" state=present update_cache=yes
       when: "ansible_os_family == 'Debian'"
 
     - name: Add key for Debian based machines
@@ -12,7 +26,20 @@
       when: "ansible_os_family == 'Debian'"
 
     - name: Install package for Debian-based machines
-      apt: pkg=nginx state=present update_cache=yes
+      apt: pkg=nginx state=present
       when: "ansible_os_family == 'Debian'"
 
     - name: Add repo for EL-based machines
+      copy: src=nginx.repo dest=/etc/yum.repos.d/nginx.repo owner=root mode=0655
+      when: "ansible_os_family == 'RedHat'"
+
+    - name: Add key for EL-based machines
+      rpm_key: "key=http://nginx.org/keys/nginx_signing.key"
+      when: "ansible_os_family == 'RedHat'"
+
+    - name: Install package for Debian-based machines
+      yum: name=nginx state=present
+      when: "ansible_os_family == 'RedHat'"
+
+    - name: Enable nginx at boot
+      service: name=nginx enabled=yes

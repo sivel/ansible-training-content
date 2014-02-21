@@ -1,4 +1,0 @@
-# The target server for the instructor should go here
-[web]
-web1 ansible_ssh_host=10.10.10.10
-web2 ansible_ssh_host=20.20.20.20
