@@ -85,7 +85,7 @@ slides:
         - ul:
             - Infrastructure is Data.
             - You can provision to various clouds.
-            - Dynamic Inventory plugins for various providers (OpenStack, Google CE, Amazon)
+            - Dynamic Inventory plugins for various providers (Rackspace, Amazon, Digital Ocean, OpenStack, Eucalyptus etc.)
         - class_notes: | 
             Cover the various ways that infrastructure can be provisioned 
             using Ansible. Mention that there are modules that provide 
