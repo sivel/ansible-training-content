@@ -9,7 +9,6 @@ slides:
     - nested:
       - 
         - h1: Ansible Ad-Hoc Commands
-        - h3: Chapter 2
       -
         - h1: Targeting Hosts
         - ul:
