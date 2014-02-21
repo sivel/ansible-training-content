@@ -34,9 +34,9 @@ slides:
            - h2: Fast
            - p: Ansible is easy to learn.
            - p: Setup is fast.
-           - class_notes:
-             - p: You can automate in under 30 minutes. Forget about how it works, just do it.
-             - p: No agents. SSH keys are typically already in place.
+           - class_notes: |
+               You can automate in under 30 minutes. Forget about how it works, just do it.
+               No agents. SSH keys are typically already in place.
          -
            - h2: Complete
            - p: 'Ansible is several tools in one:'
@@ -50,19 +50,23 @@ slides:
            - h2: Efficient
            - p: Ansible doesn't require a custom agent or software to install. 
            - p: Ansible runs on OpenSSH. 
-           - class_notes:
-             - p: With no additional software infrastructure, you don't have to worry about managing the management tool.
-             - p: That means anywhere SSH goes, Ansible goes.
-             - p: It doesn't suck memory or CPU resources when it is not in use.
-             - p: Designed from day one to automate no-downtime rolling updates and multi-tier orchestration.
+           - class_notes: |
+               With no additional software infrastructure, you don't have to
+                 worry about managing the management tool.
+               That means anywhere SSH goes, Ansible goes.
+               It doesn't suck memory or CPU resources when it is not in use.
+               Designed from day one to automate no-downtime rolling updates
+                 and multi-tier orchestration.
          -
            - h2: Secure
            - p: No agent. 
            - p: SSH transport.
            - p: Ansible plays can be read by anyone. 
-           - class_notes:
-             - p: It doesn't need additional ports or root level daemons.
-             - p: It uses built-in OS authentication for better security - login as who you are, sudo if you want to sudo.
-             - p: You can work with tools like Kerberos, LDAP, and sssd.
-             - p: OpenSSH is the most peer-reviewed security component around.
-             - p: This makes it auditable. You know what you're automating, and bugs have nowhere to hide.
+           - class_notes: |
+               It doesn't need additional ports or root level daemons.
+               It uses built-in OS authentication for better security - login
+                 as who you are, sudo if you want to sudo.
+               You can work with tools like Kerberos, LDAP, and sssd.
+               OpenSSH is the most peer-reviewed security component around.
+               This makes it auditable. You know what you're automating,
+                 and bugs have nowhere to hide.
