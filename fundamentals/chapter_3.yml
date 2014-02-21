@@ -444,7 +444,7 @@ slides:
             associated with a role, roles become redistributable units that allow you to share 
             behavior among playbooks – or even with other users.
       -
-        - h1: Galaxy: Sharing is Caring.
+        - h1: "Galaxy: Sharing is Caring."
         - p: http://galaxy.ansible.com is a site where you can share roles.
         - class_notes: |
             Galaxy is our repository for general roles that can be shared among users.  You can find it at the 
