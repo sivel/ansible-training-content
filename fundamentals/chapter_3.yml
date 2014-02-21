@@ -308,11 +308,11 @@ slides:
                   file: path={{ cache_dir }} state=directory
 
                 - name: install nginx
-                  yum: name=nginx state=installed
+                  yum: name=httpd state=installed
                   when: ansible_os_family == "RedHat"
 
                 - name: install nginx
-                  apt: pkg=nginx state=installed
+                  apt: pkg=apache2 state=installed
                   when: ansible_os_family == "Debian"
         - class_notes: |
             This is an example of a conditional. Conditionals allow for actions to be dependant on some fact or variable set.
@@ -335,11 +335,11 @@ slides:
                   file: path={{ cache_dir }} state=directory
 
                 - name: install nginx
-                  yum: name=nginx state=installed
+                  yum: name=httpd state=installed
                   when: ansible_os_family == "RedHat"
 
                 - name: install nginx
-                  apt: pkg=nginx state=installed
+                  apt: pkg=apache2 state=installed
                   when: ansible_os_family == "Debian"
 
                 - name: failing command
@@ -364,7 +364,7 @@ slides:
                 - name: create cache dir
                   file: path={{ cache_dir }} state=directory
 
-                - include: tasks/install-nginx.yaml
+                - include: tasks/install-apache.yaml
 
                 - name: failing command
                   command: /bin/fail
