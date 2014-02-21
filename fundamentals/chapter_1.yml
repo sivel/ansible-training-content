@@ -32,7 +32,7 @@ slides:
            - p: It's easy to write, read, maintain, and evolve - without writing scripts or custom code.
          -
            - h2: Fast
-           - p: Ansible is fast to learn.
+           - p: Ansible is easy to learn.
            - p: Setup is fast.
            - class_notes:
              - You can automate in under 30 minutes. Forget about how it works, just do it.
