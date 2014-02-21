@@ -51,7 +51,7 @@ slides:
           - class_notes: Ansible provided modules are Python coded components that interact with a managed node to run the appropriate actions resulting in a specified state defined in the Task.
 
         -
-          - h2: Modules (Continued)
+          - h2: Modules
           - p: "Ansible provided core modules are:"
           - ul:
             - Written in python
