@@ -1,0 +1,11 @@
+---
+header:
+  author: Justin Phelps
+  title: Ansible Fundamentals
+  description: Ansible Fundamentals Course
+
+slides:
+   -
+     - nested:
+         -
+           - h1: Ansible Fundamentals
