@@ -14,7 +14,7 @@ slides:
         - class_notes: In this chapter we'll cover the basic playbook structure, and write a simple playbook from scratch.
 
       - 
-        - h1: "Play Header"
+        - h2: "Play Header"
         - code: |
             ---
             - name: this is the name of a play
@@ -25,7 +25,7 @@ slides:
         - class_notes: As we covered earlier, a playbook is a series of plays. Each play needs a "hosts" keyword, which tells Ansible to which hosts hosts this play applies. You can define a lot of other parameters at the play level, including which user to log in as, whether these tasks should be run through sudo, which connection mechanism to use, etc.
 
       -
-        - h1: Write the tasks
+        - h2: Write the tasks
         - code: |
             ---
             - name: this is the name of a play
@@ -38,6 +38,6 @@ slides:
         - class_notes: Now that we have the "front matter" of the play defined, we can add the tasks, as shown. Each task can have a name that is human-readable. This isn't required, but it's recommended. Then you call the module, in this case "yum", and any arguments.
 
       -
-        - h1: Run the playbook
+        - h2: Run the playbook
 
         - class_notes: "Run the playbook. If you've written everything correctly, it should install nginx on the target systems, and return the results. Notice the \"Gathering Facts\" step that occurs at the top of the run. This is implicit, but you can turn it off with \"gather_facts: no\" in the play. At the end, a \"host recap\" will be printed out. This gives you a summary of tasks that completed successfully, tasks that changed something on the target system, any failures, or unreachable systems."

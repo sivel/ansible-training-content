@@ -22,7 +22,7 @@ slides:
              - Ansible
 
          -
-           - h1: What is DevOps?
+           - h2: What is DevOps?
            - ul:
              - 'What do you do with Hundreds or Thousands of servers to manage?'
              - Sysadmins are expensive
@@ -36,7 +36,7 @@ slides:
                "s" on keyboard
 
          -
-           - h1: Meaning of the word DevOps
+           - h2: Meaning of the word DevOps
            - ul:
              - Lots of definitions around this term
              - Usually means app developers work hand in hand with operations staff
@@ -45,7 +45,7 @@ slides:
              - Instructor notes for this slide
 
          -
-           - h1: Meaning of the word DevOps
+           - h2: Meaning of the word DevOps
            - ul:
              - Uses a management computer to manage legions of other computers
              - Puppet, Chef, SaltStack, ... Ansible
@@ -56,7 +56,7 @@ slides:
              - There are lots of definitions around this term.  We will define how what we mean by this phrase, to clarify its usage throughout the course.
 
          -
-           - h1: DevOps World We Live In
+           - h2: DevOps World We Live In
            - ul:
              - History of traditional deployments
              - "Understanding today's architectural shift"
@@ -65,7 +65,7 @@ slides:
              - The story of a world in transition from yesterdays rigid iron infrastructures to todays cloud based, API driven elastic deployments have changed the way we think about building solutions.
 
          -
-           - h1: Brief Tool Introduction
+           - h2: Brief Tool Introduction
            - ul:
              - Orchestration vs. Orchestration
              - Chef
@@ -74,7 +74,7 @@ slides:
              - Many choices exist to handle orchestration.  We will describe each briefly and differentiate their usage. Some tools (puppet) use "Orchestration" to mean sending a command out to a bunch of servers at once: ad-hoc command execution. Orchestration in Ansible is more like conducting an orchestra--doing the right things at the right time, and moving on to the next steps in the correct order. A common example is a rolling upgrade of a web application. Modern web apps have many components, including load balancers, monitoring, etc. So, to achieve a zero-downtime rolling upgrade, you need to talk to the load balancers at the right time to take the web server you're updating, signal the monitoring, etc, in the right sequence and order.
 
          -
-           - h1: What is Ansible?
+           - h2: What is Ansible?
            - ul:
              - History of Ansible 
              - Why was Ansible created?
