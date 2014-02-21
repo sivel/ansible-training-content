@@ -228,3 +228,7 @@ slides:
         - h2: Playbook formatting
         - h3: YAML gotchas
         - class_notes: booleans
+      - 
+        - image: "http://cdn2.hubspot.net/hub/330046/file-449187601-png/ansible_badge.png"
+        - link: ['ansible.com',
+                 'http://www.ansible.com']
