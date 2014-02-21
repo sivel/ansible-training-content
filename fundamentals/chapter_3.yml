@@ -91,7 +91,7 @@ slides:
         - h2: "Dynamic Inventory: Ansible and the Cloud"
         - p: "Inventory can also be gathered on demand from other sources dynamically.  Those sources include:"
         - ul:
-          - Cloud API (Rackspace, Amazon, Digital Ocean, Openstack, Eucalyptus etc.)
+          - Cloud API (Rackspace, Amazon, Digital Ocean, OpenStack, Eucalyptus etc.)
           - Cobbler
           - Create your own for fun and profit!
         - class_notes: |
