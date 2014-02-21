@@ -134,6 +134,13 @@ slides:
         - class_notes: |
             Cowsay is used by default if enabled on the system, but can be disabled
             permanently in the ansible.cfg file, or skill installation of cowsay.
+      -
+        - h2: Labs
+        - h3: Using the 'ansible' command
+        - ul:
+            - Install nginx and ensure that it is set to start at boot
+            - Ensure that nginx is started
+            - Create user www-data
 
 
 
