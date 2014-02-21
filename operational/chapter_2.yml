@@ -52,3 +52,12 @@ slides:
       -
         - h1: Dynamic Inventory Example
         - class_notes: Show the output of the dynamic inventory script of your choice
+
+      -
+        - h1: Start a basic playbook
+        - p: Create a playbook that only has a "hosts" specification targeting all servers and then run it
+        - class_notes: |
+            ---
+            hosts: all
+
+            Students should see that the playbook runs an implicit fact gathering step, and should successfully communicate with all servers.
