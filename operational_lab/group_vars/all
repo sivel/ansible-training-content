@@ -1,0 +1,8 @@
+nginx_workers: 2
+nginx_access_log: /var/log/nginx/access.log
+nginx_error_log: /var/log/nginx/error.log
+domains:
+  - example.com
+  - hamsandwich.com
+  - moo.com
+  - ansible.com

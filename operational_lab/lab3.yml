@@ -35,7 +35,7 @@
       when: "ansible_os_family == 'Debian'"
 
     - name: Add repo for EL-based machines
-      copy: src=nginx.repo dest=/etc/yum.repos.d/nginx.repo owner=root mode=0655
+      copy: src=nginx.repo dest=/etc/yum.repos.d/nginx.repo owner=root mode=0644
       when: "ansible_os_family == 'RedHat'"
 
     - name: Add key for EL-based machines
@@ -46,5 +46,27 @@
       yum: name=nginx state=present
       when: "ansible_os_family == 'RedHat'"
 
+    - name: Add user www-data
+      user: name=www-data state=present
+
     - name: Enable nginx at boot
-      service: name=nginx enabled=yes
+      service: name=nginx enabled=yes state=started
+
+      # Lab 5
+    - name: Install nginx.conf
+      template: src=templates/nginx.conf dest=/etc/nginx/nginx.conf owner=root mode=0644
+
+      # Lab 6
+    - name: Create web directories
+      file: path="/var/www/{{ item }}" state=directory owner=www-data mode=0755
+      with_items: domains
+
+    - name: Install nginx vhost configs
+      template: src=templates/vhost.conf dest="/etc/nginx/conf.d/{{ item }}.conf" owner=root mode=0644
+      with_items: domains
+      # Lab 7
+      notify: Restart nginx
+
+  handlers:
+    - name: Restart nginx
+      service: name=nginx state=restarted
