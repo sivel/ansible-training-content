@@ -1,1 +1,16 @@
-labs.yml
+---
+# Lab 1
+- name: Ansible Operational Labs
+  hosts: all
+  # Lab 2
+  tasks:
+    - name: Add nginx repo to servers
+      copy: src=nginx.repo dest=/etc/yum.repos.d/nginx.repo owner=root mode=0655
+
+    - name: Install nginx
+      yum: name=nginx state=present
+
+    - name: Enable nginx to start at boot
+      service: name=nginx enabled=yes
+
+  # Lab 3
