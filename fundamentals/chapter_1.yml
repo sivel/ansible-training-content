@@ -16,14 +16,14 @@ slides:
          -
            - h1: What is Ansible?
            - ul: 
-             - Simply Clear
-             - Simply Fast
-             - Simply Complete
-             - Simply Efficient
-             - Simply Secure
+             - Clear
+             - Fast
+             - Complete
+             - Efficient
+             - Secure
 
          -
-           - h2: Simply Clear
+           - h2: Clear
            - p: 'A simple automation language allows Ansible to be used by anyone:'
            - ul:
              - sysadmins
@@ -31,23 +31,35 @@ slides:
              - IT managers
            - p: It's easy to write, read, maintain, and evolve - without writing scripts or custom code.
          -
-           - h2: Simply Fast
-           - p: Ansible is fast to learn. If you are a sysadmin or a developer, you can be automating in under 30 minutes. You can forget how it works and focus on what you want to do.
-           - p: Setup is fast, because you don't have to install agents to manage machines. As long as SSH is installed, you are ready to automate.
+           - h2: Fast
+           - p: Ansible is fast to learn.
+           - p: Setup is fast.
+           - class_notes:
+             - You can automate in under 30 minutes. Forget about how it works, just do it.
+             - No agents. SSH keys are typically already in place.
          -
-           - h2: Simply Complete
-           - p: 'Ansible is a powerful automation engine - not just a point tool. In fact, it is several tools in one:'
+           - h2: Complete
+           - p: 'Ansible is several tools in one:'
            - ul:
              - configuration management
              - application deployment
              - orchestration
              - provisioning
-           - p: Hundreds of built-in modules in Ansible core provide a comprehensive toolbox to automate almost everything in your environment.
+           - p: Hundreds of built-in modules.
          -
-           - h2: Simply Efficient
-           - p: Ansible doesn't require a custom agent or software to install. With no additional software infrastructure, you don't have to worry about managing the management tool.
-           - p: Ansible runs on OpenSSH. That means anywhere SSH goes, Ansible goes. It doesn't suck memory or CPU resources when it is not in use, and it was designed from day one to automate no-downtime rolling updates and multi-tier orchestration.
+           - h2: Efficient
+           - p: Ansible doesn't require a custom agent or software to install. 
+           - p: Ansible runs on OpenSSH. 
+           - class_notes:
+             - With no additional software infrastructure, you don't have to worry about managing the management tool.
+             - That means anywhere SSH goes, Ansible goes. It doesn't suck memory or CPU resources when it is not in use, and it was designed from day one to automate no-downtime rolling updates and multi-tier orchestration.
          -
-           - h2: Simply Secure
-           - p: Without agents, Ansible is inherently more secure. It doesn't need additional ports or root level daemons. It uses built-in OS authentication for better security - login as who you are, sudo if you want to sudo. You can work with tools like Kerberos, LDAP, and sssd. OpenSSH is the most peer-reviewed security component around.
-           - p: Additionally, Ansible plays can be read by anyone, now and in the future. This makes it auditable. You know what you're automating, and bugs have nowhere to hide.
+           - h2: Secure
+           - p: No agent with and SSH transport. 
+           - p: Ansible plays can be read by anyone. 
+           - class_notes:
+             - It doesn't need additional ports or root level daemons.
+             - It uses built-in OS authentication for better security - login as who you are, sudo if you want to sudo.
+             - You can work with tools like Kerberos, LDAP, and sssd.
+             - OpenSSH is the most peer-reviewed security component around.
+             - This makes it auditable. You know what you're automating, and bugs have nowhere to hide.
