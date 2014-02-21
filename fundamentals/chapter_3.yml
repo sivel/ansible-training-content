@@ -434,5 +434,20 @@ slides:
             In this example we see that at the end of the playbook, we include another playbook.  This allows
             us to continue against other playbooks using the already discovered facts and variables declared.
       -
-        - h1: roles
-        - p: 
+        - h1: Roles
+        - p: Roles are portable units of task organization in playbooks.
+        - class_notes: |
+            Roles are units of organization in Ansible. Assigning a role to a group of hosts 
+            (or a set of groups, or host patterns, etc.) implies that they should implement a 
+            specific behavior. A role may include applying certain variable values, certain tasks, 
+            and certain handlers – or just one or more of these things. Because of the file structure 
+            associated with a role, roles become redistributable units that allow you to share 
+            behavior among playbooks – or even with other users.
+      -
+        - h1: Galaxy: Sharing is Caring.
+        - p: http://galaxy.ansible.com is a site where you can share roles.
+        - class_notes: |
+            Galaxy is our repository for general roles that can be shared among users.  You can find it at the 
+            address provided above.  You can share your roles, rate other people's roles, and download them
+            via the command line using the ansible galaxy commads.  You can also create an empty role to build
+            by initializing an empty role, which will populate all the correct files and directories for you.
