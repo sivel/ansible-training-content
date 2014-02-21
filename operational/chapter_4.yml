@@ -1,60 +1,62 @@
 ---
 header:
-  author: CC, PI
-  title: Chapter 4, Ansible Operational
+  author: CC, PI, JLK
+  title: Chapter 4, Using Ansible for Orchestrated Commands
   description: Ansible Operational Course
 
 slides:
 
-   - set_global:
-       transition: rotate
-       background: '#007777'
+  - set_global:
+      transition: rotate
+      background: '#007777'
 
-   -
-     - nested:
-        -
-          - h1: Ansible in Action
-          - h2: A Walkthrough
-          - ul:
-            - Running a Playbook
-            - Plays
-            - Tasks
-            - Modules
-            - Actions in modules
-            - Commands in Actions
-          - class_notes: Students will walk through the process Ansible goes through to execute the desired jobs on targeted hosts when a Playbook gets run.
+  -
+    - nested:
+       -
+         - h1: Ansible Orchestrated Commands
+         - h3: A Review of Ansible Plays and Playbooks
+         - class_notes: Students will walk through the process Ansible goes through to execute the desired jobs on targeted hosts when a Playbook gets run.
 
-        -
-          - h2: Running a Playbook
-          - ul:
-            - A Playbook gets run...
-            - "Q & A"
-          - class_notes: Show a Playbook and its included Play.
+       -
+         - h2: Plays
+         - p: An ordered series of tasks executed on a selection of hosts
+         - p: With controls over how the tasks operate
+         - code: |
+             - name: This is a Play
+               hosts: web-servers
+               remote_user: fred
+               sudo: yes
+               connection: ssh
+               gather_facts: no
+               vars:
+                 http_port: 80
+                 cache_dir: /opt/cache
 
-        -
-          - h2: Playbooks
-          - p: ...are composed of 1 or more plays...
-          - class_notes: Explain the ordering of Plays and the Tasks they contain. 
+               tasks:
+                 - name: create cache dir
+                   file: path={{ cache_dir }} state=directory
 
-        -
-          - h2: Plays
-          - p: ...that perform task(s)...
+                 - name: install nginx
+                   yum: name=nginx state=installed
+         - class_notes: |
+             Discuss play controls such as sudo, remote_user, etc.
+             Discuss variables. Show the list of tasks and how
+             all finish one before going on to the next. Mention serial
+             as a way to control how hosts flow through the tasks.
+             Multiple plays can be written into a playbook.
 
-        -
-          - h2: Tasks
-          - p: ...that leverage modules...
-          - class_notes: "Show how Tasks leverage a Module to perform an action defined within the Module's code to result in a specified state, based on that module's functions "
+       -
+         - h2: Playbooks
+         - p: ansible-playbook is the tool used to select
+         - ul:
+           - an ordered set of plays
+           - an inventory
+           - global variables
+           - forks
+           - inventory limits
 
-        -
-          - h2: Modules
-          - p: ...that interact with targeted hosts
-          - class_notes: Ansible provided modules are Python coded components that interact with a managed node to run the appropriate actions resulting in a specified state defined in the Task.
-
-        -
-          - h2: Modules
-          - p: "Ansible provided core modules are:"
-          - ul:
-            - Written in python
-            - Are shipped by SSH to the target machine where they are executed
-            - Return JSON data that is interpreted by ansible
-          - class_notes: Modules can be written in other languages, but core ansible only uses python. We don't need to go into the mechanics of how modules are built before being shipped, just mention that they get copied to the remote machine using SCP/SFTP. The echo out JSON data, which gets interpreted by the ansible "control" machine.
+       -
+         - h2: Playbooks
+         - h3: Execution
+         - code: |
+            $ ansible-playbook play.yaml -i pre-prod -e "cache_dir=/srv/cache/" -f 30 -l dfw

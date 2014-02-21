@@ -1,7 +1,7 @@
 ---
 header:
   author: Mike Martin, Justin Phelps, Paul Durivage, Jesse Keating
-  title: Chapter 3, Ansible Operations
+  title: Chapter 3, Using Ansible for Ad-hoc Commands
   description: Ansible Operational Course
 
 slides: 
@@ -9,6 +9,7 @@ slides:
     - nested:
       - 
         - h1: Ansible Ad-Hoc Commands
+        - h3: A Review of Hosts, Tasks, and Modules
       -
         - h2: Targeting Hosts
         - ul:
