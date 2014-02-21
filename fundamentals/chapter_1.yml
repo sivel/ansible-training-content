@@ -55,7 +55,8 @@ slides:
              - That means anywhere SSH goes, Ansible goes. It doesn't suck memory or CPU resources when it is not in use, and it was designed from day one to automate no-downtime rolling updates and multi-tier orchestration.
          -
            - h2: Secure
-           - p: No agent with and SSH transport. 
+           - p: No agent. 
+           - p: SSH transport.
            - p: Ansible plays can be read by anyone. 
            - class_notes:
              - It doesn't need additional ports or root level daemons.
