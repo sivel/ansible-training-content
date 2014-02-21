@@ -19,8 +19,21 @@ slides:
         - class_notes: We should use a human readable name as the inventory hostname, and specify ansible_ssh_host for the actual IP.  Ungrouped for now.
 
       -
+        - h1: Static INI (Continued)
+        - code: |
+            web1 ansible_ssh_host=10.10.10.10
+            web2 ansible_ssh_host=20.20.20.20
+
+      -
         - h1: Groups
-        - p: Create groups in the inventory file
+        - p: Create a web group in the inventory file
+
+      -
+        - h1: Groups (Continued)
+        - code: |
+            [web]
+            web1 ansible_ssh_host=10.10.10.10
+            web2 ansible_ssh_host=20.20.20.20
 
       -
         - h1: Dynamic Inventory
@@ -29,6 +42,12 @@ slides:
           - Limitations of a static inventory with a cloud like environment
           - Query nearly any data source for inventory
           - How ansible knows if the provided inventory is a script
+        - class_notes: |
+            Using a static inventory file with a "living" cloud like environment is inefficient, error prone and difficult to maintain.
+
+            Due to the nature of an inventory script, they can mostly leverage the full power of the language they are implemented in. This would enable the script to communicate with nearly any data source for use as inventory.
+
+            Ansible determines if the provided inventory is a script, by checking if the file is executable.  If the file is not executable it is parsed as an INI file.
 
       -
         - h1: Dynamic Inventory Example
