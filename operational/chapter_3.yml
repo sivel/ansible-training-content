@@ -79,9 +79,9 @@ slides:
         - h2: Example Use Cases
         - p: Copy a file from the local host to inventory hosts
         - code: |
-            ansible dbservers-m copy -a "src=/path/to/file dest=/path/to/dest"
+            ansible dbservers -m copy -a "src=/path/to/file dest=/path/to/dest"
         - class_notes: |
-            Uses the copy moudle to copy a file from the local machine, where the ansible
+            Uses the copy module to copy a file from the local machine, where the ansible
             command is being run, to the destination.
       -
         - h2: Example Use Cases
