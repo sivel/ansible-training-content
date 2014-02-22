@@ -17,7 +17,10 @@ slides:
           - platform variance in playbooks
           - proper naming of plays, tasks, and handlers
           - playbook formatting
-        - class_notes: Notes notes notes
+        - class_notes: |
+            Best practices are not just conformity for conformity sake.
+            They will help simplify code, smooth out collaboration, and
+            avoid gotchas.
       - 
         - h2: Content Organization
         - p: Magic happens when you put your files in the right locations
@@ -31,18 +34,39 @@ slides:
           - templates and files for use in tasks
           - custom modules
           - roles
-        - class_notes: Notes notes notes
+        - class_notes: |
+            Ansible looks in ANSIBLE_CONFIG, ./ansible.cfg, ./.ansible.cfg
+            and /etc/ansible/ansible.cfg in that order. (1.5 switched
+            ANSIBLE_CONFIG and ./ansible.cfg order)
+            Inventory is looked for in config directive, ANSIBLE_HOSTS,
+            /etc/ansible/hosts in that order.
+            host_vars / group_vars relative to inventory and playbook
+            basedirs
+            file inclusions are relative to the playbook (vars, tasks,
+            handlers, playbooks, templates, etc...)
+            Custom modules go in library/ relative to playbook
+            roles are in roles/ relative to playbook, and have
+            files, templates, tasks, handlers, vars, meta all relative
+            to the role itself, making for portability.
+
       - 
         - h2: Version Control
         - p: Version control and Ansible go hand in hand. This topic will walk through many of the benefits of storing your ansible content in SCM and why this is itself a best practice.
       - 
         - h2: Version Control
         - h3: audit trail / RBAC
-        - class_notes: The who changed what and when
+        - class_notes: |
+            Version control provides a record of who changed what, when, and
+            why, the audit trail. It can also be a part of RBAC strategy,
+            providing a gateway to who can commit to the playbook content.
       - 
         - h2: Version Control
         - h3: collaboration and preservation
-        - class_notes: using SCM for collaboration means you also get work preservation in the face of local disaster
+        - class_notes: |
+            A centralized (or distributed) store of the content protects
+            against localized disaster. It also allows for better collaboration
+            than just passing files back and forth, or co-editing a single
+            directory.
       - 
         - h2: Version Control
         - h3: DevOps tie-in
@@ -66,22 +90,30 @@ slides:
           - pull requests
           - automatic gateway tests
           - local validation checks
-        - class_notes: Notes notes notes
+        - class_notes: |
+            All these things can work together to add quality assurance to your
+            content. Using pull or change requests gives a human the
+            opportunity to review. Automated tests can tie into them, or be
+            ran post-commit to continuously validate. Localized hooks can be
+            used to validate after pulling changes in.
       - 
         - h2: RBAC and execution model
         - p: A discussion of RBAC, Ansible, and your team, as well as a comparison of execution stratagies
-        - class_notes: Notes notes notes
       - 
         - h2: RBAC and execution model
-        - h3: Why it matters
-        - class_notes: Notes notes notes
+        - h3: RBAC
+        - class_notes: |
+            Role Based Access Control is used in many organizations
+            to seperate out who has access to do what within environments.
+            Often required for parts of public companies.  Sometimes at
+            odds with DevOps philosophy of self-service.
       - 
         - h2: RBAC and execution model
         - h3: Execution models
         - ul:
           - centralized
           - distributed
-        - class_notes: Notes notes notes
+        - class_notes: A comparison and contrast of centralized and distributed execution models. Not to be confused with push and pull.
       - 
         - h2: RBAC and execution model
         - h3: Centralized
@@ -90,7 +122,12 @@ slides:
           - layer of protection against accidents and malice
           - repeatability and guaranteed working environment
           - ITIL/Change Control process friendly
-        - class_notes: Notes notes notes
+        - class_notes: |
+            A single point from which to either push changes from, or
+            have ansible-pull fetch changes from. Can configure systems to
+            only allow Ansible logins from this host with a particular key
+            Host can be locked down and managed to ensure unwanted changes
+            don't creep in and disrupt ability to do repeat runs
       - 
         - h2: RBAC and execution model
         - h3: Distributed
@@ -100,11 +137,14 @@ slides:
           - turns operational support from gatekeeping to enabling
           - aligns with other self-service IT services
           - you built it, you deploy it
-        - class_notes: Notes notes notes
+        - class_notes: |
+            Each developer could be a distributor, or individual
+            systems could point to individual sources for ansible-pull
+            Higher security risk, higher risk of run environment change
+            but tradeoff for more flexibility and rapid dev/deploy times
       - 
         - h2: Platform Variance in playbooks
         - p: Best practices for dealing with the challenge of heterogeneous environments
-        - class_notes: Notes notes notes
       - 
         - h2: Platform Variance in playbooks
         - h3: group_by
@@ -121,7 +161,7 @@ slides:
               gather_facts: False
               tasks:
                  - # tasks that only happen on CentOS go here
-        - class_notes: Notes notes notes
+        - class_notes: Note that roles could also be used here, driven by group_by.
       - 
         - h2: Platform Variance in playbooks
         - h3: task conditionals
@@ -133,7 +173,7 @@ slides:
              - name: install nginx
                apt: pkg=nginx state=present
                when: ansible_distribution == 'Debian'
-        - class_notes: Notes notes notes
+        - class_notes: A more simple way to deal, could clutter up a large playbook / role set.
       - 
         - h2: Proper naming of plays, tasks, and handlers
         - p: Names have significance
@@ -151,11 +191,13 @@ slides:
             handlers:
               - name: bounce foo service
                 service: name=foo state=restarted
-        - class_notes: Notes notes notes
+        - class_notes: |
+            Names have meaning. task names in --start-at-task,
+            handler names for notify. Play names are less important
+            but uniqueness helps when debugging output
       - 
         - h2: Playbook formatting
         - p: whitespace, yaml, line lengths, oh my!
-        - class_notes: Notes notes notes
       - 
         - h2: Playbook formatting
         - h3: order and style of playbook directives
@@ -179,7 +221,11 @@ slides:
 
               tasks:
                 - name: stuff
-        - class_notes: Notes notes notes
+        - class_notes: |
+            There is no hard order that things must appear in a playbook,
+            however if anybody ever looks at your files they will expect
+            an order. Blank lines help to visually separate logical blocks
+            of the play and between plays.
       - 
         - h2: Playbook formatting
         - h3: whitespace, line lengths, continuations
@@ -195,7 +241,10 @@ slides:
               - name: lots of arguments
                 rax_dns_record: credentials=/path/to/my/creds type=A
                                 data=4.2.2.2 name=www.nodomain.not
-        - class_notes: Notes notes notes
+        - class_notes: |
+            Playbook syntax is friendly to line continuation, make use of that
+            to keep your lines under 80 chars. Wrap the text to be at the same
+            indent level as the preceeding data block, as seen in the example
       - 
         - h2: Playbook formatting
         - h3: to quote or not to quote
@@ -210,7 +259,9 @@ slides:
               when: "'some_string' in varaible_here"
 
             hosts: "*-webs"
-        - class_notes: Notes notes notes
+        - class_notes: |
+            quoting is a yaml gotcha. It often trips people up. These
+            rules here will help you avoid most/all quoting gotchas.
       - 
         - h2: Playbook formatting
         - h3: variable referencing
@@ -223,7 +274,10 @@ slides:
               register: output
               when: variable != "derp"
               failed_when: output.stderr == "FAILURE"
-        - class_notes: Notes notes notes
+        - class_notes: |
+            Variable decoration is another gotcha. Task controllers can be
+            treated like lines of python, where variables are referenced
+            without decoration and raw strings need quotes.
       - 
         - h2: Playbook formatting
         - h3: YAML gotchas
