@@ -61,6 +61,6 @@ slides:
          - code: |
             $ ansible-playbook play.yaml -i pre-prod -e "cache_dir=/srv/cache/" -f 30 -l dfw
 
-      -
+       -
          - h2: Handlers
          - h3: PLACEHOLDER -- talk about handlers
