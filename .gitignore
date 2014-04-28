@@ -1,4 +1,4 @@
-/revelator
+output/
 *.swp
 
 *.py[co]

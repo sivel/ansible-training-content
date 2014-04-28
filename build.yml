@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+
+  - name: create dest dir
+    file: state=directory path=output/
+ 
+  - name: syntax check fundamentals
+    shell: python syntax_check.py fundamentals/*.yml
+
+  - name: syntax check operational 
+    shell: python syntax_check.py operational/*.yml
+
+  - name: build fundamentals
+    shell: python build_single.py fundamentals > output/fundamentals.yml
+ 
+  - name: build operational
+    shell: python build_single.py operational > output/operational.yml
+
+  - name: render fundamentals
+    command: revelator/write_it output/fundamentals.yml output/fundamentals/
+
+  - name: render operational 
+    command: revelator/write_it output/operational.yml output/operational/
+
