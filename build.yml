@@ -4,6 +4,9 @@
 
   tasks:
 
+  - name: create reveal link
+    file: state=link src=revelator/reveal_js_261 path=reveal_js_261
+
   - name: create dest dir
     file: state=directory path=output/
  

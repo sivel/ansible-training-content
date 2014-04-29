@@ -5,7 +5,8 @@ header:
   description: Description of the chapter
 
 slides:
-
+  - set_global:
+      transition: none
   -
     - nested:
       - 
