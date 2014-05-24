@@ -1,5 +1,6 @@
 image: linuturk/ubuntu-devel
 script:
+  - pip install yaml
   - bash builder.sh
 publish:
   swift:
