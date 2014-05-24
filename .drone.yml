@@ -9,3 +9,12 @@ script:
   - python $DRONE_BUILD_DIR/build_single.py $DRONE_BUILD_DIR/operational > op_compilation.yml
   - python revelator/write_it fund_compilation.yml output/fundamentals
   - python revelator/write_it op_compilation.yml output/operational
+publish:
+  swift:
+    username: {{rax_username}}
+    password: {{rax_apikey}}
+    auth_url: https://identity.api.rackspacecloud.com/v2.0
+    region: IAD
+    container: ansible-slides
+    source: output
+    branch: master
