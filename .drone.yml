@@ -1,6 +1,7 @@
-image: linuturk/ubuntu-revelator
+image: linuturk/ubuntu-devel
 script:
-  - ln -fs revelator/reveal_js_261
+  - git clone https://github.com/mpdehaan/revelator.git
+  - ln -s revelator/reveal_js_261
   - mkdir -p output/fundamentals
   - mkdir -p output/operational
   - python $DRONE_BUILD_DIR/syntax_check.py $DRONE_BUILD_DIR/fundamentals/*.yml
