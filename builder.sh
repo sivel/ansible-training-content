@@ -17,7 +17,7 @@ else
 fi
 
 echo "******** Looping over folders ********"
-for i in fundamentals operational
+for i in fundamentals operational troubleshooting
   do
     echo "******** Syntax Check on $i ********"
     python $DRONE_BUILD_DIR/syntax_check.py $DRONE_BUILD_DIR/$i/*.yml
