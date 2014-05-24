@@ -1,15 +1,6 @@
 image: linuturk/ubuntu-devel
 script:
-  - git clone https://github.com/mpdehaan/revelator.git
-  - ln -s revelator/reveal_js_261
-  - mkdir -p output/fundamentals
-  - mkdir -p output/operational
-  - python $DRONE_BUILD_DIR/syntax_check.py $DRONE_BUILD_DIR/fundamentals/*.yml
-  - python $DRONE_BUILD_DIR/syntax_check.py $DRONE_BUILD_DIR/operational/*.yml
-  - python $DRONE_BUILD_DIR/build_single.py $DRONE_BUILD_DIR/fundamentals > fund_compilation.yml
-  - python $DRONE_BUILD_DIR/build_single.py $DRONE_BUILD_DIR/operational > op_compilation.yml
-  - python revelator/write_it fund_compilation.yml output/fundamentals
-  - python revelator/write_it op_compilation.yml output/operational
+  - bash builder.sh
 publish:
   swift:
     username: {{rax_username}}
