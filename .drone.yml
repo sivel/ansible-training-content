@@ -1,6 +1,6 @@
 image: linuturk/ubuntu-devel
 script:
-  - pip install yaml
+  - pip install PyYAML
   - bash builder.sh
 publish:
   swift:
