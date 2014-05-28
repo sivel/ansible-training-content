@@ -1,5 +1,8 @@
 /revelator
 /reveal_*
+/output
+/.yml
+
 *.swp
 
 *.py[co]
