@@ -283,7 +283,7 @@ slides:
         - h3: YAML gotchas
         - ul:
           - |
-            Booleans: /(y|yes|n|no|true|false|on|off)/i
+            Booleans: /^(y|yes|n|no|true|false|on|off)$/i
         - class_notes: |
             Assume the scenario where you are configuring sshd_config, and you create a variable to disable root login via "PermitRootLogin: no". In this case 'no', evaluates to the boolean False, so you end up literally inserting "PermitRootLogin False" in your config file. To use 'no' as a string literal it must be quoted such as "PermitRootLogin: 'no'".
 
