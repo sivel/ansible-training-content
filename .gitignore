@@ -1,4 +1,5 @@
 /revelator
+/reveal_*
 *.swp
 
 *.py[co]
