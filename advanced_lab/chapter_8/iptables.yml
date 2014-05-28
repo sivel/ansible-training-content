@@ -1,0 +1,15 @@
+---
+- hosts: database
+  handlers:
+    - name: Reload iptables
+      service:
+        name: iptables
+        state: reloaded
+
+  tasks:
+    - name: Template /etc/sysconfig/iptables
+      template:
+        src: templates/iptables.j2
+        dest: /etc/sysconfig/iptables
+      notify:
+        - Reload iptables
