@@ -13,3 +13,9 @@
         dest: /etc/sysconfig/iptables
       notify:
         - Reload iptables
+
+    - name: Ensure iptables is started and enabled
+      service:
+        name: iptables
+        state: started
+        enabled: yes

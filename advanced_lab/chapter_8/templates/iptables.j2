@@ -3,6 +3,10 @@
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
 
+{% for server in groups['webserver'] %}
+-A INPUT -p tcp -s {{ hostvars[server].ansible_eth1.ipv4.address }} -i eth1 -d {{ ansible_eth1.ipv4.address }} --dport 3306 -j ACCEPT
+{% endfor %}
+
 {% for server in groups['database'] %}
 {% if server != inventory_hostname %}
 -A INPUT -p tcp -s {{ hostvars[server].ansible_eth1.ipv4.address }} -i eth1 -d {{ ansible_eth1.ipv4.address }} --dport 3306 -j ACCEPT

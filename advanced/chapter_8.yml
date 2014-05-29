@@ -1,47 +1,164 @@
 ---
 header:
-  author: Tim G
-  title: Write and run a simple playbook 
-  description: "We have already shown a simple playbook in Chapter 3. Here we will write a playbook from scratch, incrementally, and the students can follow along if they are able."
+  author: Matt Martz
+  title: jinja2 templates
+  description: Some jinja2 stuff
 
 slides:
 
   -
     - nested:
-      - 
-        - h1: Basic Playbook Structure
-
-        - class_notes: In this chapter we'll cover the basic playbook structure, and write a simple playbook from scratch.
-
-      - 
-        - h2: "Play Header"
-        - code: |
-            ---
-            - name: this is the name of a play
-              hosts: all
-              user: root
-
-              tasks: []
-        - class_notes: As we covered earlier, a playbook is a series of plays. Each play needs a "hosts" keyword, which tells Ansible to which hosts hosts this play applies. You can define a lot of other parameters at the play level, including which user to log in as, whether these tasks should be run through sudo, which connection mechanism to use, etc.
+      -
+        - h1: Jinja2 Templates
 
       -
-        - h2: Write the tasks
+        - h2: Delimiters
+        - code: |
+            {{ variable }}
+        - code: |
+            {% for server in groups.webservers %}
+        - class_notes: There are 2 (default) delimiters in jinja2. The first prints the result of the expression. The latter is used to execute statements such as for loops or assigning values.
+
+      -
+        - h2: Control Structures
+        - ul:
+            - for
+            - if
+            - macros
+            - call
+            - filters
+            - assignments
+            - extends
+            - block
+            - include
+            - import
+        - class_notes: This is a list of all control strucutres as mentioned in the jinja2 docs.  The ones most people need to know about are "for" and "if".  Point students to http://jinja.pocoo.org/docs/templates/ for additional information about the other types.
+
+      -
+        - h2: For Loop
+        - code: |
+            {% for server in groups.webservers %}
+            {{ hostvars[server].ansible_default_ipv4.address }}
+            {% endfor %}
+        - class_notes: Ending a control structure in jinja2 is generally done with endTYPE, where TYPE in the above case is "for".
+
+      -
+        - h2: If Statement
+        - code: |
+            {% if server == inventory_hostname %}
+            {{ 127.0.0.1 }}
+            {% else if server in groups.database %}
+            {{ hostvars[server].ansible_eth1.address }}
+            {% else %}
+            {{ hostvars[server].ansible_default_ipv4.address }}
+            {% endif %}
+        - class_notes: This is an example of an if/else if/else statement, nothing too special here.
+
+      -
+        - h2: Accessing Variables from Other Hosts
+        - p: The "hostvars" variable contains facts for all hosts that have had facts gathered.
+        - code:
+            hostvars['web01'].ansible_eth1.address
+        - class_notes: Group variables are not held independent of the hosts. During inventory parsing, group vars are merged into the individual hosts facts.
+
+      -
+        - h2: Manipulating Jinja2 Environment
+        - p: Ansible configures jinja2 with a set of sane defaults. In some cases these defaults are not optimal, usually in the case of variable_start_string or trim_blocks. The first line of a jinja2 template can include a jinja2 environment configuration line
+        - code: |
+            #jinja2:variable_start_string:'[%' , variable_end_string:'%]'
+        - class_notes: This example shows changing "{{ ... }}" to "[% ... %]". This is valuable in the case where you may need to use the "{{" or "}}" strings in your template that are not part of jinja2. http://jinja.pocoo.org/docs/api/#jinja2.Environment
+
+      -
+        - h2: Jinja2 Variables are Python Data Types
+        - p: In some cases there will not be Jinja2 filters that do what you want, such as a lack of a "split" filter. This can be achieved using the ".split()" method on a python string object.
+        - code: |
+            {% set servers = "server1,server2,server3" %}
+            {% for server in servers.split(",") %}
+            {{ server }}
+            {% endfor %}
+
+      -
+        - h2: Filters and Tests
+        - p: Jinja2 provides you with a number of filters and tests to manipulate and test data. Ansible also provides a number of filters, most of which are documented at http://docs.ansible.com/playbooks_variables.html#jinja2-filters
+
+      -
+        - h2: Filters
+        - p: Filters are invoked similarly to unix shell pipes and manipulate variables and return the results
+        - code: |
+            variable|replace("-", "_")
+        - p: This is equivalent to
+        - code: |
+            replace(variable, "-", "_")
+        - class_notes: Additional details can be found at http://jinja.pocoo.org/docs/templates/#filters
+
+      -
+        - h2: Tests
+        - p: Tests can be used to test a variable against a common expression
+        - code: |
+            {% if variable is defined %}
+        - class_notes: Additional details can be found at http://jinja.pocoo.org/docs/templates/#tests
+
+      -
+        - h2: Lab
+        - p: Create playbook and a jinja2 template to achieve the following results
+        - ul:
+          - Template out /etc/sysconfig/iptables
+          - Only allow access to MySQL (tcp/3306) from servers in the webserver group
+          - A play to create this file from the template
+          - The play should have a handler to reload iptables when the file changes
+          - iptables should be enabled and configured to start on boot
+
+      -
+        - h2: Sample template
+        - code: |
+            *filter
+            :INPUT ACCEPT [0:0]
+            :FORWARD ACCEPT [0:0]
+            :OUTPUT ACCEPT [0:0]
+            
+            {% for server in groups['webserver'] %}
+            -A INPUT -p tcp -s {{ hostvars[server].ansible_eth1.ipv4.address }} -i eth1 -d {{ ansible_eth1.ipv4.address }} --dport 3306 -j ACCEPT
+            {% endfor %}
+            
+            {% for server in groups['database'] %}
+            {% if server != inventory_hostname %}
+            -A INPUT -p tcp -s {{ hostvars[server].ansible_eth1.ipv4.address }} -i eth1 -d {{ ansible_eth1.ipv4.address }} --dport 3306 -j ACCEPT
+            {% endif %}
+            {% endfor %}
+            
+            -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+            -A INPUT -p icmp -j ACCEPT
+            -A INPUT -i lo -j ACCEPT
+            -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+            -A INPUT -j REJECT --reject-with icmp-host-prohibited
+            -A FORWARD -j REJECT --reject-with icmp-host-prohibited
+            COMMIT
+
+      -
+        - h2: Sample play
         - code: |
             ---
-            - name: this is the name of a play
-              hosts: all
-              user: root
+            - hosts: webserver
+              gather_facts: true
 
+            - hosts: database
+              handlers:
+                - name: Reload iptables
+                  service:
+                    name: iptables
+                    state: reloaded
+            
               tasks:
-              - name: install nginx
-                yum: package=nginx state=present
-        - class_notes: Now that we have the "front matter" of the play defined, we can add the tasks, as shown. Each task can have a name that is human-readable. This isn't required, but it's recommended. Then you call the module, in this case "yum", and any arguments.
+                - name: Template /etc/sysconfig/iptables
+                  template:
+                    src: templates/iptables.j2
+                    dest: /etc/sysconfig/iptables
+                  notify:
+                    - Reload iptables
+            
+                - name: Ensure iptables is started and enabled
+                  service:
+                    name: iptables
+                    state: started
+                    enabled: yes
 
-      -
-        - h2: Run the playbook
-
-        - class_notes: "Run the playbook. If you've written everything correctly, it should install nginx on the target systems, and return the results. Notice the \"Gathering Facts\" step that occurs at the top of the run. This is implicit, but you can turn it off with \"gather_facts: no\" in the play. At the end, a \"host recap\" will be printed out. This gives you a summary of tasks that completed successfully, tasks that changed something on the target system, any failures, or unreachable systems."
-      -
-        - image: "http://cdn2.hubspot.net/hub/330046/file-449187601-png/ansible_badge.png"
-        - link: ['ansible.com',
-                 'http://www.ansible.com']
