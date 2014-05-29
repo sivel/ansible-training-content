@@ -104,7 +104,7 @@ slides:
             ask_sudo_pass = True
             ask_vault_pass = True
             roles_path = roles
-            .
+            
             [ssh_connection]
             pipelining = True
             scp_if_ssh = True
