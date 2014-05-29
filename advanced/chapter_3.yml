@@ -11,13 +11,13 @@ slides:
       - 
         - h1: "Variable Types and Precedence"
       - 
-        - h2: "Where you can define variables:"
+        - h2: "Where variables are defined or sourced:"
         - ul:
-          - Variable Files
           - Inventory
-          - Playbooks
+          - Playbook
+          - Files and Roles
           - Command Line
-          - Roles
+          - Facts
         - class_notes: 
       -
         - h2: "Variable Precedence"
@@ -30,32 +30,33 @@ slides:
           - Role defaults lose in priority to everything else.
         - class_notes:
       -
-        - h2: Inventory concepts
-        - ul:
-          - hosts
-          - groupings
-          - inventory-specific data
-          - static or dynamic sources
-        - class_notes: "Breaking down by topic, we'll cover four parts (Note the listed)"
+        - h2: "Defining Variables"
+        - p: Let's go over the various locations you can define variables.
+        - class_notes:
       -
-        - h2: "Inventory: Hosts"
-        - p: "Hosts can have Ansible specific attributes such as:"
-        - ul:
-          - Connection IP addresses and ports
-          - Remote user and sudo user
-          - Connection types (Paramiko, OpenSSH, local, etc.)
-          - Further limit targetd hosts using --limit
-        - class_notes: |
-            You have a lot of flexibility when you specify hosts in Inventory. You can
-            set variables to determine connection types, host ip addresses and fully-qualified
-            domain names, remote users and sudo users as well as any other variable you may 
-            come up with to use when interacting with your hosts, such as "apache_port" or 
-            "mysql ports".
-      -
-        - h2: "Inventory: Hosts"
-        - p: "This is an example of a host entry in an inventory file:"
+        - h2: "Inventory"
+        - p: "There are a couple of methods for defining variables in your inventory:"
         - code: |
+            localhost ansible_connection=local
+            [web]
             web1.example.com ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
+            web2.example.com ansible_ssh_user=mdehaan
+            [db]
+            db01.example.com mysql_max_connections=100
+            [web:vars]
+            apache_max_clients=100
+        - class_notes: |
+                There are a few examples here:
+                  * The ansible ssh and connection options.
+                  * A plain variable override for a specific host (mysql)
+                  * A group variable override for the web group.
+      -
+        - h2: "Playbook"
+        - p: "Here is an example of defining variables in a playbook:"
+        - code: |
+            - hosts: webservers
+  vars:
+    http_port: 80
         - class_notes: As you can see, we have a host name, a specified SSH port and IP Address.
       -
         - h2: "Inventory: Host Entries Using Ranges"
