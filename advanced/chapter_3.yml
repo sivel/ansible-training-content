@@ -176,12 +176,15 @@ slides:
         - code: |
                 # Combine two lists
                 {{ list1 | union(list2) }}
+                
                 # Get a random number
                 {{ 59 |random}} * * * * root /script/from/cron
+                
                 # md5sum of a filename
                 {{ filename | md5 }}
+                
                 # Comparisons
-                {{ ansible_distribution_version | verson_compare('12.04', '>=') }}
+                {{ ansible_distribution_version | version_compare('12.04', '>=') }}
         - class_notes: |
                 There are a lot more filters out there. Reference the Ansible and Jinja2 documentation for a complete list.
       - 
