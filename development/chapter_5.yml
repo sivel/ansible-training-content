@@ -1,0 +1,62 @@
+---
+header:
+  author: TG
+  title: Chapter 5, Advanced Ansible
+  description: Encrypting Sensitive Data with Vault
+
+slides:
+
+   - set_global:
+       transition: rotate
+       background: '#007777'
+       #background: 'black'
+
+   -
+     - nested:
+         -
+           - h1: Ansible Vault
+           - p: Ansible Vault is a tool to encrypt YAML variables files that may contain sensitive data. 
+             - Password-based
+             - Separate command line tool
+             - Encrypts YAML files
+           - class_notes: Ansible Vault is a command line tool that can be used to encrypt files that may contain sensitive data. it's usually used to encrypt variables files, but it can encrypt entire playbooks as well. When Ansible is operating on a playbook that refers to an encrypted file, it can either prompt for the password or be fed a password via file.
+
+         -
+           - h2: Vault Operations
+           - ul:
+             - create
+             - edit
+             - rekey
+             - encrypt
+             - decrypt
+           - class_notes: "ansible-vault" is the CLI tool, and it has several operations.
+
+         -
+           - h2: Vault Operations
+           - code: ansible-vault create newfile.yml
+           - class_notes: Create a new file and open it in $EDITOR. When it's saved, it will be encrypted.
+
+         -
+           - h2: Vault Operations
+           - code: ansible-vault edit file.yml
+           - class_notes: Edit an existing file in $EDITOR. Ansible will decrypt it to a temporary location and open it in an editor, and then when saved, re-encrypt it.
+
+         -
+           - h2: Vault Operations
+           - code: ansible-vault rekey file.yml
+           - class_notes: Change the password on an encrypted file.
+
+         -
+           - h2: Vault Operations
+           - code: ansible-vault encrypt oldfile.yml
+           - class_notes: Encrypt an existing file.
+
+         -
+           - h2: Vault Operations
+           - code: ansible-vault decrypt file.yml
+           - class_notes: Permanently decrypt an encrypted file.
+
+         -
+           - h2: Running a Playbook
+           - code: ansible-playbook --ask-vault-pass playbook.yml
+           - code: ansible-playbook --vault-password-file vault-pw playbook.yml
