@@ -16,7 +16,32 @@ slides:
         - ul:
             - Executable script
             - Queries a service that holds data about servers
-            - Returns the data to Ansible
+            - Returns the data to Ansible (as JSON)
         - class_notes: |
             Dynamic inventory is a script that queries a service, like a cloud
-            provider API or a management application like Spacewalk.
+            provider API or a management application like Spacewalk.  This data
+            is formatted in an Ansible-specific JSON data structure and is used in 
+            lieu of hardcoded, static inventory files.
+
+      -
+        - h3: Why Dynamic Inventory?
+        - ul:
+            - Time
+            - Accuracy
+        - class_notes: |
+            Ideally, the source of data for our dynamic inventory scripts is 100%
+            correct, and is automatically updated as infrastructure changes.  This 
+            is especially useful in environments where machines are coming on and offline
+            all the time, like a cloud or virtual environment.
+
+      -
+        - h3: Manual Invocation
+        - code: |
+            
+            $ ./docker.py --list
+            
+        - class_notes: |
+            Manual invocation of a dynamic inventory script is fairly straight forward.
+            Dynamic inventory scripts must be executable, so calling them explictly will
+            invoke the script and return JSON as output.
+            
