@@ -44,4 +44,68 @@ slides:
         - h3: Environment Variables
         - ul:
             - Highest precedence
-            
+            - "Enviroment variables & configuration directives"
+            - constants.py
+        - class_notes: |
+            An enviroment variable is going to squash configuration directives
+            at all levels.  Important to note: enviroment variables do not always
+            have an equivalent configuration directive.
+            Enviroment variables are not well documented, and are, for the most part
+            documented only in code, in the "constants.py" file inside Ansible
+
+      -
+        - h3: Configuration Sections
+        - ul:
+            - defaults
+            - paramiko
+            - ssh_connection
+            - accelerate
+        - class_notes: |
+            Each of the bullets are a "section" under which their respective directives
+            should be used.  The config file uses INI format.
+
+      -
+        - h3: Configuration Sections
+        - code: |
+            $ cat ansible.cfg
+            [defaults]
+            ...
+        - class_notes: |
+            Sections are literally sections for INI files. Configuration
+            directives for each section are placed under their appropriate,
+            respective declaration.
+
+      -
+        - h3: Configuration Options
+        - p: Each section has its own directives
+        - code: |
+            [defaults]
+            hostfile = hosts
+            private_key_file = ~/.ssh/id_rsa
+            ...
+        - class_notes: |
+            The directives are defined under their respective section.
+            The Ansible documentation provides all the configuration directives
+            for each section.
+      
+      -
+        - h3: Configuration Options
+        - p: link: [ 'http://docs.ansible.com/intro_configuration.html', 'http://docs.ansible.com/intro_configuration.html' ]
+
+      -
+        - h3: Example Configuration
+        - code: |
+            [defaults]
+            hostfile = hosts
+            private_key_file = /Users/username/.ssh/id_rsa
+            nocows = 1
+            forks = 50
+            transport = ssh
+            remote_user = ansibleuser
+            ask_sudo_pass = True
+            ask_vault_pass = True
+            roles_path = roles
+            .
+            [ssh_connection]
+            pipelining = True
+            scp_if_ssh = True
