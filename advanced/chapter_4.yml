@@ -44,4 +44,14 @@ slides:
             Manual invocation of a dynamic inventory script is fairly straight forward.
             Dynamic inventory scripts must be executable, so calling them explictly will
             invoke the script and return JSON as output.
-            
+        
+      -
+        - h3: Results
+        - image: "https://raw.githubusercontent.com/Linuturk/ansible-sprint/master/advanced/chap4shot1.png"
+        - class_notes: |
+            The output of this command is returned as JSON, in an Ansible-specific structure.
+            This image shows the invocation of the Docker inventory script. The script queries
+            a Docker host and requests information about containers it is running. SSH host, 
+            port information plus additional host variables are returned by the script which can
+            later be used in plays.
+      
