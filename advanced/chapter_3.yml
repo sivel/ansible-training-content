@@ -73,61 +73,96 @@ slides:
         - class_notes: |
                 This example includes a file based on the ansible_os_family variable. This is typically Debian or RedHat for most systems.
       -
-        - h2: "Inventory: Groups"
-        - p: Groups are represented in brackets above host lists in the inventory file.
+        - h2: "Roles"
+        - p: "Ansible Roles also have variables that can be defined:"
+        - ul:
+          - "vars/main.yml contains variables that should stay internal to the role."
+          - "defaults/main.yml contains variables that can be overridden."
+        - class_notes:
+      -
+        - h2: "Facts"
+        - p: "System facts are sourced from the following sources:"
+        - ul:
+          - setup module
+          - set_fact
+          - facts.d
+        - class_notes: |
+      -
+        - h2: "Discovered Facts"
+        - p: "Here is a sampling of facts discovered by the setup module:"
         - code: |
-            [webservers]
-            www[01:50].example.com ansible_ssh_port=5555 
-        - class_notes: This is an example of a range of hosts specified via the bracket nomenclature.
-      -
-        - h2: "Dynamic Inventory: Ansible and the Cloud"
-        - p: "Inventory can also be gathered on demand from other sources dynamically.  Those sources include:"
-        - ul:
-          - Cloud API (Rackspace, Amazon, Digital Ocean, OpenStack, Eucalyptus etc.)
-          - Cobbler
-          - Create your own for fun and profit!
+              ...
+              "ansible_all_ipv4_addresses": [
+                  "REDACTED IP ADDRESS"
+              ],
+              "ansible_all_ipv6_addresses": [
+                  "REDACTED IPV6 ADDRESS"
+              ],
+              "ansible_architecture": "x86_64",
+              "ansible_bios_date": "09/20/2012",
+              "ansible_bios_version": "6.00",
+              "ansible_cmdline": {
+                  "BOOT_IMAGE": "/boot/vmlinuz-3.5.0-23-generic",
+                  "quiet": true,
+                  "ro": true,
+                  "root": "UUID=4195bff4-e157-4e41-8701-e93f0aec9e22",
+                  "splash": true
+              },
+              "ansible_date_time": {
+                  "date": "2013-10-02",
+                  "day": "02",
+                  "epoch": "1380756810",
+                  "hour": "19",
+                  "iso8601": "2013-10-02T23:33:30Z",
+                  "iso8601_micro": "2013-10-02T23:33:30.036070Z",
+                  "minute": "33",
+                  "month": "10",
+                  "second": "30",
+                  "time": "19:33:30",
+                  "tz": "EDT",
+                  "year": "2013"
+              },
+              "ansible_default_ipv4": {
+                  "address": "REDACTED",
+                  "alias": "eth0",
+                  "gateway": "REDACTED",
+                  "interface": "eth0",
+                  "macaddress": "REDACTED",
+                  "mtu": 1500,
+                  "netmask": "255.255.255.0",
+                  "network": "REDACTED",
+                  "type": "ether"
+              },
         - class_notes: |
-            So we can also take inventory from a wide variety of sources on the fly.  We can touch Rackspace, 
-            Openstack, Amazon EC2, Digital Ocean, and other provisioning systems like Cobbler.  You can also
-            create your own inventory module to interface with any custom CMDB systems you may have.
-      -
-        - h2: "Inventory: Ansible and the Cloud"
-        - p: "Dynamic inventories also respect groups and other details."
-        - ul:
-          - Groups are auto-determined by instance tags, regions and other attributes.
-          - Dynamic Inventories can be used alongside Static Inventories for a hybrid cloud approach.
-        - class_notes: |
-            Tagged instances automatically are put in a group based on that tag.  Other attributes also 
-            become groups, such as regions deployed to, or other custom attributes.
       - 
-        - h2: Tasks and Modules
-        - p: Tasks and Modules are the workhorse of Ansible.
-        - p: "This topic will cover:"
-        - ul:
-          - Understanding what a task is
-          - Understanding how tasks make use of modules
-      -
-        - h2: Tasks
-        - p: A task is a discrete action that is a declaration about
-             the state of a system.
-        - p: "Example Tasks:"
-        - ul:
-          - Directory should exist
-          - Package should be installed
-          - Service should be running
-          - Cloud Instance should exist
-        - class_notes: These are examples of declarative tasks where the beginning state is disregarded in favor of ensuring end-state.
-      -
-        - h2: "Tasks: Examples"
-        - p: ansible can execute single tasks on sets of hosts
-             to fullfill an ad-hoc declarations
+        - h2: "Discovered Facts"
+        - p: "Here is how you reference these variables:"
         - code: |
-            $ ansible web-hosts -m file -a "path=/opt/cache state=directory"
-            $ ansible web-hosts -m yum -a "name=nginx state=present"
-            $ ansible web-hosts -m service -a "name=nginx enabled=yes state=started"
+            {{ ansible_devices.sda.model }}
+            {{ ansible_hostname }}
+      -
+        - h2: "Setting Facts in a Play"
+        - p: "You can set facts manually in a play:"
+        - code: |
+            # Example setting host facts using key=value pairs
+            - set_fact: one_fact="something" other_fact="{{ local_var * 2 }}"
+            
+            # Example setting host facts using complex arguments
+            - set_fact:
+                 one_fact: something
+                 other_fact: "{{ local_var * 2 }}"
+        - class_notes:
+      -
+        - h2: "Local Facts (Facts.d)"
+        - p: "You can place files ending in '.fact' in the /etc/ansible/facts.d directory. These can be JSON, INI, or executable files. Here is an example file:"
+        - code: |
+            [general]
+            asdf=1
+            bar=2
+            
+            {{ ansible_local.preferences.general.asdf }}
         - class_notes: |
-            in the first we make sure opt/cache exists, the second we install nginx, third we make 
-            sure nginx is installed, chkconfig'ed on and the service is started.
+            The code sample shows the file to be dropped, and the way to reference that variable in templates and plays.
       -
         - h2: "Tasks: Sources"
         - p: "Code for tasks can come from:"
