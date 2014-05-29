@@ -13,12 +13,14 @@ slides:
       -
         - h2: Learning Objectives
         - p: Students will be able to understand
-        - ul:
-          - Configuration Entries
-          - Different connection methods and their pros/cons
-          - Variable types and precedences
-          - Dynamic Inventories
-          - Encrypted data for use within Ansible
-          - Roles
-          - Task Delegatation
-          - Jinja2 Templates
+        - p: |
+            <ul>
+              <li>Configuration Entries</li>
+              <li>Different connection methods</li>
+              <li>Variable types and precedences</li>
+              <li>Dynamic Inventories</li>
+              <li>Encrypted data for use within Ansible</li>
+              <li>Roles</li>
+              <li>Task Delegatation</li>
+              <li>Jinja2 Templates</li>
+            </ul>
