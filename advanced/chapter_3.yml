@@ -191,69 +191,65 @@ slides:
                 {{ some_variable | default("foobar") }}
         - class_notes: |
       -
-        - h2: Module Interactions in Tasks
-        - p: A series of tasks
-        - code: |
-            - name: add cache dir
-              file: path=/opt/cache state=directory
-
-            - name: install nginx
-              yum: name=nginx state=present
-
-            - name: start nginx
-              service: name=nginx enabled=yes state=started
-        - class_notes: |
-            An ordered series of tasks can be described to form plays.  Tasks utilize modules to act upon remote hosts.
-      -
-        - h2: Plays
-        - p: Plays are ordered sets of tasks to execute against host selections from your inventory.
-        - p: "This topic will cover:"
+        - h2: "Magic Variables"
+        - p: "Ansible provides information about other hosts though a series of 'magic variables'."
         - ul:
-          - play naming
-          - hosts selection
-          - play arguments
-          - variables
-          - tasks
-          - concurrency and order of operations
-          - conditionals
-          - error handling
-          - inclusions
+          - hostvars
+          - group_names
+          - groups
+        - class_notes: |
       -
-        - h2: Play Naming
+        - h2: "hostvars"
+        - p: "Hostvars let you ask about the variables of another host, including facts that have been gathered about that host."
         - code: |
-            - name: This is a Play
-        - class_notes: General best practices are to name tasks in a way that shows what they do.
+                {{ hostvars['test.example.com']['ansible_distribution'] }}
+        - class_notes: |
+      -
+        - h2: "group_names"
+        - p: "The group_names variable contains a list of all the groups the current host is in."
+        - code: |
+            {% if 'webserver' in group_names %}
+               # some part of a configuration file that only applies to webservers
+            {% endif %}
+        - class_notes:
       - 
-        - h2: Hosts Selection
+        - h2: "groups"
+        - p: "groups is a list of all the groups (and hosts) in the inventory."
         - code: |
-            - name: This is a Play
-              hosts: web-servers
-        - class_notes: This is how we specify in a play/plabook what hosts we will act upon based on group.
+            {% for host in groups['app_servers'] %}
+               # something that applies to all app servers.
+            {% endfor %}
+        - class_notes:
       -
-        - h2: Play Arguments
+        - h2: "Lab"
+        - p: Given the provided play, override the variable to change the output.
         - code: |
-            - name: This is a Play
-              hosts: web-servers
-              remote_user: fred
-              sudo: yes
-              connection: ssh
+                - hosts: localhost
+                  connection: local
+                  vars:
+                    - local_var: "override me"
+                  tasks:
+                    - name: print out the variable
+                      debug: msg="This should not output 'override me' - {{ local_var }}"
         - class_notes: |
-            Furthermore, we can specify other variables as arguments.  
-            Such as what remote user to connect as, or whether we sudo to root to complete our task.
       -
-        - h2: Variables
+        - h2: "Lab Solution"
         - code: |
-            - name: This is a Play
-              hosts: web-servers
-              remote_user: fred
-              sudo: yes
-              connection: ssh
-              vars:
-                http_port: 80
-                cache_dir: /opt/cache
+                ansible-playbook variable_override.yml --extra-vars "local_var=foobar"
+
+                PLAY [localhost] ************************************************************** 
+
+                GATHERING FACTS *************************************************************** 
+                ok: [localhost]
+
+                TASK: [print out the variable] ************************************************ 
+                ok: [localhost] => {
+                    "msg": "This should not output 'override me' - foobar"
+                }
+
+                PLAY RECAP ******************************************************************** 
+                localhost                  : ok=2    changed=0    unreachable=0    failed=0
         - class_notes: |
-            We gather facts before every run from hosts we are acting on.  Facts become variables that
-            contain information such as kernel level, host name, ip addresses and other standard information.
       -
         - h2: Tasks
         - code: |
