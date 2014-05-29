@@ -7,8 +7,8 @@ header:
 slides:
 
   - set_global:
-    transition: rotate
-    background: '#007777'
+      transition: rotate
+      background: '#007777'
     #background: 'black'
 
   -
