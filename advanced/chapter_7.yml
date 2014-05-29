@@ -10,6 +10,11 @@ slides:
     - nested:
       - 
         - h1: Delegation
+        - ul:
+          - Local actions and actions on other hosts
+          - Delegation to a host in inventory
+          - Delegation to a host not in inventory
+          - Task execution concurrency with delegation
         - class_notes: |
             In this chapter we discuss delegation, how tasks in a play
             can be redirected to an alternate host for execution.
@@ -35,8 +40,10 @@ slides:
             delegating on. So the task has the context of the host in the
             loop but it just gets executed on the host you delegate to.
 
+            delegate_to to localhost is a alternative to local_action.
+
       -
-        - h2: Delegation to host in inventory
+        - h2: Delegation to a host in inventory
         - p: Delegation most often targets another host in your inventory
         - p: Uses connection variable data from delegate target
         - ul:
@@ -53,7 +60,7 @@ slides:
             loop.
 
       -
-        - h2: Delegation to host not in inventory
+        - h2: Delegation to a host not in inventory
         - p: Delegation: not just limited to hosts in your inventory
         - p: Make use of add_host to adjust connection details
         - code: |
@@ -69,7 +76,7 @@ slides:
             inventory with connection data defined.
 
       -
-        - h2: Tasks run for all the hosts in the loop
+        - h2: Task execution concurrency with delegation
         - p: Delegated tasks will run for every host in the loop
         - p: Tasks will run with configured forks / serial
         - p: Be aware of race conditions and concurrency issues
@@ -81,6 +88,7 @@ slides:
             herd problem of too many connections opening at once to a single
             host. SSH servers have a MaxStartups config option that can limit
             how many concurrent connections it'll allow. Easy to overflow.
+
       -
         - image: "http://cdn2.hubspot.net/hub/330046/file-449187601-png/ansible_badge.png"
         - link: ['ansible.com',
