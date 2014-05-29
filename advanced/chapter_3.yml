@@ -1,34 +1,34 @@
 ---
 header:
-  author: Jesse K and the DFed Experience
-  title: Understand the concepts of Ansible
-  description: Description of the chapter
+  author: Justin Phelps
+  title: Variable Types and Precedence
+  description: Understanding variables and precedence.
 
 slides:
 
   -
     - nested:
       - 
-        - h1: Ansible Key Components
-        - p: What makes Ansible tick!
-        - class_notes: Let's delve into the concepts that drive Ansible.
+        - h1: "Variable Types and Precedence"
       - 
-        - h2: Key components of Ansible
+        - h2: "Where you can define variables:"
         - ul:
+          - Variable Files
           - Inventory
-          - Modules/Tasks
-          - Plays
           - Playbooks
-        - class_notes: These are some very key components you'll need to understand for using Ansible.
+          - Command Line
+          - Roles
+        - class_notes: 
       -
-        - h2: Inventory
-        - ul:
-          - Understanding Hosts and Groups
-          - Inventory Sources
-        - class_notes:  | 
-            Ansible works against multiple systems in your infrastructure
-            at the same time. It does this by selecting portions of systems
-            listed in Ansible's inventory.
+        - h2: "Variable Precedence"
+        - p: "Variables will override each other depending on where they are defined:"
+        - ol:
+          - Command line variables have the highest precedence.
+          - "'most everything else' come next."
+          - Variables defined in inventory.
+          - Next comes facts discovered about a system.
+          - Role defaults lose in priority to everything else.
+        - class_notes:
       -
         - h2: Inventory concepts
         - ul:
