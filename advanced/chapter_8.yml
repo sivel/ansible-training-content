@@ -21,17 +21,19 @@ slides:
 
       -
         - h2: Control Structures
-        - ul:
-            - for
-            - if
-            - macros
-            - call
-            - filters
-            - assignments
-            - extends
-            - block
-            - include
-            - import
+        - p: |
+            <ul>
+              <li>for</li>
+              <li>if</li>
+              <li>macros</li>
+              <li>call</li>
+              <li>filters</li>
+              <li>assignments</li>
+              <li>extends</li>
+              <li>block</li>
+              <li>include</li>
+              <li>import</li>
+            </ul>
         - class_notes: This is a list of all control strucutres as mentioned in the jinja2 docs.  The ones most people need to know about are "for" and "if".  Point students to http://jinja.pocoo.org/docs/templates/ for additional information about the other types.
 
       -
