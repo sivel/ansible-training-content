@@ -55,8 +55,8 @@ slides:
         - p: "Here is an example of defining variables in a playbook:"
         - code: |
             - hosts: webservers
-  vars:
-    http_port: 80
+              vars:
+                http_port: 80
         - class_notes: As you can see, we have a host name, a specified SSH port and IP Address.
       -
         - h2: "Inventory: Host Entries Using Ranges"
