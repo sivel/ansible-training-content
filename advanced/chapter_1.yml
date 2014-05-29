@@ -87,10 +87,9 @@ slides:
             The directives are defined under their respective section.
             The Ansible documentation provides all the configuration directives
             for each section.
-      
       -
         - h3: Configuration Options
-        - p: link: [ 'http://docs.ansible.com/intro_configuration.html', 'http://docs.ansible.com/intro_configuration.html' ]
+        - link: [ 'http://docs.ansible.com/intro_configuration.html', 'http://docs.ansible.com/intro_configuration.html' ]
 
       -
         - h3: Example Configuration
