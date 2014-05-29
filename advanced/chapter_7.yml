@@ -1,0 +1,87 @@
+---
+header:
+  author: Jesse K
+  title: Delegation
+  description: "How delegation can be used to redirect tasks to a different host."
+
+slides:
+
+  -
+    - nested:
+      - 
+        - h1: Delegation
+        - class_notes: |
+            In this chapter we discuss delegation, how tasks in a play
+            can be redirected to an alternate host for execution.
+
+      - 
+        - h2: Local actions and actions on other hosts
+        - p: 
+        - code: |
+            - name: take out of load balancer pool
+              command: /usr/bin/take_out_of_pool {{ inventory_hostname }}
+              delegate_to: localhost
+
+            - name: update packages
+              yum: name=acme-web-stack state=latest
+
+            - name: add back to load balancer pool
+              command: /usr/bin/add_back_to_pool {{ inventory_hostname }}
+              delegate_to: localhost
+        - class_notes: |
+            The delegate_to keyword is what tells Ansible to redirect the
+            task to the system listed. The variables you reference are
+            attached to the host in the loop, not the host you are
+            delegating on. So the task has the context of the host in the
+            loop but it just gets executed on the host you delegate to.
+
+      -
+        - h2: Delegation to host in inventory
+        - p: Delegation most often targets another host in your inventory
+        - p: Uses connection variable data from delegate target
+        - ul:
+          - ansible_connection
+          - ansible_ssh_host
+          - ansible_ssh_port
+          - ansible_ssh_user
+          - etc...
+        - class_notes: |
+            When delegating to a host listed in your inventory, data
+            from your delegation target will be used when creating the
+            connection to the delegation target, but only the connection
+            related variables. The rest will be read from the host in the
+            loop.
+
+      -
+        - h2: Delegation to host not in inventory
+        - p: Delegation: not just limited to hosts in your inventory
+        - p: Make use of add_host to adjust connection details
+        - code: |
+            - name: add delegation host
+              add_host: name=hubert ansible_ssh_host=192.168.10.2
+                        ansible_ssh_user=fred
+        - class_notes: |
+            You can also delegate to a host that doesn't exist in your
+            inventory. In this case, ansible will use the string provided
+            verbatim and attempt to connect to it with the current connection
+            type and details. If you need to adjust the connection details,
+            make use of the add_host task to create an ephemeral host in your
+            inventory with connection data defined.
+
+      -
+        - h2: Tasks run for all the hosts in the loop
+        - p: Delegated tasks will run for every host in the loop
+        - p: Tasks will run with configured forks / serial
+        - p: Be aware of race conditions and concurrency issues
+        - class_notes: |
+            Delegated tasks will run for every host in the hosts: , but this
+            can create issues with race conditions, particularly when using
+            conditionals in the task, as the forks count will be used to create
+            multiple concurrent tasks. This can also create a thundering
+            herd problem of too many connections opening at once to a single
+            host. SSH servers have a MaxStartups config option that can limit
+            how many concurrent connections it'll allow. Easy to overflow.
+      -
+        - image: "http://cdn2.hubspot.net/hub/330046/file-449187601-png/ansible_badge.png"
+        - link: ['ansible.com',
+                 'http://www.ansible.com']
