@@ -61,7 +61,7 @@ slides:
 
       -
         - h2: Delegation to a host not in inventory
-        - p: Delegation: not just limited to hosts in your inventory
+        - p: "Delegation: not just limited to hosts in your inventory"
         - p: Make use of add_host to adjust connection details
         - code: |
             - name: add delegation host
