@@ -15,7 +15,8 @@ slides:
      - nested:
          -
            - h1: Ansible Vault
-           - p: Ansible Vault is a tool to encrypt YAML variables files that may contain sensitive data. 
+           - p: "Ansible Vault is a tool to encrypt YAML variables files that may contain sensitive data."
+           - ul:
              - Password-based
              - Separate command line tool
              - Encrypts YAML files
@@ -29,7 +30,7 @@ slides:
              - rekey
              - encrypt
              - decrypt
-           - class_notes: "ansible-vault" is the CLI tool, and it has several operations.
+           - class_notes: ansible-vault is the CLI tool, and it has several operations.
 
          -
            - h2: Vault Operations
