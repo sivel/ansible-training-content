@@ -1,5 +1,8 @@
 ---
-- hosts: database
+- hosts: webservers
+  gather_facts: yes
+
+- hosts: databases
   handlers:
     - name: Reload iptables
       service:

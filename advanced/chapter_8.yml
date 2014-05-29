@@ -103,7 +103,7 @@ slides:
         - p: Create playbook and a jinja2 template to achieve the following results
         - ul:
           - Template out /etc/sysconfig/iptables
-          - Only allow access to MySQL (tcp/3306) from servers in the webserver group
+          - Only allow access to MySQL (tcp/3306) from servers in the webservers group
           - A play to create this file from the template
           - The play should have a handler to reload iptables when the file changes
           - iptables should be enabled and configured to start on boot
@@ -116,11 +116,11 @@ slides:
             :FORWARD ACCEPT [0:0]
             :OUTPUT ACCEPT [0:0]
             
-            {% for server in groups['webserver'] %}
+            {% for server in groups['webservers'] %}
             -A INPUT -p tcp -s {{ hostvars[server].ansible_eth1.ipv4.address }} -i eth1 -d {{ ansible_eth1.ipv4.address }} --dport 3306 -j ACCEPT
             {% endfor %}
             
-            {% for server in groups['database'] %}
+            {% for server in groups['databases'] %}
             {% if server != inventory_hostname %}
             -A INPUT -p tcp -s {{ hostvars[server].ansible_eth1.ipv4.address }} -i eth1 -d {{ ansible_eth1.ipv4.address }} --dport 3306 -j ACCEPT
             {% endif %}
@@ -138,10 +138,10 @@ slides:
         - h2: Sample play
         - code: |
             ---
-            - hosts: webserver
+            - hosts: webservers
               gather_facts: true
 
-            - hosts: database
+            - hosts: databases
               handlers:
                 - name: Reload iptables
                   service:
