@@ -133,6 +133,7 @@ slides:
                   "network": "REDACTED",
                   "type": "ether"
               },
+              ...
         - class_notes: |
       - 
         - h2: "Discovered Facts"
@@ -164,52 +165,31 @@ slides:
         - class_notes: |
             The code sample shows the file to be dropped, and the way to reference that variable in templates and plays.
       -
-        - h2: "Tasks: Sources"
-        - p: "Code for tasks can come from:"
-        - ul:
-          - existing modules
-          - custom modules
-          - raw ssh commands
+        - h2: "Using Variables in Jinja2"
+        - p: "You've seen several examples of variables being referenced. The same method is used to reference these variables in Jinja2 templates."
+        - code: |
+                {{ variable_name }}
         - class_notes: |
-            Tasks use modules or commands to create their actions to apply to remote systems. 
-            You can create your own modules, use any of the over 200 included modules, or use the output from commands.
       -
-        - h2: Modules
-        - p: Modules are the bits of code copied to the target system
-             to be executed to satisfy the task declaration.
-        - p: "Key points:"
-        - ul:
-          - Code need not exist on remote host -- ansible copies it over
-          - Many modules come with Ansible -- "batteries included"
-          - Custom modules can be developed easily
-          - command/shell modules exists for simple commands
-          - script module exists for using existing code
-          - raw module exists for executing raw commands over ssh
-        - class_notes: | 
-            Modules essentially create python code out of the descriptions given via the tasks that are then sent to the 
-            remote machine and interpreted/executed by that host. Once executed, Ansible then cleans up after itself and 
-            removes the module and output from the remote system.
-      - 
-        - h2: Module Interactions
-        - p: Module listing and documentation via ansible-doc
+        - h2: "Jinja2 Filters" 
+        - p: "There are many useful filters you can use in your Jinja2 templates. Here are a few useful ones:"
         - code: |
-            $ ansible-doc -l
-            acl                  Sets and retrieves file ACL information.
-            apt                  Manages apt-packages
-        - code: |
-            $ ansible-doc acl
-            > ACL
-
-              Sets and retrieves file ACL information.
-
-              Options (= is mandatory):
-
-              - entry
-                      The acl to set or remove.  This must always be quoted in the [...]
+                # Combine two lists
+                {{ list1 | union(list2) }}
+                # Get a random number
+                {{ 59 |random}} * * * * root /script/from/cron
+                # md5sum of a filename
+                {{ filename | md5 }}
+                # Comparisons
+                {{ ansible_distribution_version | verson_compare('12.04', '>=') }}
         - class_notes: |
-            Modules and tasks represent the core function of ansible. Modules are capable of idempotence -- 
-            can be ran successively and understand change vs no change. In these examples we see how to use
-            the command "ansible-doc" to review informtaion about specific modules that are included.
+                There are a lot more filters out there. Reference the Ansible and Jinja2 documentation for a complete list.
+      - 
+        - h2: "Defaulting Values"
+        - p: "You can provide a default value for a variable using the following filter:"
+        - code: |
+                {{ some_variable | default("foobar") }}
+        - class_notes: |
       -
         - h2: Module Interactions in Tasks
         - p: A series of tasks
