@@ -89,3 +89,25 @@ slides:
             host. SSH servers have a MaxStartups config option that can limit
             how many concurrent connections it'll allow. Easy to overflow.
 
+      -
+        - h2: Lab
+        - p: Add mysql users to a database
+        - ul:
+          - Create a play to loop over 'webservers' group
+          - Create a task to use mysql_user module to add a user
+          - Use host specific mysql user / password data
+          - delegate_to should be used to execute on the first 'databases' server
+
+      -
+        - h2: Sample Play
+        - code: |
+            ---
+            - name: MySQL Users
+              hosts: webservers
+
+              tasks:
+                - name: add a mysql user for the server
+                  mysql_user: name={{ db_username }} host={{ inventory_hostname }}
+                              password={{ db_password }} priv='ansible.*:ALL'
+                              state=present
+                  delegate_to: databases[0]

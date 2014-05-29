@@ -1,10 +1,10 @@
 ---
-- name: MySQL Grants
-  hosts: mysql_writers # rename this to something made in previous labs
+- name: MySQL Users
+  hosts: webservers
 
   tasks:
     - name: add a mysql user for the server
       mysql_user: name={{ db_username }} host={{ inventory_hostname }}
                   password={{ db_password }} priv='ansible.*:ALL'
                   state=present
-      delegate_to: mysql_server # rename this to something made in previous
+      delegate_to: databases[0]
