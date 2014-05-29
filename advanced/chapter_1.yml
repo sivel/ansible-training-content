@@ -1,72 +1,47 @@
 ---
 header:
-  author: CC, PI
-  title: Chapter 1, Ansible Fundamentals
-  description: Ansible Fundamentals Course
+  author: Paul Durivage
+  title: "Chapter 1, Understanding configuration files and environment variables"
+  description: Ansible Advanced Course
 
 slides:
 
-   - set_global:
-       transition: rotate
-       background: '#007777'
-       #background: 'black'
+  - set_global:
+    transition: rotate
+    background: '#007777'
+    #background: 'black'
 
-   -
-     - nested:
-         -
-           - h1: What is Ansible?
-           - ul: 
-             - Clear
-             - Fast
-             - Complete
-             - Efficient
-             - Secure
+  -
+    - nested:
+      -
+        - h1: Configuration Files
+        - class_notes: |
+            Configuration files accept configuration directives to modify
+            the way Ansible runs, for example: configuring a specific 
+            connection type, or to set the number of forks.
+      -
+        - h3: File locations
+        - ul:
+          - "ansible.cfg (in the current directory)"
+          - ".ansible.cfg (in the home directory)"
+          - "/etc/ansible/ansible.cfg"
+        - class_notes: |
+            These are the three locations where configuration files are kept.
+            The configuration files in these locations are read and evaluated
+            in an order of precedence.  The system file in /etc/ansible/ansible.cfg
+            has the lowest precedence, the "~/.ansible.cfg" is next highest, and
+            "./ansible.cfg" is the highest precedence.
 
-         -
-           - h2: Clear
-           - p: 'A simple automation language allows Ansible to be used by anyone:'
-           - ul:
-             - sysadmins
-             - developers
-             - IT managers
-           - p: It's easy to write, read, maintain, and evolve - without writing scripts or custom code.
-         -
-           - h2: Fast
-           - p: Ansible is easy to learn.
-           - p: Setup is fast.
-           - class_notes: |
-               1. You can automate in under 30 minutes. Forget about how it works, just do it.
-               2. No agents. SSH keys are typically already in place.
-         -
-           - h2: Complete
-           - p: 'Ansible is several tools in one:'
-           - ul:
-             - configuration management
-             - application deployment
-             - orchestration
-             - provisioning
-           - p: Hundreds of built-in modules.
-         -
-           - h2: Efficient
-           - p: Ansible doesn't require a custom agent or software to install. 
-           - p: Ansible runs on OpenSSH. 
-           - class_notes: |
-               1. With no additional software infrastructure, you don't have to
-               worry about managing the management tool.
-               2. That means anywhere SSH goes, Ansible goes.
-               3. It doesn't suck memory or CPU resources when it is not in use.
-               4. Designed from day one to automate no-downtime rolling updates
-               and multi-tier orchestration.
-         -
-           - h2: Secure
-           - p: No agent. 
-           - p: SSH transport.
-           - p: Ansible plays can be read by anyone. 
-           - class_notes: |
-               1. It doesn't need additional ports or root level daemons.
-               2. It uses built-in OS authentication for better security - login
-               as who you are, sudo if you want to sudo.
-               3. You can work with tools like Kerberos, LDAP, and sssd.
-               4. OpenSSH is the most peer-reviewed security component around.
-               5. This makes it auditable. You know what you're automating,
-               and bugs have nowhere to hide.
+      -
+        - h3: Environment Variables
+        - code: |
+            ANSIBLE_KEEP_ALL_FILES=True ansible -i hosts ...
+        - class_notes: |
+            Environment variables have the highest precedence of all, and work similarly
+            to configuration directives in config files
+
+      -
+        - h3: Environment Variables
+        - ul:
+            - Highest precedence
+            
