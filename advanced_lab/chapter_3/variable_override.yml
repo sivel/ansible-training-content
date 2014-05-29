@@ -1,0 +1,7 @@
+- hosts: localhost
+  connection: local
+  vars:
+    - local_var: "override me"
+  tasks:
+    - name: print out the variable
+      debug: msg="This should not output 'override me' - {{ local_var }}"
