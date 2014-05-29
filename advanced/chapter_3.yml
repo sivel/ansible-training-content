@@ -65,20 +65,13 @@ slides:
             ansible-playbook release.yml --extra-vars "version=1.23.45 other_variable=foo"
         - class_notes:
       -
-        - h2: "Inventory: Groups"
-        - p: "Inventory Host Organization: Groups"
-        - ul:
-          - Groups allow targeted operations against different types of hosts.
-          - Groups can also have variables that apply to all hosts within them.
-          - --limit allows you to specify only certain groups to act against
-          - Hosts can exist in more than one group at once.
+        - h2: "Including Variable Files"
+        - p: "Here is an example of including a variable file based on a condition:"
+        - code: |
+                - name: Includiung OS specific variables
+                  include_vars: '{{ ansible_os_family }}.yml'
         - class_notes: |
-            We can also act against groups of hosts in a similar manner to single hosts.
-            This allows you to also have standard settings for lots of similar hosts, such
-            as a standard set of ports for apache on all web servers. You can limit the execution of
-            Ansible jobs just as you can single hosts with the "--limit" option. Hosts can exist
-            in more than one group at once, letting you do interesting operations on the intersections
-            of groups. For example, target all of the east coast web servers.
+                This example includes a file based on the ansible_os_family variable. This is typically Debian or RedHat for most systems.
       -
         - h2: "Inventory: Groups"
         - p: Groups are represented in brackets above host lists in the inventory file.
