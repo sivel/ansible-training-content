@@ -144,21 +144,13 @@ slides:
             - hosts: databases
               handlers:
                 - name: Reload iptables
-                  service:
-                    name: iptables
-                    state: reloaded
+                  service: name=iptables state=reloaded
             
               tasks:
                 - name: Template /etc/sysconfig/iptables
-                  template:
-                    src: templates/iptables.j2
-                    dest: /etc/sysconfig/iptables
-                  notify:
-                    - Reload iptables
+                  template: src=templates/iptables.j2 dest=/etc/sysconfig/iptables
+                  notify: Reload iptables
             
                 - name: Ensure iptables is started and enabled
-                  service:
-                    name: iptables
-                    state: started
-                    enabled: yes
+                  service: name=iptables state=started enabled=yes
 
