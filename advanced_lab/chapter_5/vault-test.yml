@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars_files:
+  - secrets.yml
+
+  tasks:
+  - debug: msg="I know a secret! {{ password }}"

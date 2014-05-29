@@ -34,30 +34,30 @@ slides:
 
          -
            - h2: Vault Operations
-           - code: ansible-vault create newfile.yml
+           - code: ansible-vault create secrets.yml
            - class_notes: Create a new file and open it in $EDITOR. When it's saved, it will be encrypted.
 
          -
            - h2: Vault Operations
-           - code: ansible-vault edit file.yml
+           - code: ansible-vault edit secrets.yml
            - class_notes: Edit an existing file in $EDITOR. Ansible will decrypt it to a temporary location and open it in an editor, and then when saved, re-encrypt it.
 
          -
            - h2: Vault Operations
-           - code: ansible-vault rekey file.yml
+           - code: ansible-vault rekey secrets.yml
            - class_notes: Change the password on an encrypted file.
 
          -
            - h2: Vault Operations
-           - code: ansible-vault encrypt oldfile.yml
+           - code: ansible-vault encrypt secrets.yml
            - class_notes: Encrypt an existing file.
 
          -
            - h2: Vault Operations
-           - code: ansible-vault decrypt file.yml
+           - code: ansible-vault decrypt secrets.yml
            - class_notes: Permanently decrypt an encrypted file.
 
          -
            - h2: Running a Playbook
-           - code: ansible-playbook --ask-vault-pass playbook.yml
-           - code: ansible-playbook --vault-password-file vault-pw playbook.yml
+           - code: ansible-playbook --ask-vault-pass vault-test.yml
+           - code: ansible-playbook --vault-password-file vault-pw vault-test.yml
