@@ -21,7 +21,7 @@ slides:
 
       - 
         - h2: Local actions and actions on other hosts
-        - p: 
+        - p: "Task control keyword: delegate_to"
         - code: |
             - name: take out of load balancer pool
               command: /usr/bin/take_out_of_pool {{ inventory_hostname }}
