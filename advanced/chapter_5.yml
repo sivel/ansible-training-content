@@ -62,4 +62,5 @@ slides:
          -
            - h2: Running a Playbook
            - code: ansible-playbook --ask-vault-pass vault-test.yml
-           - code: ansible-playbook --vault-password-file vault-pw vault-test.yml
+           - code: ansible-playbook --vault-password-file ../vault-pw vault-test.yml
+           - class_notes: There are two ways to run a playbook that refers to encrypted content. The first one prompts at runtime. The second method is to refer to a file on disk that contains the password.
