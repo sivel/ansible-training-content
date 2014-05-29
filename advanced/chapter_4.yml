@@ -1,47 +1,22 @@
 ---
 header:
-  author: Tim G
-  title: Write and run a simple playbook 
-  description: "We have already shown a simple playbook in Chapter 3. Here we will write a playbook from scratch, incrementally, and the students can follow along if they are able."
+  author: Paul Durivage
+  title: "Chapter 4, Dynamic Inventory"
+  description: ""
 
 slides:
 
   -
     - nested:
       - 
-        - h1: Basic Playbook Structure
-
-        - class_notes: In this chapter we'll cover the basic playbook structure, and write a simple playbook from scratch.
-
-      - 
-        - h2: "Play Header"
-        - code: |
-            ---
-            - name: this is the name of a play
-              hosts: all
-              user: root
-
-              tasks: []
-        - class_notes: As we covered earlier, a playbook is a series of plays. Each play needs a "hosts" keyword, which tells Ansible to which hosts hosts this play applies. You can define a lot of other parameters at the play level, including which user to log in as, whether these tasks should be run through sudo, which connection mechanism to use, etc.
+        - h1: Dynamic Inventories
 
       -
-        - h2: Write the tasks
-        - code: |
-            ---
-            - name: this is the name of a play
-              hosts: all
-              user: root
-
-              tasks:
-              - name: install nginx
-                yum: package=nginx state=present
-        - class_notes: Now that we have the "front matter" of the play defined, we can add the tasks, as shown. Each task can have a name that is human-readable. This isn't required, but it's recommended. Then you call the module, in this case "yum", and any arguments.
-
-      -
-        - h2: Run the playbook
-
-        - class_notes: "Run the playbook. If you've written everything correctly, it should install nginx on the target systems, and return the results. Notice the \"Gathering Facts\" step that occurs at the top of the run. This is implicit, but you can turn it off with \"gather_facts: no\" in the play. At the end, a \"host recap\" will be printed out. This gives you a summary of tasks that completed successfully, tasks that changed something on the target system, any failures, or unreachable systems."
-      -
-        - image: "http://cdn2.hubspot.net/hub/330046/file-449187601-png/ansible_badge.png"
-        - link: ['ansible.com',
-                 'http://www.ansible.com']
+        - h3: What is Dynamic Inventory?
+        - ul:
+            - Executable script
+            - Queries a service that holds data about servers
+            - Returns the data to Ansible
+        - class_notes: |
+            Dynamic inventory is a script that queries a service, like a cloud
+            provider API or a management application like Spacewalk.

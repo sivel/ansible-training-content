@@ -71,9 +71,9 @@ slides:
             [defaults]
             ...
         - class_notes: |
-            Sections are literally sections for INI files. Configuration
+            Sections are literally section headers for INI files. Configuration
             directives for each section are placed under their appropriate,
-            respective declaration.
+            respective section header.
 
       -
         - h3: Configuration Options
@@ -112,4 +112,9 @@ slides:
             This is configuration file that was made to ensure Ansible complies
             with the local environment configuration.  For example, it explictly 
             forces ssh, asks for a sudo pass, sets forks to 50, etc.
+
+      -
+        - h3: Config File Tour
+        - class_notes: |
+            Students check their config files
 
