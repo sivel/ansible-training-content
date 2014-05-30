@@ -50,7 +50,8 @@ slides:
             delegating on. So the task has the context of the host in the
             loop but it just gets executed on the host you delegate to.
 
-            delegate_to to localhost is a alternative to local_action.
+            Is there another way to indicate that an action needs to
+            happen locally?
 
       -
         - h2: Delegation to a host in inventory
