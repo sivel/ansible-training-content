@@ -9,5 +9,23 @@ slides:
   -
     - nested:
       - 
-        - h1: "Roles"
-        - class_notes: Title slide
+        - h1: "Connection Types"
+        - class_notes: Title slide. Ansible has a number of ways to connect to remote machines. SSH is the default, and there are two SSH mechanisms. This chapter will cover the differences between the two, as well as other connection mechanisms.
+
+      - 
+        - h1: "Smart (SSH auto-detected)"
+
+      - 
+        - h1: "OpenSSH"
+
+      - 
+        - h1: "Paramiko"
+
+      - 
+        - h1: "Accelerated Mode"
+
+      - 
+        - h1: "Local Connections"
+
+      - 
+        - h1: "Connection Plugins"

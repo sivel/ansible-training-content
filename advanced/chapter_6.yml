@@ -10,4 +10,20 @@ slides:
     - nested:
       - 
         - h1: "Roles"
-        - class_notes: Title slide. 
+        - p: Reusing and sharing Ansible content.
+        - class_notes: Title slide. Roles are a way to organize and reuse Ansible content in a standard way.
+
+      - 
+        - h1: "Filesystem Structure"
+
+      - 
+        - h1: "Variables and Defaults"
+
+      - 
+        - h1: "Role Dependencies"
+
+      - 
+        - h1: "Embedding Custom Modules"
+
+      - 
+        - h1: "Ansible Galaxy"
