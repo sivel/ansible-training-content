@@ -10,6 +10,7 @@ slides:
     - nested:
       - 
         - h1: "Variable Types and Precedence"
+        - p: What is your variable and where does it go?
       - 
         - h2: "Where variables are defined or sourced"
         - ul:
