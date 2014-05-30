@@ -87,6 +87,41 @@ slides:
             inventory with connection data defined.
 
       -
+        - h2: Lab
+        - p: Create an ephemeral host and delegate a task to it
+        - ul:
+          - Create a play for localhost
+          - Create a host using add_host with detailed connection variables
+          - Create a simple task that is delegated to the added host
+          - Run playbook with -vvvv to observe the connection details
+        - class_notes: |
+            This is a simple contrived lab that will exercise making use of
+            add_host to create an ephemeral host to delegate a task to. This
+            host doesn't have to actually exist, a connection failure on the
+            task will suffice to see the connection details to observe the
+            delegation. Feel free to play with values and observe how they
+            reflect in running the lab.
+
+      -
+        - h2: Sample Play
+        - code: |
+            ---
+            - name: test play
+              hosts: localhost
+
+              tasks:
+                - name: add delegation host
+                  add_host: name=hubert ansible_ssh_host=192.168.10.2
+                            ansible_ssh_user=fred
+
+                - name: silly echo
+                  command: echo {{ inventory_hostname }}
+                  delegate_to: hubert
+
+        - code: |
+            $ ansible-playbook test-play.yml -vvvv
+
+      -
         - h2: Task execution concurrency with delegation
         - p: Delegated tasks will run for every host in the loop
         - p: Tasks will run with configured forks / serial
