@@ -8,10 +8,10 @@ slides:
 
   -
     - nested:
-      - 
+      -
         - h1: "Variable Types and Precedence"
         - p: What is your variable and where does it go?
-      - 
+      -
         - h2: "Where variables are defined or sourced"
         - ul:
           - Inventory
@@ -119,339 +119,339 @@ slides:
         - p: "Here is a sampling of facts discovered by the setup module:"
         - code: |
             localhost | success >> {
-                "ansible_facts": {                                                                        
-                    "ansible_all_ipv4_addresses": [                                                       
-                        "192.168.1.37",                                                                   
-                        "172.17.42.1"                                                                     
-                    ],                                                                                    
-                    "ansible_all_ipv6_addresses": [                                                       
-                        "fe80::c685:8ff:fe3b:a916"                                                        
-                    ],                                                                                    
-                    "ansible_architecture": "x86_64",                                                     
-                    "ansible_bios_date": "01/29/2013",                                                    
-                    "ansible_bios_version": "UX32A.214",                                                  
-                    "ansible_cmdline": {                                                                  
-                        "BOOT_IMAGE": "/vmlinuz-3.13.0-27-generic.efi.signed",                            
-                        "quiet": true,                                                                    
-                        "ro": true,                                                                       
-                        "root": "/dev/mapper/kubuntu--vg-root",                                           
-                        "splash": true,                                                                   
-                        "vt.handoff": "7"                                                                 
-                    },                                                                                    
-                    "ansible_date_time": {                                                                
-                        "date": "2014-05-30",                                                             
-                        "day": "30",                                                                      
-                        "epoch": "1401460386",                                                            
-                        "hour": "09",                                                                     
-                        "iso8601": "2014-05-30T14:33:06Z",                                                
-                        "iso8601_micro": "2014-05-30T14:33:06.057018Z",                                   
-                        "minute": "33",                                                                   
-                        "month": "05",                                                                    
-                        "second": "06",                                                                   
-                        "time": "09:33:06",                                                               
-                        "tz": "CDT",                                                                      
-                        "tz_offset": "-0500",                                                             
-                        "weekday": "Friday",                                                              
-                        "year": "2014"                                                                    
-                    },                                                                                    
-                    "ansible_default_ipv4": {                                                             
-                        "address": "192.168.1.37",                                                        
-                        "alias": "wlan0",                                                                 
-                        "gateway": "192.168.1.1",                                                         
-                        "interface": "wlan0",                                                             
-                        "macaddress": "c4:85:08:3b:a9:16",                                                
-                        "mtu": 1500,                                                                      
-                        "netmask": "255.255.255.0",                                                       
-                        "network": "192.168.1.0",                                                         
-                        "type": "ether"                                                                   
-                    },                                                                                    
-                    "ansible_default_ipv6": {},                                                           
-                    "ansible_devices": {                                                                  
-                        "sda": {                                                                          
-                            "holders": [],                                                                
-                            "host": "SATA controller: Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode] (rev 04)",                                                           
-                            "model": "Hitachi HTS54323",                                                  
-                            "partitions": {                                                               
-                                "sda1": {                                                                 
-                                    "sectors": "625137282",                                               
-                                    "sectorsize": 512,                                                    
-                                    "size": "298.09 GB",                                                  
-                                    "start": "63"                                                         
-                                }                                                                         
-                            },                                                                            
-                            "removable": "0",                                                             
-                            "rotational": "1",                                                            
-                            "scheduler_mode": "deadline",                                                 
-                            "sectors": "625142448",                                                       
-                            "sectorsize": "512",                                                          
-                            "size": "298.09 GB",                                                          
-                            "support_discard": "0",                                                       
-                            "vendor": "ATA"                                                               
-                        },                                                                                
-                        "sdb": {                                                                          
-                            "holders": [],                                                                
-                            "host": "SATA controller: Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode] (rev 04)",                                                           
-                            "model": "SanDisk SSD i100",                                                  
-                            "partitions": {                                                               
-                                "sdb1": {                                                                 
-                                    "sectors": "997376",                                                  
-                                    "sectorsize": 512,                                                    
-                                    "size": "487.00 MB",                                                  
-                                    "start": "2048"                                                       
-                                },                                                                        
-                                "sdb2": {                                                                 
-                                    "sectors": "499712",                                                  
-                                    "sectorsize": 512,                                                    
-                                    "size": "244.00 MB",                                                  
-                                    "start": "999424"                                                     
-                                },                                                                        
-                                "sdb3": {                                                                 
-                                    "sectors": "45404160",                                                
-                                    "sectorsize": 512,                                                    
-                                    "size": "21.65 GB",                                                   
-                                    "start": "1499136"                                                    
-                                }                                                                         
-                            },                                                                            
-                            "removable": "0",                                                             
-                            "rotational": "0",                                                            
-                            "scheduler_mode": "deadline",                                                 
-                            "sectors": "46905264",                                                        
-                            "sectorsize": "512",                                                          
-                            "size": "22.37 GB",                                                           
-                            "support_discard": "512",                                                     
-                            "vendor": "ATA"                                                               
-                        },                                                                                
-                        "sdc": {                                                                          
-                            "holders": [],                                                                
-                            "host": "USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #2 (rev 04)",                                                   
-                            "model": "xD/SD/M.S.",                                                        
-                            "partitions": {},                                                             
-                            "removable": "1",                                                             
-                            "rotational": "1",                                                            
-                            "scheduler_mode": "deadline",                                                 
-                            "sectors": "0",                                                               
-                            "sectorsize": "512",                                                          
-                            "size": "0.00 Bytes",                                                         
-                            "support_discard": "0",                                                       
-                            "vendor": "Generic-"                                                          
-                        }                                                                                 
-                    },                                                                                    
-                    "ansible_distribution": "Ubuntu",                                                     
-                    "ansible_distribution_major_version": "14",                                           
-                    "ansible_distribution_release": "trusty",                                             
-                    "ansible_distribution_version": "14.04",                                              
-                    "ansible_docker0": {                                                                  
-                        "active": false,                                                                  
-                        "device": "docker0",                                                              
-                        "id": "8000.56847afe9799",                                                        
-                        "interfaces": [],                                                                 
-                        "ipv4": {                                                                         
-                            "address": "172.17.42.1",                                                     
-                            "netmask": "255.255.0.0",                                                     
-                            "network": "172.17.0.0"                                                       
-                        },                                                                                
-                        "macaddress": "56:84:7a:fe:97:99",                                                
-                        "mtu": 1500,                                                                      
-                        "promisc": false,                                                                 
-                        "stp": false,                                                                     
-                        "type": "bridge"                                                                  
-                    },                                                                                    
-                    "ansible_domain": "onitato.com",                                                      
-                    "ansible_env": {                                                                      
-                        "COLORFGBG": "15;0",                                                              
-                        "DBUS_SESSION_BUS_ADDRESS": "unix:abstract=/tmp/dbus-0Rf33lsHZU",                 
-                        "DEFAULTS_PATH": "/usr/share/gconf/kde-plasma.default.path",                      
-                        "DESKTOP_SESSION": "kde-plasma",                                                  
-                        "DISPLAY": ":0",                                                                  
-                        "GDMSESSION": "kde-plasma",                                                       
-                        "GDM_LANG": "en_US",                                                              
-                        "GNOME_KEYRING_CONTROL": "/run/user/1000/keyring-tJuVCy",                         
-                        "GNOME_KEYRING_PID": "2128",                                                      
-                        "GPG_AGENT_INFO": "/tmp/gpg-c2qDOe/S.gpg-agent:2257:1",                           
-                        "GS_LIB": "/home/linuturk/.fonts",                                                
-                        "GTK2_RC_FILES": "/etc/gtk-2.0/gtkrc:/home/linuturk/.gtkrc-2.0:/home/linuturk/.kde/share/config/gtkrc-2.0",                                                                     
-                        "GTK_RC_FILES": "/etc/gtk/gtkrc:/home/linuturk/.gtkrc:/home/linuturk/.kde/share/config/gtkrc",                                                                                  
-                        "HOME": "/home/linuturk",                                                         
-                        "IM_CONFIG_PHASE": "1",                                                           
-                        "INSTANCE": "",                                                                   
-                        "JOB": "dbus",                                                                    
-                        "KDE_FULL_SESSION": "true",                                                       
-                        "KDE_MULTIHEAD": "false",                                                         
-                        "KDE_SESSION_UID": "1000",                                                        
-                        "KDE_SESSION_VERSION": "4",                                                       
-                        "KONSOLE_DBUS_SERVICE": ":1.410",                                                 
-                        "KONSOLE_DBUS_SESSION": "/Sessions/2",                                            
-                        "KONSOLE_DBUS_WINDOW": "/Windows/1",                                              
-                        "KONSOLE_PROFILE_NAME": "Shell",                                                  
-                        "LANG": "en_US.UTF-8",                                                            
-                        "LANGUAGE": "en_US:en",                                                           
-                        "LC_CTYPE": "en_US.UTF-8",                                                        
-                        "LESSCLOSE": "/usr/bin/lesspipe %s %s",                                           
-                        "LESSOPEN": "| /usr/bin/lesspipe %s",                                             
-                        "LOGNAME": "linuturk",                                                            
-                        "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:",                                                                                
-                        "MANDATORY_PATH": "/usr/share/gconf/kde-plasma.mandatory.path",                   
-                        "PAM_KWALLET_LOGIN": "/tmp//linuturk.socket",                                     
-                        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games",                                                                             
-                        "PROFILEHOME": "",                                                                
-                        "PWD": "/home/linuturk/github/ansible-sprint/advanced",                           
-                        "QT_PLUGIN_PATH": "/home/linuturk/.kde/lib/kde4/plugins/:/usr/lib/kde4/plugins/", 
-                        "SELINUX_INIT": "YES",                                                            
-                        "SESSION": "kde-plasma",                                                          
-                        "SESSIONTYPE": "",                                                                
-                        "SESSION_MANAGER": "local/arrow:@/tmp/.ICE-unix/2442,unix/arrow:/tmp/.ICE-unix/2442",                                                                                           
-                        "SHELL": "/bin/bash",                                                             
-                        "SHELL_SESSION_ID": "559b7b8e474c4000aa16e447d32e4b27",                           
-                        "SHLVL": "1",                                                                     
-                        "SSH_AGENT_LAUNCHER": "upstart",                                                  
-                        "SSH_AGENT_PID": "2259",                                                          
-                        "SSH_AUTH_SOCK": "/tmp/ssh-NgX9DMrVWBek/agent.2253",                              
-                        "TERM": "xterm",                                                                  
-                        "TEXTDOMAIN": "im-config",                                                        
-                        "TEXTDOMAINDIR": "/usr/share/locale/",                                            
-                        "UPSTART_EVENTS": "started xsession",                                             
-                        "UPSTART_INSTANCE": "",                                                           
-                        "UPSTART_JOB": "startkde",                                                        
-                        "UPSTART_SESSION": "unix:abstract=/com/ubuntu/upstart-session/1000/2133",         
-                        "USER": "linuturk",                                                               
-                        "WINDOWID": "71303194",                                                           
-                        "XAUTHORITY": "/tmp/kde-linuturk/xauth-1000-_0",                                  
-                        "XCURSOR_THEME": "oxy-white",                                                     
-                        "XDG_CONFIG_DIRS": "/etc/xdg/xdg-kde-plasma:/usr/share/upstart/xdg:/etc/xdg",     
-                        "XDG_CURRENT_DESKTOP": "KDE",                                                     
-                        "XDG_DATA_DIRS": "/usr/share:/usr/share/kde-plasma:/usr/local/share/:/usr/share/",                                                                                              
-                        "XDG_GREETER_DATA_DIR": "/var/lib/lightdm-data/linuturk",                         
-                        "XDG_RUNTIME_DIR": "/run/user/1000",                                              
-                        "XDG_SEAT": "seat0",                                                              
-                        "XDG_SEAT_PATH": "/org/freedesktop/DisplayManager/Seat0",                         
-                        "XDG_SESSION_ID": "c2",                                                           
-                        "XDG_SESSION_PATH": "/org/freedesktop/DisplayManager/Session0",                   
-                        "XDG_VTNR": "7",                                                                  
-                        "_": "/usr/local/bin/ansible"                                                     
-                    },                                                                                    
-                    "ansible_form_factor": "Notebook",                                                    
-                    "ansible_fqdn": "arrow.onitato.com",                                                  
-                    "ansible_hostname": "arrow",                                                          
-                    "ansible_interfaces": [                                                               
-                        "lo",                                                                             
-                        "docker0",                                                                        
-                        "wlan0"                                                                           
-                    ],                                                                                    
-                    "ansible_kernel": "3.13.0-27-generic",                                                
-                    "ansible_lo": {                                                                       
-                        "active": true,                                                                   
-                        "device": "lo",                                                                   
-                        "ipv4": {                                                                         
-                            "address": "127.0.0.1",                                                       
-                            "netmask": "255.0.0.0",                                                       
-                            "network": "127.0.0.0"                                                        
-                        },                                                                                
-                        "ipv6": [                                                                         
-                            {                                                                             
-                                "address": "::1",                                                         
-                                "prefix": "128",                                                          
-                                "scope": "host"                                                           
-                            }                                                                             
-                        ],                                                                                
-                        "mtu": 65536,                                                                     
-                        "promisc": false,                                                                 
-                        "type": "loopback"                                                                
-                    },                                                                                    
-                    "ansible_lsb": {                                                                      
-                        "codename": "trusty",                                                             
-                        "description": "Ubuntu 14.04 LTS",                                                
-                        "id": "Ubuntu",                                                                   
-                        "major_release": "14",                                                            
-                        "release": "14.04"                                                                
-                    },                                                                                    
-                    "ansible_machine": "x86_64",                                                          
-                    "ansible_memfree_mb": 677,                                                            
-                    "ansible_memtotal_mb": 9884,                                                          
-                    "ansible_mounts": [                                                                   
-                        {                                                                                 
-                            "device": "/dev/mapper/kubuntu--vg-root",                                     
-                            "fstype": "ext4",                                                             
-                            "mount": "/",                                                                 
-                            "options": "rw,errors=remount-ro",                                            
-                            "size_available": 9636679680,                                                 
-                            "size_total": 22740668416                                                     
-                        },                                                                                
-                        {                                                                                 
-                            "device": "/dev/sdb2",                                                        
-                            "fstype": "ext2",                                                             
-                            "mount": "/boot",                                                             
-                            "options": "rw",                                                              
-                            "size_available": 132574208,                                                  
-                            "size_total": 247772160                                                       
-                        },                                                                                
-                        {                                                                                 
-                            "device": "/dev/sdb1",                                                        
-                            "fstype": "vfat",                                                             
-                            "mount": "/boot/efi",                                                         
-                            "options": "rw",                                                              
-                            "size_available": 506130432,                                                  
-                            "size_total": 509640704                                                       
-                        },                                                                                
-                        {                                                                                 
-                            "device": "/dev/mapper/kubuntu--home--vg-home",                               
-                            "fstype": "ext4",                                                             
-                            "mount": "/home",                                                             
-                            "options": "rw",                                                              
-                            "size_available": 186540474368,                                               
-                            "size_total": 304337379328                                                    
-                        }                                                                                 
-                    ],                                                                                    
-                    "ansible_nodename": "arrow",                                                          
-                    "ansible_os_family": "Debian",                                                        
-                    "ansible_pkg_mgr": "apt",                                                             
-                    "ansible_processor": [                                                                
-                        "Intel(R) Core(TM) i3-2367M CPU @ 1.40GHz",                                       
-                        "Intel(R) Core(TM) i3-2367M CPU @ 1.40GHz",                                       
-                        "Intel(R) Core(TM) i3-2367M CPU @ 1.40GHz",                                       
-                        "Intel(R) Core(TM) i3-2367M CPU @ 1.40GHz"                                        
-                    ],                                                                                    
-                    "ansible_processor_cores": 2,                                                         
-                    "ansible_processor_count": 1,                                                         
-                    "ansible_processor_threads_per_core": 2,                                              
-                    "ansible_processor_vcpus": 4,                                                         
-                    "ansible_product_name": "UX32A",                                                      
-                    "ansible_product_serial": "NA",                                                       
-                    "ansible_product_uuid": "NA",                                                         
-                    "ansible_product_version": "1.0",                                                     
-                    "ansible_python_version": "2.7.6",                                                    
-                    "ansible_selinux": false,                                                             
-                    "ansible_swapfree_mb": 10211,                                                         
-                    "ansible_swaptotal_mb": 10239,                                                        
-                    "ansible_system": "Linux",                                                            
-                    "ansible_system_vendor": "ASUSTeK COMPUTER INC.",                                     
-                    "ansible_user_id": "linuturk",                                                        
-                    "ansible_userspace_architecture": "x86_64",                                           
-                    "ansible_userspace_bits": "64",                                                       
-                    "ansible_virtualization_role": "host",                                                
-                    "ansible_virtualization_type": "kvm",                                                 
-                    "ansible_wlan0": {                                                                    
-                        "active": true,                                                                   
-                        "device": "wlan0", 
+                "ansible_facts": {
+                    "ansible_all_ipv4_addresses": [
+                        "192.168.1.37",
+                        "172.17.42.1"
+                    ],
+                    "ansible_all_ipv6_addresses": [
+                        "fe80::c685:8ff:fe3b:a916"
+                    ],
+                    "ansible_architecture": "x86_64",
+                    "ansible_bios_date": "01/29/2013",
+                    "ansible_bios_version": "UX32A.214",
+                    "ansible_cmdline": {
+                        "BOOT_IMAGE": "/vmlinuz-3.13.0-27-generic.efi.signed",
+                        "quiet": true,
+                        "ro": true,
+                        "root": "/dev/mapper/kubuntu--vg-root",
+                        "splash": true,
+                        "vt.handoff": "7"
+                    },
+                    "ansible_date_time": {
+                        "date": "2014-05-30",
+                        "day": "30",
+                        "epoch": "1401460386",
+                        "hour": "09",
+                        "iso8601": "2014-05-30T14:33:06Z",
+                        "iso8601_micro": "2014-05-30T14:33:06.057018Z",
+                        "minute": "33",
+                        "month": "05",
+                        "second": "06",
+                        "time": "09:33:06",
+                        "tz": "CDT",
+                        "tz_offset": "-0500",
+                        "weekday": "Friday",
+                        "year": "2014"
+                    },
+                    "ansible_default_ipv4": {
+                        "address": "192.168.1.37",
+                        "alias": "wlan0",
+                        "gateway": "192.168.1.1",
+                        "interface": "wlan0",
+                        "macaddress": "c4:85:08:3b:a9:16",
+                        "mtu": 1500,
+                        "netmask": "255.255.255.0",
+                        "network": "192.168.1.0",
+                        "type": "ether"
+                    },
+                    "ansible_default_ipv6": {},
+                    "ansible_devices": {
+                        "sda": {
+                            "holders": [],
+                            "host": "SATA controller: Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode] (rev 04)",
+                            "model": "Hitachi HTS54323",
+                            "partitions": {
+                                "sda1": {
+                                    "sectors": "625137282",
+                                    "sectorsize": 512,
+                                    "size": "298.09 GB",
+                                    "start": "63"
+                                }
+                            },
+                            "removable": "0",
+                            "rotational": "1",
+                            "scheduler_mode": "deadline",
+                            "sectors": "625142448",
+                            "sectorsize": "512",
+                            "size": "298.09 GB",
+                            "support_discard": "0",
+                            "vendor": "ATA"
+                        },
+                        "sdb": {
+                            "holders": [],
+                            "host": "SATA controller: Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode] (rev 04)",
+                            "model": "SanDisk SSD i100",
+                            "partitions": {
+                                "sdb1": {
+                                    "sectors": "997376",
+                                    "sectorsize": 512,
+                                    "size": "487.00 MB",
+                                    "start": "2048"
+                                },
+                                "sdb2": {
+                                    "sectors": "499712",
+                                    "sectorsize": 512,
+                                    "size": "244.00 MB",
+                                    "start": "999424"
+                                },
+                                "sdb3": {
+                                    "sectors": "45404160",
+                                    "sectorsize": 512,
+                                    "size": "21.65 GB",
+                                    "start": "1499136"
+                                }
+                            },
+                            "removable": "0",
+                            "rotational": "0",
+                            "scheduler_mode": "deadline",
+                            "sectors": "46905264",
+                            "sectorsize": "512",
+                            "size": "22.37 GB",
+                            "support_discard": "512",
+                            "vendor": "ATA"
+                        },
+                        "sdc": {
+                            "holders": [],
+                            "host": "USB controller: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #2 (rev 04)",
+                            "model": "xD/SD/M.S.",
+                            "partitions": {},
+                            "removable": "1",
+                            "rotational": "1",
+                            "scheduler_mode": "deadline",
+                            "sectors": "0",
+                            "sectorsize": "512",
+                            "size": "0.00 Bytes",
+                            "support_discard": "0",
+                            "vendor": "Generic-"
+                        }
+                    },
+                    "ansible_distribution": "Ubuntu",
+                    "ansible_distribution_major_version": "14",
+                    "ansible_distribution_release": "trusty",
+                    "ansible_distribution_version": "14.04",
+                    "ansible_docker0": {
+                        "active": false,
+                        "device": "docker0",
+                        "id": "8000.56847afe9799",
+                        "interfaces": [],
                         "ipv4": {
-                            "address": "192.168.1.37", 
-                            "netmask": "255.255.255.0", 
-                            "network": "192.168.1.0"
-                        }, 
+                            "address": "172.17.42.1",
+                            "netmask": "255.255.0.0",
+                            "network": "172.17.0.0"
+                        },
+                        "macaddress": "56:84:7a:fe:97:99",
+                        "mtu": 1500,
+                        "promisc": false,
+                        "stp": false,
+                        "type": "bridge"
+                    },
+                    "ansible_domain": "onitato.com",
+                    "ansible_env": {
+                        "COLORFGBG": "15;0",
+                        "DBUS_SESSION_BUS_ADDRESS": "unix:abstract=/tmp/dbus-0Rf33lsHZU",
+                        "DEFAULTS_PATH": "/usr/share/gconf/kde-plasma.default.path",
+                        "DESKTOP_SESSION": "kde-plasma",
+                        "DISPLAY": ":0",
+                        "GDMSESSION": "kde-plasma",
+                        "GDM_LANG": "en_US",
+                        "GNOME_KEYRING_CONTROL": "/run/user/1000/keyring-tJuVCy",
+                        "GNOME_KEYRING_PID": "2128",
+                        "GPG_AGENT_INFO": "/tmp/gpg-c2qDOe/S.gpg-agent:2257:1",
+                        "GS_LIB": "/home/linuturk/.fonts",
+                        "GTK2_RC_FILES": "/etc/gtk-2.0/gtkrc:/home/linuturk/.gtkrc-2.0:/home/linuturk/.kde/share/config/gtkrc-2.0",
+                        "GTK_RC_FILES": "/etc/gtk/gtkrc:/home/linuturk/.gtkrc:/home/linuturk/.kde/share/config/gtkrc",
+                        "HOME": "/home/linuturk",
+                        "IM_CONFIG_PHASE": "1",
+                        "INSTANCE": "",
+                        "JOB": "dbus",
+                        "KDE_FULL_SESSION": "true",
+                        "KDE_MULTIHEAD": "false",
+                        "KDE_SESSION_UID": "1000",
+                        "KDE_SESSION_VERSION": "4",
+                        "KONSOLE_DBUS_SERVICE": ":1.410",
+                        "KONSOLE_DBUS_SESSION": "/Sessions/2",
+                        "KONSOLE_DBUS_WINDOW": "/Windows/1",
+                        "KONSOLE_PROFILE_NAME": "Shell",
+                        "LANG": "en_US.UTF-8",
+                        "LANGUAGE": "en_US:en",
+                        "LC_CTYPE": "en_US.UTF-8",
+                        "LESSCLOSE": "/usr/bin/lesspipe %s %s",
+                        "LESSOPEN": "| /usr/bin/lesspipe %s",
+                        "LOGNAME": "linuturk",
+                        "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:",
+                        "MANDATORY_PATH": "/usr/share/gconf/kde-plasma.mandatory.path",
+                        "PAM_KWALLET_LOGIN": "/tmp//linuturk.socket",
+                        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games",
+                        "PROFILEHOME": "",
+                        "PWD": "/home/linuturk/github/ansible-sprint/advanced",
+                        "QT_PLUGIN_PATH": "/home/linuturk/.kde/lib/kde4/plugins/:/usr/lib/kde4/plugins/",
+                        "SELINUX_INIT": "YES",
+                        "SESSION": "kde-plasma",
+                        "SESSIONTYPE": "",
+                        "SESSION_MANAGER": "local/arrow:@/tmp/.ICE-unix/2442,unix/arrow:/tmp/.ICE-unix/2442",
+                        "SHELL": "/bin/bash",
+                        "SHELL_SESSION_ID": "559b7b8e474c4000aa16e447d32e4b27",
+                        "SHLVL": "1",
+                        "SSH_AGENT_LAUNCHER": "upstart",
+                        "SSH_AGENT_PID": "2259",
+                        "SSH_AUTH_SOCK": "/tmp/ssh-NgX9DMrVWBek/agent.2253",
+                        "TERM": "xterm",
+                        "TEXTDOMAIN": "im-config",
+                        "TEXTDOMAINDIR": "/usr/share/locale/",
+                        "UPSTART_EVENTS": "started xsession",
+                        "UPSTART_INSTANCE": "",
+                        "UPSTART_JOB": "startkde",
+                        "UPSTART_SESSION": "unix:abstract=/com/ubuntu/upstart-session/1000/2133",
+                        "USER": "linuturk",
+                        "WINDOWID": "71303194",
+                        "XAUTHORITY": "/tmp/kde-linuturk/xauth-1000-_0",
+                        "XCURSOR_THEME": "oxy-white",
+                        "XDG_CONFIG_DIRS": "/etc/xdg/xdg-kde-plasma:/usr/share/upstart/xdg:/etc/xdg",
+                        "XDG_CURRENT_DESKTOP": "KDE",
+                        "XDG_DATA_DIRS": "/usr/share:/usr/share/kde-plasma:/usr/local/share/:/usr/share/",
+                        "XDG_GREETER_DATA_DIR": "/var/lib/lightdm-data/linuturk",
+                        "XDG_RUNTIME_DIR": "/run/user/1000",
+                        "XDG_SEAT": "seat0",
+                        "XDG_SEAT_PATH": "/org/freedesktop/DisplayManager/Seat0",
+                        "XDG_SESSION_ID": "c2",
+                        "XDG_SESSION_PATH": "/org/freedesktop/DisplayManager/Session0",
+                        "XDG_VTNR": "7",
+                        "_": "/usr/local/bin/ansible"
+                    },
+                    "ansible_form_factor": "Notebook",
+                    "ansible_fqdn": "arrow.onitato.com",
+                    "ansible_hostname": "arrow",
+                    "ansible_interfaces": [
+                        "lo",
+                        "docker0",
+                        "wlan0"
+                    ],
+                    "ansible_kernel": "3.13.0-27-generic",
+                    "ansible_lo": {
+                        "active": true,
+                        "device": "lo",
+                        "ipv4": {
+                            "address": "127.0.0.1",
+                            "netmask": "255.0.0.0",
+                            "network": "127.0.0.0"
+                        },
                         "ipv6": [
                             {
-                                "address": "fe80::c685:8ff:fe3b:a916", 
-                                "prefix": "64", 
+                                "address": "::1",
+                                "prefix": "128",
+                                "scope": "host"
+                            }
+                        ],
+                        "mtu": 65536,
+                        "promisc": false,
+                        "type": "loopback"
+                    },
+                    "ansible_lsb": {
+                        "codename": "trusty",
+                        "description": "Ubuntu 14.04 LTS",
+                        "id": "Ubuntu",
+                        "major_release": "14",
+                        "release": "14.04"
+                    },
+                    "ansible_machine": "x86_64",
+                    "ansible_memfree_mb": 677,
+                    "ansible_memtotal_mb": 9884,
+                    "ansible_mounts": [
+                        {
+                            "device": "/dev/mapper/kubuntu--vg-root",
+                            "fstype": "ext4",
+                            "mount": "/",
+                            "options": "rw,errors=remount-ro",
+                            "size_available": 9636679680,
+                            "size_total": 22740668416
+                        },
+                        {
+                            "device": "/dev/sdb2",
+                            "fstype": "ext2",
+                            "mount": "/boot",
+                            "options": "rw",
+                            "size_available": 132574208,
+                            "size_total": 247772160
+                        },
+                        {
+                            "device": "/dev/sdb1",
+                            "fstype": "vfat",
+                            "mount": "/boot/efi",
+                            "options": "rw",
+                            "size_available": 506130432,
+                            "size_total": 509640704
+                        },
+                        {
+                            "device": "/dev/mapper/kubuntu--home--vg-home",
+                            "fstype": "ext4",
+                            "mount": "/home",
+                            "options": "rw",
+                            "size_available": 186540474368,
+                            "size_total": 304337379328
+                        }
+                    ],
+                    "ansible_nodename": "arrow",
+                    "ansible_os_family": "Debian",
+                    "ansible_pkg_mgr": "apt",
+                    "ansible_processor": [
+                        "Intel(R) Core(TM) i3-2367M CPU @ 1.40GHz",
+                        "Intel(R) Core(TM) i3-2367M CPU @ 1.40GHz",
+                        "Intel(R) Core(TM) i3-2367M CPU @ 1.40GHz",
+                        "Intel(R) Core(TM) i3-2367M CPU @ 1.40GHz"
+                    ],
+                    "ansible_processor_cores": 2,
+                    "ansible_processor_count": 1,
+                    "ansible_processor_threads_per_core": 2,
+                    "ansible_processor_vcpus": 4,
+                    "ansible_product_name": "UX32A",
+                    "ansible_product_serial": "NA",
+                    "ansible_product_uuid": "NA",
+                    "ansible_product_version": "1.0",
+                    "ansible_python_version": "2.7.6",
+                    "ansible_selinux": false,
+                    "ansible_swapfree_mb": 10211,
+                    "ansible_swaptotal_mb": 10239,
+                    "ansible_system": "Linux",
+                    "ansible_system_vendor": "ASUSTeK COMPUTER INC.",
+                    "ansible_user_id": "linuturk",
+                    "ansible_userspace_architecture": "x86_64",
+                    "ansible_userspace_bits": "64",
+                    "ansible_virtualization_role": "host",
+                    "ansible_virtualization_type": "kvm",
+                    "ansible_wlan0": {
+                        "active": true,
+                        "device": "wlan0",
+                        "ipv4": {
+                            "address": "192.168.1.37",
+                            "netmask": "255.255.255.0",
+                            "network": "192.168.1.0"
+                        },
+                        "ipv6": [
+                            {
+                                "address": "fe80::c685:8ff:fe3b:a916",
+                                "prefix": "64",
                                 "scope": "link"
                             }
-                        ], 
-                        "macaddress": "c4:85:08:3b:a9:16", 
-                        "module": "iwlwifi", 
-                        "mtu": 1500, 
-                        "promisc": false, 
+                        ],
+                        "macaddress": "c4:85:08:3b:a9:16",
+                        "module": "iwlwifi",
+                        "mtu": 1500,
+                        "promisc": false,
                         "type": "ether"
-                    }, 
+                    },
                     "module_setup": true
-                }, 
+                },
                 "changed": false
             }
         - class_notes: |
@@ -460,7 +460,7 @@ slides:
                 There is a ton of useful variables when you run the setup module.
                 You can make intelligent decisions in your plays based on this
                 information.
-      - 
+      -
         - h2: "Discovered Facts"
         - p: "Here is how you reference these variables:"
         - code: |
@@ -474,7 +474,7 @@ slides:
         - code: |
             # Example setting host facts using key=value pairs
             - set_fact: one_fact="something" other_fact="{{ local_var * 2 }}"
-            
+
             # Example setting host facts using complex arguments
             - set_fact:
                  one_fact: something
@@ -506,18 +506,18 @@ slides:
                 Most students should have figured this out by now. We are about to
                 introduce the filters in Jinja though, so it is worth revisiting this.
       -
-        - h2: "Jinja2 Filters" 
+        - h2: "Jinja2 Filters"
         - p: "There are many useful filters you can use in your Jinja2 templates. Here are a few useful ones:"
         - code: |
                 # Combine two lists
                 {{ list1 | union(list2) }}
-                
+
                 # Get a random number
                 {{ 59 | random }} * * * * root /script/from/cron
-                
+
                 # md5sum of a filename
                 {{ filename | md5 }}
-                
+
                 # Comparisons
                 {{ ansible_distribution_version | version_compare('12.04', '>=') }}
         - class_notes: |
@@ -526,7 +526,7 @@ slides:
                 {{ variable | lower }} is the answer.
                 There are a lot more filters out there.
                 Reference the Ansible and Jinja2 documentation for a complete list.
-      - 
+      -
         - h2: "Defaulting Values"
         - p: "You can provide a default value for a variable using the following filter:"
         - code: |
@@ -570,7 +570,7 @@ slides:
                 Apply actions to a host based on it's group. ie, MySQL slave readonly=1
                 This example checks the current host is in the webserver group.
                 If it is, the information between the blocks will be rendered.
-      - 
+      -
         - h2: "groups"
         - p: "groups is a list of all the groups (and hosts) in the inventory."
         - code: |
@@ -605,17 +605,17 @@ slides:
         - h2: "Lab Output"
         - code: |
 
-                PLAY [localhost] ************************************************************** 
+                PLAY [localhost] **************************************************************
 
-                GATHERING FACTS *************************************************************** 
+                GATHERING FACTS ***************************************************************
                 ok: [localhost]
 
-                TASK: [print out the variable] ************************************************ 
+                TASK: [print out the variable] ************************************************
                 ok: [localhost] => {
                     "msg": "This should not output 'override me' - foobar"
                 }
 
-                PLAY RECAP ******************************************************************** 
+                PLAY RECAP ********************************************************************
                 localhost                  : ok=2    changed=0    unreachable=0    failed=0
         - class_notes: |
                 The important bit here is the replaced value at the end of the msg line.
