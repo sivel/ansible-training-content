@@ -593,7 +593,7 @@ slides:
                   tasks:
                     - name: print out the variable
                       debug: msg="This should not output 'override me' - {{ local_var }}"
-        - h6: Objective: Override the variable without modifying the playbook.
+        - h6: "Objective: Override the variable without modifying the playbook."
         - class_notes: |
                 Students should override the variable without changing the play file itself.
       -
