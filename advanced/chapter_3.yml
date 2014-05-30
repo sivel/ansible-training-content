@@ -11,14 +11,16 @@ slides:
       - 
         - h1: "Variable Types and Precedence"
       - 
-        - h2: "Where variables are defined or sourced:"
+        - h2: "Where variables are defined or sourced"
         - ul:
           - Inventory
           - Playbook
           - Files and Roles
           - Command Line
           - Facts
-        - class_notes: 
+        - class_notes: |
+                This chapter will be about Variable Types and Precedence.
+                It will also touch a bit on Jinja2 and Roles.
       -
         - h2: "Variable Precedence"
         - p: "Variables will override each other depending on where they are defined:"
@@ -28,21 +30,27 @@ slides:
           - Variables defined in inventory.
           - Next comes facts discovered about a system.
           - Role defaults lose in priority to everything else.
-        - class_notes:
+        - class_notes: |
+                Ansible says you shouldn't really care about variable precedence.
+                Put things where you want, and it should 'just work'.
       -
         - h2: "Defining Variables"
         - p: Let's go over the various locations you can define variables.
-        - class_notes:
+        - class_notes: |
+                The next slides will contain details on the various variable locations.
       -
         - h2: "Inventory"
         - p: "There are a couple of methods for defining variables in your inventory:"
         - code: |
             localhost ansible_connection=local
+
             [web]
             web1.example.com ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
             web2.example.com ansible_ssh_user=mdehaan
+
             [db]
             db01.example.com mysql_max_connections=100
+
             [web:vars]
             apache_max_clients=100
         - class_notes: |
@@ -57,13 +65,16 @@ slides:
             - hosts: webservers
               vars:
                 http_port: 80
-        - class_notes:
+        - class_notes: |
+                This shows a simple vars example as defined at the beginning of a play.
       -
         - h2: "Command Line"
         - p: "You can also override variables from the command line:"
         - code: |
-            ansible-playbook release.yml --extra-vars "version=1.23.45 other_variable=foo"
-        - class_notes:
+            ansible-playbook release.yml --extra-vars "version=1.23.45 other_var=foo"
+        - class_notes: |
+                Here is how you override variables on the command line.
+                -e is the short flag.
       -
         - h2: "Including Variable Files"
         - p: "Here is an example of including a variable file based on a condition:"
@@ -71,14 +82,17 @@ slides:
                 - name: Includiung OS specific variables
                   include_vars: '{{ ansible_os_family }}.yml'
         - class_notes: |
-                This example includes a file based on the ansible_os_family variable. This is typically Debian or RedHat for most systems.
+                This example includes a file based on the ansible_os_family variable.
+                This is typically Debian or RedHat for most systems.
       -
         - h2: "Roles"
         - p: "Ansible Roles also have variables that can be defined:"
         - ul:
-          - "vars/main.yml contains variables that should stay internal to the role."
-          - "defaults/main.yml contains variables that can be overridden."
-        - class_notes:
+          - "vars contains variables that should stay internal to the role."
+          - "defaults contains variables that can be overridden."
+        - class_notes: |
+                The roles chapter will dig into this a lot more.
+                The main point is defaults are meant to be overridden.
       -
         - h2: "Facts"
         - p: "System facts are sourced from the following sources:"
@@ -87,6 +101,8 @@ slides:
           - set_fact
           - facts.d
         - class_notes: |
+                The files placed in facts.d are processed by the setup module.
+                aka, the Gathering Facts step.
       -
         - h2: "Discovered Facts"
         - p: "Here is a sampling of facts discovered by the setup module:"
@@ -135,12 +151,17 @@ slides:
               },
               ...
         - class_notes: |
+                There is a ton of useful variables when you run the setup module.
+                You can make intelligent decisions in your plays based on this
+                information.
       - 
         - h2: "Discovered Facts"
         - p: "Here is how you reference these variables:"
         - code: |
             {{ ansible_devices.sda.model }}
             {{ ansible_hostname }}
+        - class_notes: |
+                Make note of how you reference embedded variables with the dot notation.
       -
         - h2: "Setting Facts in a Play"
         - p: "You can set facts manually in a play:"
@@ -152,7 +173,9 @@ slides:
             - set_fact:
                  one_fact: something
                  other_fact: "{{ local_var * 2 }}"
-        - class_notes:
+        - class_notes: |
+                This shows the two main ways to define variables.
+                The key=value style, and the complex style.
       -
         - h2: "Local Facts (Facts.d)"
         - p: "You can place files ending in '.fact' in the /etc/ansible/facts.d directory. These can be JSON, INI, or executable files. Here is an example file:"
@@ -160,7 +183,8 @@ slides:
             [general]
             asdf=1
             bar=2
-            
+        - p: "And here is how you reference the asdf variable."
+        - code: |
             {{ ansible_local.preferences.general.asdf }}
         - class_notes: |
             The code sample shows the file to be dropped, and the way to reference that variable in templates and plays.
@@ -170,6 +194,8 @@ slides:
         - code: |
                 {{ variable_name }}
         - class_notes: |
+                Most students should have figured this out by now. We are about to
+                introduce the filters in Jinja though, so it is worth revisiting this.
       -
         - h2: "Jinja2 Filters" 
         - p: "There are many useful filters you can use in your Jinja2 templates. Here are a few useful ones:"
@@ -186,13 +212,17 @@ slides:
                 # Comparisons
                 {{ ansible_distribution_version | version_compare('12.04', '>=') }}
         - class_notes: |
-                There are a lot more filters out there. Reference the Ansible and Jinja2 documentation for a complete list.
+                There are a lot more filters out there.
+                Reference the Ansible and Jinja2 documentation for a complete list.
       - 
         - h2: "Defaulting Values"
         - p: "You can provide a default value for a variable using the following filter:"
         - code: |
                 {{ some_variable | default("foobar") }}
         - class_notes: |
+                Defaulting values is a great way to deal with undefined variables.
+                It allows you have to have some sane defaults in your templates,
+                but allow them to be easily overridden.
       -
         - h2: "Magic Variables"
         - p: "Ansible provides information about other hosts though a series of 'magic variables'."
@@ -201,12 +231,19 @@ slides:
           - group_names
           - groups
         - class_notes: |
+                Ansible provides these for you automatically.
+                These three are the most important.
+                Don't use these names as they are reserved.
+                'environment' is also reserved.
       -
         - h2: "hostvars"
         - p: "Hostvars let you ask about the variables of another host, including facts that have been gathered about that host."
         - code: |
                 {{ hostvars['test.example.com']['ansible_distribution'] }}
         - class_notes: |
+                This specific example will give you the value of
+                ansible_distribution from the host test.example.com.
+                This doesn't have to run on test.example.com to retrieve this value.
       -
         - h2: "group_names"
         - p: "The group_names variable contains a list of all the groups the current host is in."
@@ -214,7 +251,9 @@ slides:
             {% if 'webserver' in group_names %}
                # some part of a configuration file that only applies to webservers
             {% endif %}
-        - class_notes:
+        - class_notes: |
+                This example checks the current host is in the webserver group.
+                If it is, the information between the blocks will be rendered.
       - 
         - h2: "groups"
         - p: "groups is a list of all the groups (and hosts) in the inventory."
@@ -222,10 +261,13 @@ slides:
             {% for host in groups['app_servers'] %}
                # something that applies to all app servers.
             {% endfor %}
-        - class_notes:
+        - class_notes: |
+                This would allow you to work with all the app servers.
+                A good example would be listing all your app servers in
+                your haproxy configuration.
       -
         - h2: "Lab"
-        - p: Given the provided play, override the variable to change the output.
+        - p: Given this play, override the local_var variable using the command line flag.
         - code: |
                 - hosts: localhost
                   connection: local
@@ -235,10 +277,16 @@ slides:
                     - name: print out the variable
                       debug: msg="This should not output 'override me' - {{ local_var }}"
         - class_notes: |
+                Students should override the variable without changing the play file itself.
       -
         - h2: "Lab Solution"
         - code: |
                 ansible-playbook variable_override.yml --extra-vars "local_var=foobar"
+        - class_notes: |
+                Students could have also used -e instead of the full option.
+      -
+        - h2: "Lab Output"
+        - code: |
 
                 PLAY [localhost] ************************************************************** 
 
@@ -253,3 +301,4 @@ slides:
                 PLAY RECAP ******************************************************************** 
                 localhost                  : ok=2    changed=0    unreachable=0    failed=0
         - class_notes: |
+                The important bit here is the replaced value at the end of the msg line.
