@@ -1,7 +1,7 @@
 ---
 header:
   author: TG
-  title: Chapter 5, Advanced Ansible
+  title: Advanced Ansible
   description: Encrypting Sensitive Data with Vault
 
 slides:
@@ -65,3 +65,12 @@ slides:
            - code: ansible-playbook --ask-vault-pass vault-test.yml
            - code: ansible-playbook --vault-password-file ../vault-pw vault-test.yml
            - class_notes: There are two ways to run a playbook that refers to encrypted content. The first one prompts at runtime. The second method is to refer to a file on disk that contains the password.
+
+         -
+           - h2: 'Lab: Vault'
+           - ul:
+             - Create a new encrypted file
+             - Edit that file
+             - Re-key the file
+             - Use an encrypted file in a playbook
+           - h6: 'Objective: Create a vault-encrypted vars file for a subsequent lab.'
