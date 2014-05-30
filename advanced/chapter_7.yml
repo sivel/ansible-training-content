@@ -10,14 +10,21 @@ slides:
     - nested:
       - 
         - h1: Delegation
+        - p: I like things done my way but by somebody else.
+        - class_notes: |
+            In this chapter we discuss delegation, how tasks in a play
+            can be redirected to an alternate host for execution.
+
+        - h2: Delegation
         - ul:
           - Local actions and actions on other hosts
           - Delegation to a host in inventory
           - Delegation to a host not in inventory
           - Task execution concurrency with delegation
         - class_notes: |
-            In this chapter we discuss delegation, how tasks in a play
-            can be redirected to an alternate host for execution.
+            Actions can be done locally, or on another system in your
+            inventory, or out of your inventory. Execution concurrency
+            is a concern as well.
 
       - 
         - h2: Local actions and actions on other hosts
