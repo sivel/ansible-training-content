@@ -9,3 +9,6 @@ slides:
     - nested:
       -
         - h1: Assessment Questions
+        - link:
+            - http://bit.ly/ansible_advanced
+            - http://bit.ly/ansible_advanced
