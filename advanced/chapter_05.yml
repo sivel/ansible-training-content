@@ -583,7 +583,7 @@ slides:
                 A good example would be listing all your app servers in
                 your haproxy configuration.
       -
-        - h2: "Lab"
+        - h2: "Lab: Overriding Variables"
         - p: Given this play, override the local_var variable using the command line flag.
         - code: |
                 - hosts: localhost
@@ -593,6 +593,7 @@ slides:
                   tasks:
                     - name: print out the variable
                       debug: msg="This should not output 'override me' - {{ local_var }}"
+        - h6: Objective: Override the variable without modifying the playbook.
         - class_notes: |
                 Students should override the variable without changing the play file itself.
       -
