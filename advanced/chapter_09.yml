@@ -87,7 +87,7 @@ slides:
             inventory with connection data defined.
 
       -
-        - h2: Lab
+        - h2: 'Lab: ephemeral host task delegation'
         - p: Create an ephemeral host and delegate a task to it
         - ul:
           - Create a play for localhost
@@ -101,6 +101,7 @@ slides:
             task will suffice to see the connection details to observe the
             delegation. Feel free to play with values and observe how they
             reflect in running the lab.
+        - h6: 'Objective: Using an ephemeral host to delegate a single task to'
 
       -
         - h2: Sample Play
@@ -141,13 +142,13 @@ slides:
             to create the file.
 
       -
-        - h2: Lab
-        - p: Add mysql users to a database
+        - h2: 'Lab: multi-host task delegation'
         - ul:
           - Create a play to loop over 'webservers' group
           - Create a task to use mysql_user module to add a user
           - Use host specific mysql user / password data
           - delegate_to should be used to execute on the first 'databases' server
+        - h6: 'Objective: Add mysql users to a database for a set of hosts'
 
       -
         - h2: Sample Play
