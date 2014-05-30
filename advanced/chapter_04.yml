@@ -101,9 +101,6 @@ slides:
         - p: Filters are invoked similarly to unix shell pipes and manipulate variables and return the results
         - code: |
             variable | replace("-", "_")
-        - p: This is equivalent to
-        - code: |
-            replace(variable, "-", "_")
         - class_notes: Additional details can be found at <a href="http://jinja.pocoo.org/docs/templates/#filters">http://jinja.pocoo.org/docs/templates/#filters</a>
 
       -
