@@ -37,9 +37,7 @@ slides:
       -
         - h3: Manual Invocation
         - code: |
-            
             $ ./docker.py (--list | --host)
-            
         - class_notes: |
             Manual invocation of a dynamic inventory script is straight forward.
             Dynamic inventory scripts must be executable, so calling them explictly will
