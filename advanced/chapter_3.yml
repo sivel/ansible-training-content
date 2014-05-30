@@ -1,14 +1,8 @@
 ---
 header:
-<<<<<<< HEAD
-  author: DFed 
-  title: Connection Types
-  description: Chapter detailing various Connection Types within ansible
-=======
   author: Justin Phelps
   title: Variable Types and Precedence
   description: Understanding variables and precedence.
->>>>>>> FETCH_HEAD
 
 slides:
 
