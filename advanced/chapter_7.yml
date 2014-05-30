@@ -14,7 +14,10 @@ slides:
         - class_notes: |
             In this chapter we discuss delegation, how tasks in a play
             can be redirected to an alternate host for execution.
+            What use cases can you think of for looping over hosts to
+            execute a task, but have that task execute somewhere else?
 
+      - 
         - h2: Delegation
         - ul:
           - Local actions and actions on other hosts
