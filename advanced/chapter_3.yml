@@ -75,6 +75,7 @@ slides:
             ansible-playbook release.yml --extra-vars "version=1.23.45 other_var=foo"
         - class_notes: |
                 Here is how you override variables on the command line.
+                Ask the class what they think the short flag is?
                 -e is the short flag.
       -
         - h2: "Including Variable Files"
@@ -83,7 +84,7 @@ slides:
                 - name: Includiung OS specific variables
                   include_vars: '{{ ansible_os_family }}.yml'
         - class_notes: |
-                This example includes a file based on the ansible_os_family variable.
+                What value do the students thing the ansible_os_family variable references?
                 This is typically Debian or RedHat for most systems.
       -
         - h2: "Roles"
@@ -104,6 +105,15 @@ slides:
         - class_notes: |
                 The files placed in facts.d are processed by the setup module.
                 aka, the Gathering Facts step.
+      -
+        - h2: "Setup Module"
+        - p: "Run the setup module against your local machine to see what returns."
+        - code: |
+                ansible localhost -m setup --connection=local
+        - class_notes: |
+                Have students run this on their ansible server.
+                This requires an inventory file with 'localhost' defined.
+                /etc/ansible/hosts
       -
         - h2: "Discovered Facts"
         - p: "Here is a sampling of facts discovered by the setup module:"
@@ -152,6 +162,8 @@ slides:
               },
               ...
         - class_notes: |
+                Ask your students to find a useful variable and think about how they
+                would use it?
                 There is a ton of useful variables when you run the setup module.
                 You can make intelligent decisions in your plays based on this
                 information.
@@ -188,7 +200,10 @@ slides:
         - code: |
             {{ ansible_local.preferences.general.asdf }}
         - class_notes: |
-            The code sample shows the file to be dropped, and the way to reference that variable in templates and plays.
+            The code sample shows the file to be dropped,
+            and the way to reference that variable in templates and plays.
+            What type of facts would students put in facts.d?
+            Maybe something like master or cluster status?
       -
         - h2: "Using Variables in Jinja2"
         - p: "You've seen several examples of variables being referenced. The same method is used to reference these variables in Jinja2 templates."
@@ -213,6 +228,9 @@ slides:
                 # Comparisons
                 {{ ansible_distribution_version | version_compare('12.04', '>=') }}
         - class_notes: |
+                Ask students to find a filter that makes a variable all lowercase.
+                ie, Ubuntu => ubuntu
+                {{ variable | lower }} is the answer.
                 There are a lot more filters out there.
                 Reference the Ansible and Jinja2 documentation for a complete list.
       - 
@@ -242,6 +260,8 @@ slides:
         - code: |
                 {{ hostvars['test.example.com']['ansible_distribution'] }}
         - class_notes: |
+                Where would this be useful?
+                Grabbing an IP address of another host would be an example.
                 This specific example will give you the value of
                 ansible_distribution from the host test.example.com.
                 This doesn't have to run on test.example.com to retrieve this value.
@@ -253,6 +273,8 @@ slides:
                # some part of a configuration file that only applies to webservers
             {% endif %}
         - class_notes: |
+                Why would you use this method?
+                Apply actions to a host based on it's group. ie, MySQL slave readonly=1
                 This example checks the current host is in the webserver group.
                 If it is, the information between the blocks will be rendered.
       - 
@@ -264,6 +286,7 @@ slides:
             {% endfor %}
         - class_notes: |
                 This would allow you to work with all the app servers.
+                Where would your students use this?
                 A good example would be listing all your app servers in
                 your haproxy configuration.
       -
