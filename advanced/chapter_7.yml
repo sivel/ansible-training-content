@@ -100,6 +100,11 @@ slides:
             host. SSH servers have a MaxStartups config option that can limit
             how many concurrent connections it'll allow. Easy to overflow.
 
+            What happens when you have five hosts in your set, five or more
+            forks, a task that is conditional on the existence of a file, and
+            the task creates the file. All five tasks will run at once, racing
+            to create the file.
+
       -
         - h2: Lab
         - p: Add mysql users to a database
