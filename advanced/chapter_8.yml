@@ -10,6 +10,12 @@ slides:
     - nested:
       -
         - h1: Jinja2 Templates
+        - ul:
+            - Delimiters
+            - Control Structures
+            - Jinja2 Environment
+            - Python Data Types
+            - Filters and Tests
 
       -
         - h2: Delimiters
