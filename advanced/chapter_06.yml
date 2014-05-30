@@ -51,7 +51,7 @@ slides:
 
       -
         - h3: Results
-        - image: "https://raw.githubusercontent.com/Linuturk/ansible-sprint/master/advanced/chap4shot1.png"
+        - image: "https://raw.githubusercontent.com/Linuturk/ansible-sprint/master/advanced/resources/chapter06/shot1.png"
         - class_notes: |
             The output of this command is returned as JSON, in an Ansible-specific structure.
             This image shows the invocation of the Docker inventory script. The script queries
