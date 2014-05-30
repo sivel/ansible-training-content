@@ -127,6 +127,6 @@ slides:
                               password={{ db_password }} priv='ansible.*:ALL'
                               state=present
                   delegate_to: databases[0]
-       - p: |
-           When ran with -vvvv one can clearly see the connection debugging
-           output which will show the delegation in action.
+        - p: |
+            When ran with -vvvv one can clearly see the connection debugging
+            output which will show the delegation in action.
