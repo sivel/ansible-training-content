@@ -90,8 +90,8 @@ slides:
         - h2: "Roles"
         - p: "Ansible Roles also have variables that can be defined:"
         - ul:
-          - "vars contains variables that should stay internal to the role."
-          - "defaults contains variables that can be overridden."
+          - "Rolename/vars contains variables that should stay internal to the role."
+          - "Rolename/defaults contains variables that can be overridden."
         - class_notes: |
                 The roles chapter will dig into this a lot more.
                 The main point is defaults are meant to be overridden.
