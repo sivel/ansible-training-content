@@ -205,7 +205,7 @@ slides:
                 {{ list1 | union(list2) }}
                 
                 # Get a random number
-                {{ 59 |random}} * * * * root /script/from/cron
+                {{ 59 | random }} * * * * root /script/from/cron
                 
                 # md5sum of a filename
                 {{ filename | md5 }}
