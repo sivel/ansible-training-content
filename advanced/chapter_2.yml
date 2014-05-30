@@ -1,100 +1,13 @@
 ---
 header:
-  author: Mike Martin, Justin Phelps, Paul Durivage
-  title: Chapter 2
-  description: Ansible Fundamentals Course
+  author: DF and TG
+  title: Connection Types
+  description: Connection to Remote Machines
 
 slides:
 
   -
     - nested:
-      -
-        - h1: Ansible Use Cases
-        - p: Ask not what you can do for Ansible, but what Ansible can do for you!
-      -
-        - h2: Ansible Use Cases
-        - ul:
-          - Remote Execution / Ad-hoc Tasks
-          - Configuration Management
-          - Application Deployment & Orchestration
-          - Provisioning Infrastructure Dynamically
-      -
-        - h2: Remote Execution
-        - ul:
-          - Replacement for traditional systems administration tasks. (i.e., SSH)
-          - Checking system responsiveness and uptime.
-          - Gathering information about a collection of systems.
-          - Replace one off rsync scripts, fabric, or terminal multiplexing.
-        - class_notes: |
-            Ansible provides a command-line tool and framework capable of 
-            executing over a large number of hosts, eliminating the need for 
-            systems administrators to multiplex terminal sessions via SSH to 
-            execute concurrent tasks across multiple hosts.  What may have 
-            been done in bash scripts, rsync scripts, etc. can be done via 
-            ad-hoc one-liners in the shell.
-      -
-        - h2: Remote Execution
-        - code: | 
-            ansible -m user -a "name=bob state=present" webservers
-        - code: |
-            ansible -m apt -a "pkg=apache2 state=present" webservers
-        - class_notes: |
-            Example 1 is adding a user to all the systems defined in the 
-            webservers group. Example 2 is installing the apache2 package 
-            on all systems defined in the webservers group.
-      -
-        - h2: Config Management
-        - ul:
-          - Lengthy system configuration, to include adding users, ssh keys, installing and configuring services, and bootstrapping systems to a given state.
-          - '"Configuration remediation" Consistent server configuration. Removes manual configuration errors.'
-        - class_notes: |
-            Servers need to be configured; Ansible configures servers.  
-            Using a combination of imperative and declarative syntax 
-            [described in detail--maybe using the GPS analogy], using 
-            concepts such as tasks, roles, plays, and playbooks, complex 
-            machine configurations are being assembled and converged by 
-            the Ansible toolchain rather than manually by administrators.  
-            Configuration is either set manually by the author or dynamically at runtime by Ansible, resulting in consistent configuration across large server sets.
-      -
-        - h2: Application Deployment & Orchestration
-        - p: Ansible can be used to replace various deployment and orchestration tools.
-        - ul:
-          - Deploy your custom application.
-          - Replacement for Capistrano and Fabric (i.e., git deployments)
-          - Good for large, complex environments
-      -
-        - h2: Application Deployment & Orchestration
-        - p: Application deployment includes two main schools of thought.
-        - h2: Rolling Release
-          ul:
-            - Remove node from production, update components, and put back into rotation.
-        - class_notes: |
-            Make the point that you deploy often in the DevOps world, and 
-            why this is important for application development.
-      -
-        - h2: Application Deployment & Orchestration
-        - p: Application deployment includes two main schools of thought.
-        - h2: Fresh Start 
-        - ul:
-          - Deploy entirely new infrastructure and replace current environment wholesale.
-        - class_notes: |
-            Make the point that you deploy often in the DevOps world, and 
-            why this is important for application development.
-      -
-        - h2: Provisioning Infrastructure Dynamically
-        - ul:
-            - Infrastructure is Data.
-            - You can provision to various clouds.
-            - Dynamic Inventory plugins for various providers (Rackspace, Amazon, Digital Ocean, OpenStack, Eucalyptus etc.)
-        - class_notes: | 
-            Cover the various ways that infrastructure can be provisioned 
-            using Ansible. Mention that there are modules that provide 
-            he ability to deploy to various clouds. Include a high level 
-            overview of the dynamic inventory plugin system. (Creating 
-            Infrastructure is the same as Configuring Infrastructure.)
-      -
-        - h2: Who is your Ansible, and what does he do?
-        - class_notes: |
-            Have the class search the ansible documention and come up 
-            with something that Ansible does. Be that a specific module, 
-            or a high level concept.
+      - 
+        - h1: "Roles"
+        - class_notes: Title slide

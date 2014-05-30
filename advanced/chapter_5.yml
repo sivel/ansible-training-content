@@ -15,6 +15,7 @@ slides:
      - nested:
          -
            - h1: Ansible Vault
+           - p: What are you trying to hide?
          -
            - h1: Ansible Vault
            - p: "Ansible Vault is a tool to encrypt YAML variables files that may contain sensitive data."
@@ -22,7 +23,7 @@ slides:
              - Password-based
              - Separate command line tool
              - Encrypts YAML files
-           - class_notes: Ansible Vault is a command line tool that can be used to encrypt files that may contain sensitive data. it's usually used to encrypt variables files, but it can encrypt entire playbooks as well. When Ansible is operating on a playbook that refers to an encrypted file, it can either prompt for the password or be fed a password via file.
+           - class_notes: Ansible Vault is a command line tool that can be used to encrypt files that may contain sensitive data. it's usually used to encrypt variables files, but it can encrypt entire playbooks as well. When Ansible is operating on a playbook that refers to an encrypted file, it can either prompt for the password or be fed a password via file. 'Question ideas; what kinds of information should be encrypted?'
 
          -
            - h2: Vault Operations
