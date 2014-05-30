@@ -44,7 +44,7 @@ slides:
               <li>include</li>
               <li>import</li>
             </ul>
-        - class_notes: This is a list of all control strucutres as mentioned in the jinja2 docs.  The ones most people need to know about are "for" and "if".  Point students to http://jinja.pocoo.org/docs/templates/ for additional information about the other types.
+        - class_notes: This is a list of all control strucutres as mentioned in the jinja2 docs.  The ones most people need to know about are "for" and "if".  Point students to <a href="http://jinja.pocoo.org/docs/templates/">http://jinja.pocoo.org/docs/templates/</a> for additional information about the other types.
 
       -
         - h2: For Loop
@@ -78,7 +78,7 @@ slides:
         - p: Ansible configures jinja2 with a set of sane defaults. In some cases these defaults are not optimal, usually in the case of variable_start_string or trim_blocks. The first line of a jinja2 template can include a jinja2 environment configuration line
         - code: |
             #jinja2:variable_start_string:'[%' , variable_end_string:'%]'
-        - class_notes: This example shows changing "{{ ... }}" to "[% ... %]". This is valuable in the case where you may need to use the "{{" or "}}" strings in your template that are not part of jinja2. http://jinja.pocoo.org/docs/api/#jinja2.Environment
+        - class_notes: This example shows changing "{{ ... }}" to "[% ... %]". This is valuable in the case where you may need to use the "{{" or "}}" strings in your template that are not part of jinja2. <a href="http://jinja.pocoo.org/docs/api/#jinja2.Environment">http://jinja.pocoo.org/docs/api/#jinja2.Environment</a>
 
       -
         - h2: Jinja2 Variables are Python Data Types
@@ -91,7 +91,10 @@ slides:
 
       -
         - h2: Filters and Tests
-        - p: Jinja2 provides you with a number of filters and tests to manipulate and test data. Ansible also provides a number of filters, most of which are documented at http://docs.ansible.com/playbooks_variables.html#jinja2-filters
+        - p: Jinja2 provides you with a number of filters and tests to manipulate and test data. Ansible also provides a number of filters.
+        - link:
+            - http://docs.ansible.com/playbooks_variables.html#jinja2-filters
+            - http://docs.ansible.com/playbooks_variables.html#jinja2-filters
 
       -
         - h2: Filters
@@ -101,14 +104,14 @@ slides:
         - p: This is equivalent to
         - code: |
             replace(variable, "-", "_")
-        - class_notes: Additional details can be found at http://jinja.pocoo.org/docs/templates/#filters
+        - class_notes: Additional details can be found at <a href="http://jinja.pocoo.org/docs/templates/#filters">http://jinja.pocoo.org/docs/templates/#filters</a>
 
       -
         - h2: Tests
         - p: Tests can be used to test a variable against a common expression
         - code: |
             {% if variable is defined %}
-        - class_notes: Additional details can be found at http://jinja.pocoo.org/docs/templates/#tests
+        - class_notes: Additional details can be found at <a href="http://jinja.pocoo.org/docs/templates/#tests">http://jinja.pocoo.org/docs/templates/#tests</a>
 
       -
         - h2: Lab
