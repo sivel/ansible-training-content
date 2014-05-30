@@ -47,7 +47,7 @@ slides:
             The delegate_to keyword is what tells Ansible to redirect the
             task to the system listed. The variables you reference are
             attached to the host in the loop, not the host you are
-            delegating on. So the task has the context of the host in the
+            delegating to. So the task has the context of the host in the
             loop but it just gets executed on the host you delegate to.
 
             Is there another way to indicate that an action needs to
