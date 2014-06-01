@@ -1,0 +1,152 @@
+---
+header:
+  author: DF and TG
+  title: Roles
+  description: Ansible Roles and Content Organization
+
+slides:
+
+  -
+    - nested:
+      - 
+        - h1: "Roles"
+        - p: Reusing and sharing Ansible content.
+        - class_notes: Title slide. Roles are a way to organize and reuse Ansible content in a standard way.
+
+      - 
+        - h2: "Filesystem Structure" 
+        - p: Roles use specific file structures.
+        - class_notes: Roles search for variables, files and templates in specific places. We'll discuss the file structure over the next few slides.
+
+      -
+        - h3: "Example Role Structure in a Project Folder:"
+        - code: |
+            site.yml
+            roles/
+               role1/
+                 files/
+                 templates/
+                 tasks/
+                 handlers/
+                 vars/
+                 meta/
+      
+      -
+        - h3: "Calling a role in a playbook example:"
+        - code: |
+            ---
+            - hosts: webservers
+              roles:
+                 - common
+                 - webservers
+      
+      -
+        - h3: "Behavior examples of role X:"
+        - ul:
+          - If roles/x/tasks/main.yml exists, tasks listed therein will be added to the play
+          - If roles/x/handlers/main.yml exists, handlers listed therein will be added to the play
+          - If roles/x/vars/main.yml exists, variables listed therein will be added to the play
+          - If roles/x/meta/main.yml exists, any role dependencies listed therein will be added to the list of roles
+          - Any copy tasks can reference files in roles/x/files/ 
+          - Any script tasks can reference scripts in roles/x/files/ 
+          - Any template tasks can reference files in roles/x/templates/ 
+          - Any include tasks can reference files in roles/x/tasks/ 
+
+      -
+        - h3: "Parameterize Your Roles:"
+        - code |
+            ---
+            - hosts: webservers
+              roles:
+                - common
+                - { role: foo, dir: '/opt/a',  port: 5000 }
+                - { role: foo, dir: '/opt/b',  port: 5001 }
+
+      -
+        - h3: "Call Roles Conditionally:"
+        - code | 
+            ---
+            - hosts: webservers
+              roles:
+                - { role: foo, when: "ansible_os_family == 'RedHat'" }
+
+      -
+        - h3: "Pre and Post Tasks, Use of roles in a top level playbook:"
+        - code |
+            ---
+            - hosts: webservers
+
+              pre_tasks:
+                - shell: echo 'Hello.'
+
+              roles:
+                - { role: some_role }
+
+              tasks:
+                - shell: echo 'I called a role!'
+
+              post_tasks:
+                - shell: echo 'Goodbye.'
+
+      - 
+        - h2: "Variables Defaults"
+        - p: It is possible to set default variables for your roles.
+        - class_notes: Role default variables allow you to set default variables for included or dependent roles. To create defaults, simply add a defaults/main.yml file in your role directory. These variables will have the lowest priority of any variables available, and can be easily overridden by any other variable, including inventory variables.
+
+      - 
+        - h2: "Role Dependencies"
+        - p: Role Dependencies allow for roles to automatically pull in other roles.
+        - class_notes: Role dependencies allow you to automatically pull in other roles when using a role. Role dependencies are stored in the meta/main.yml file contained within the role directory. This file should contain a list of roles and parameters to insert before the specified role.
+
+      - 
+        - h3: Example role dependency entry in the meta/main.yml file:
+        - code |
+            ---
+            dependencies:
+              - { role: common, some_parameter: 3 }
+              - { role: apache, port: 80 }
+              - { role: postgres, dbname: blarg, other_parameter: 12 }
+      - 
+        - h3: Duplicate Role Dependiencies
+        - p: You can call a role dependency multiple times with various parameters.
+        - code |
+            ---
+            allow_duplicates: yes
+            dependencies:
+              - { role: apache, port: 80 }
+              - { role: apache, port: 8080 }
+        - class_notes: Not a common use case, but you can parameterize role dependencies in a repeated way.  Such as having multiple runs of apache based on the dependencies of another role.  This could get you multiple versions of a stack of apache, tomcat and a database with different parameters.  The order of execution would be the order of the duplicates and repeat the roles that depend on it.  For example, this could be tomcat, apache with port 80, then tomcat, apache with port 8080, and so on.  They will rerun against the same inventory, of course.
+
+      - 
+        - h2: "Embedding Custom Modules"
+        - p: Role-specific custom modules can be packaged with the role.
+        - class_notes: This is an advanced topic that should not be relevant for most users. If you write a custom module you may wish to distribute it as part of a role. Generally speaking, Ansible as a project is very interested in taking high-quality modules into ansible core for inclusion, so this shouldn’t be the norm, but it’s quite easy to do.
+
+      - 
+        - h3: "Examples of embedding a custom module in a role:"
+        - code |
+            roles/
+            my_role/
+              library/
+                module1
+                module2
+        - class_notes: Alongside the ‘tasks’ and ‘handlers’ structure of a role, add a directory named ‘library’. In this ‘library’ directory, then include the module directly inside of it.            
+
+      - 
+        - h3: "Calling the role with a custom module in a playbook:"
+        - code |
+            - hosts: webservers
+              roles:
+                - my_role
+        - class_notes: As you can see, we call a role with a custom module just as we would a role without one. This is because our custom module also follows the file structure as previously described.
+
+      - 
+        - h2: "Ansible Galaxy"
+        - p: Sharing is caring. visit http://galaxy.ansible.com 
+        - class_notes: Ansible Galaxy is a free site for finding, downloading, rating, and reviewing all kinds of community developed Ansible roles and can be a great way to get a jumpstart on your automation projects. You can sign up with social auth, and the download client ‘ansible-galaxy’ is included in Ansible 1.4.2 and later.
+
+      -
+        - h3: "One last trick: Galaxy has you covered."
+        - code: |
+            ansible-galaxy init mynewrole
+        - class_notes: the ansible-galaxy command doesn't just download an install roles from the public service, it will also initialize an empty role with the role name of your choosing. This means it will place all the folders, skeleton files and file structure as needed. Use this to write roles without having to remember to create every file or folder.

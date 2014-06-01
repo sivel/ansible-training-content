@@ -1,0 +1,26 @@
+---
+header:
+  author: Justin Phelps
+  title: Advanced Ansible
+  description: Advanced Ansible Course
+
+slides:
+  -
+    - nested:
+      -
+        - h1: Advanced Ansible
+
+      -
+        - h2: Learning Objectives
+        - p: Students will be able to understand
+        - p: |
+            <ul>
+              <li>Configuration Entries</li>
+              <li>Different connection methods</li>
+              <li>Variable types and precedences</li>
+              <li>Dynamic Inventories</li>
+              <li>Encrypted data for use within Ansible</li>
+              <li>Roles</li>
+              <li>Task Delegatation</li>
+              <li>Jinja2 Templates</li>
+            </ul>

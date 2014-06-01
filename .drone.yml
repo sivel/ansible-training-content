@@ -1,0 +1,13 @@
+image: linuturk/ubuntu-devel
+script:
+  - apt-get install python-yaml -y
+  - bash builder.sh
+publish:
+  swift:
+    username: {{rax_username}}
+    password: {{rax_apikey}}
+    auth_url: https://identity.api.rackspacecloud.com/v2.0
+    region: IAD
+    container: ansible-slides
+    source: output
+    branch: master

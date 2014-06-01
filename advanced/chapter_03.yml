@@ -1,0 +1,44 @@
+---
+header:
+  author: DF and TG
+  title: Connection Types
+  description: Connection to Remote Machines
+
+slides:
+
+  -
+    - nested:
+      - 
+        - h1: "Connection Types"
+        - class_notes: Title slide. Ansible has a number of ways to connect to remote machines. SSH is the default, and there are two SSH mechanisms. This chapter will cover the differences between the two, as well as other connection mechanisms.
+
+      - 
+        - h1: "Smart (SSH auto-detected)"
+        - p: placeholder for diagram to show smart, openssh, and paramiko?
+        - class_notes: By default, Ansible auto-detects the right SSH-based connection mechanism to use. There are two, Paramiko and OpenSSH. Paramiko is used when your version of OpenSSH on the control machine is too old to support "Control Persist/Control Master", which greatly improve connection performance. Ubuntu has a modern version of OpenSSH, but CentOS/RHEL6 do not.
+
+      - 
+        - h1: "OpenSSH"
+        - class_notes: With the OpenSSH connection type, you can use regular SSH configuration use things like jump hosts to bounce from one host to another, Kerberos authentication, and any other SSH configuration that you need. OpenSSH also supports control master/control persist which improves the performance of multiple connections to the same machine, which is useful for Ansible.
+
+      - 
+        - h1: "Pipelining"
+        - class_notes: If you're using OpenSSH, you can enable pipelining, which greatly increases SSH performance. It is enabled in the ansible.cfg configuration file. Pipelining is disabled by default because it requires a little bit of target machine configuration for sudo. You must  disable ‘requiretty’ in /etc/sudoers on all managed hosts.
+
+
+      - 
+        - h1: "Paramiko"
+        - class_notes: Paramiko is a very simple Python implementation of an SSH client. Ansible uses it as a fallback when the version of OpenSSH on the control machine is not suitable. It doesn't support the advanced OpenSSH configuration like jump hosts, etc.
+
+      - 
+        - h1: "Accelerated Mode"
+        - p: "http://docs.ansible.com/playbooks_acceleration.html"
+
+
+        - class_notes: Accelerated mode is a special kind of connection that sets up a temporary listener on the target server and then bypasses SSH using a special encrypted connection to run the rest of the tasks without having to establish a new SSH connection every time. It is about as fast as pipelined SSH, but it can have some additional performance benefits if you are transferring a lot of large files to the target systems.
+
+      - 
+        - h1: "Local Connections"
+
+      - 
+        - h1: "Connection Plugins"
