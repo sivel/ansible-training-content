@@ -1,0 +1,103 @@
+---
+header:
+  author: Paul Durivage
+  title: "Chapter 4, Dynamic Inventory"
+  description: ""
+
+slides:
+
+  -
+    - nested:
+      - 
+        - h1: Dynamic Inventories
+
+      -
+        - h3: What is Dynamic Inventory?
+        - ul:
+            - Executable script
+            - Queries a service that holds data about servers
+            - Returns the data to Ansible (as JSON)
+        - class_notes: |
+            Dynamic inventory is a script that queries a service, like a cloud
+            provider API or a management application like Spacewalk.  This data
+            is formatted in an Ansible-specific JSON data structure and is used in 
+            lieu of hardcoded, static inventory files.
+
+      -
+        - h3: Why Dynamic Inventory?
+        - ul:
+            - Time
+            - Accuracy
+        - class_notes: |
+            Ideally, the source of data for our dynamic inventory scripts is 100%
+            correct, and is automatically updated as infrastructure changes.  This 
+            is especially useful in environments where machines are coming on and offline
+            all the time, like a cloud or virtual environment.
+
+      -
+        - h3: Manual Invocation
+        - code: |
+            $ ./docker.py (--list | --host)
+        - class_notes: |
+            Manual invocation of a dynamic inventory script is straight forward.
+            Dynamic inventory scripts must be executable, so calling them explictly will
+            invoke the script and return JSON as output.
+            All inventory scripts must accept two optional arguments, list and host.  'List'
+            lists hosts, and 'host' accepts a hostname as an argument and returns data on the host.
+            Note, '--host' is functionally optional because of the '_meta' hash returned in the
+            '--list' results.  More on that later.
+
+      -
+        - h3: Results
+        - image: "https://raw.githubusercontent.com/Linuturk/ansible-sprint/master/advanced/resources/chapter06/shot1.png"
+        - class_notes: |
+            The output of this command is returned as JSON, in an Ansible-specific structure.
+            This image shows the invocation of the Docker inventory script. The script queries
+            a Docker host and requests information about containers. The script creates groups,
+            which we see as arrays of hostnames.  
+            The '_meta' hash has data about hosts -- essentially this data becomes hostvars for 
+            eac host.SSH host, port information plus additional host variables are returned by 
+            the script which can later be used in plays.
+
+      -
+        - h3: Ansible with Dynamic Inventory
+        - code: |
+            $ ansible -i ./docker.py --list-hosts running
+              suspicious_ptolemy
+              ecstatic_albattani
+        - class_notes: |
+            This is an example of an ad-hoc command using the inventory script.
+            We use the -i argument just as we would with any other inventory script, however
+            we use a path to a dynamic inventory script with this argument rather
+            than a path to a static inventory file.
+            You can see from this command we have asked to list hosts that the limit matches. In
+            this example, we are matching the group "running".
+
+      -
+        - h3: Combining Inventory Types
+        - code: |
+            $ tree
+            .
+            ├── common.yml
+            ├── prod
+            │   ├── docker.py
+            │   └── servers
+            └── site.yml
+            
+            1 directory, 4 files
+            
+            $ ansible-playbook -i prod site.yml
+        - class_notes: |
+            One can combine inventory types, both static and dynamic inventories, by
+            placing them in a directory and referencing the directory as the value of the
+            optional '-i' argument.
+            In the example in this slide, you can see a static inventory file called 'servers',
+            a dynamic inventory script called 'docker.py', in a directory called 'prod'. Notice
+            that the value passed to the '-i' argument is the name of the directory, 'prod'.
+      -
+        - h3: Lab
+        - p: |
+            Using the dynamic inventory script for today's infrastructure, provision several
+            instances.  Manually run the inventory script to query information on 
+            the instances.  Then, run the inventory script using an Ansible command to
+            list and then ping the instances.

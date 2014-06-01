@@ -1,0 +1,3 @@
+[submodule "revelator"]
+	path = revelator
+	url = https://github.com/mpdehaan/revelator.git

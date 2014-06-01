@@ -5,9 +5,8 @@ header:
   description: Ansible Fundamentals Course
 
 slides:
-  - set_global:
-      transition: none
-  - 
+
+  -
     - nested:
       -
         - h1: Ansible Use Cases

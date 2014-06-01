@@ -1,25 +1,16 @@
-# yaml-slide-template
+# ansible-sprint
 
-[![Build Status](https://travis-ci.org/sivel/yaml-slide-template.png)](https://travis-ci.org/sivel/yaml-slide-template)
+[![Build Status](https://drone-opsdev.rax.io/github.com/linuturk/ansible-sprint/status.svg?branch=master)](https://drone-opsdev.rax.io/github.com/linuturk/ansible-sprint)
 
-[Autobuilding](http://jenkins.onitato.com:8080/job/Slides/buildTimeTrend) on Jenkins.
-
-**Current Renders**
- * [Fundamentals](http://jenkins.onitato.com:8080/job/Slides/ws/output/fundamentals/index.html#/)
- * [Operational](http://jenkins.onitato.com:8080/job/Slides/ws/output/operational/index.html#/)
+**Current Renders** (CDN TTL Applies)
+ * [Fundamentals](http://c8271edabed5308ac980-cda7999d7abab3ad9e8f119c5c51874c.r20.cf5.rackcdn.com/fundamentals/#/)
+ * [Operational](http://c8271edabed5308ac980-cda7999d7abab3ad9e8f119c5c51874c.r20.cf5.rackcdn.com/operational/#/)
+ * [Advanced](http://c8271edabed5308ac980-cda7999d7abab3ad9e8f119c5c51874c.r20.cf5.rackcdn.com/advanced/#/)
+ * [Development](http://c8271edabed5308ac980-cda7999d7abab3ad9e8f119c5c51874c.r20.cf5.rackcdn.com/development/#/)
 
 ## Build Instructions
 
-1. `git clone https://github.com/sivel/yaml-slide-template.git`
-1. `cd yaml-slide-template`
-1. Update root.yml with correct header information
-1. Add chapters as standalone presentations, chapters are rendered in order, using the `.sort()` list method. Chapters must be named with "chapter" in the filename, ending with either `.yaml` or `.yml`.  Any yaml filename with the word `template` in it will be ignored.
-1. `git clone https://github.com/mpdehaan/revelator.git`
-1. `python build_single.py [optional-path] > whatever.yml`
-1. `cd revelator`
-1. `./write_it ../whatever.yml whatever/`
-1. Open whatever/index.html in your browser
-
+Build instructions can be found in builder.sh and .drone.yml
 
 ### Dependencies
 

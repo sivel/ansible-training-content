@@ -5,8 +5,7 @@ header:
   description: "We have already shown a simple playbook in Chapter 3. Here we will write a playbook from scratch, incrementally, and the students can follow along if they are able."
 
 slides:
-  - set_global:
-      transition: none
+
   -
     - nested:
       - 

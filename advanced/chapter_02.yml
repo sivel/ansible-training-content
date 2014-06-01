@@ -1,0 +1,120 @@
+---
+header:
+  author: Paul Durivage
+  title: "Chapter 1, Understanding configuration files and environment variables"
+  description: Ansible Advanced Course
+
+slides:
+
+  - set_global:
+      transition: rotate
+      background: '#007777'
+    #background: 'black'
+
+  -
+    - nested:
+      -
+        - h1: Configuration Files
+        - class_notes: |
+            Configuration files accept configuration directives to modify
+            the way Ansible runs, for example: configuring a specific 
+            connection type, or to set the number of forks.
+      -
+        - h3: File locations
+        - ul:
+          - "ansible.cfg (in the current directory)"
+          - ".ansible.cfg (in the home directory)"
+          - "/etc/ansible/ansible.cfg"
+        - class_notes: |
+            These are the three locations where configuration files are kept.
+            The configuration files in these locations are read and evaluated
+            in an order of precedence.  The system file in /etc/ansible/ansible.cfg
+            has the lowest precedence, the "~/.ansible.cfg" is next highest, and
+            "./ansible.cfg" is the highest precedence.
+
+      -
+        - h3: Environment Variables
+        - code: |
+            ANSIBLE_KEEP_ALL_FILES=True ansible -i hosts ...
+        - class_notes: |
+            Environment variables have the highest precedence of all, and work similarly
+            to configuration directives in config files
+
+      -
+        - h3: Environment Variables
+        - ul:
+            - Highest precedence
+            - "Enviroment variables & configuration directives"
+            - constants.py
+        - class_notes: |
+            An enviroment variable is going to squash configuration directives
+            at all levels.  Important to note: enviroment variables do not always
+            have an equivalent configuration directive.
+            Enviroment variables are not well documented, and are, for the most part
+            documented only in code, in the "constants.py" file inside Ansible
+
+      -
+        - h3: Configuration Sections
+        - ul:
+            - defaults
+            - paramiko
+            - ssh_connection
+            - accelerate
+        - class_notes: |
+            Each of the bullets are a "section" under which their respective directives
+            should be used.  The config file uses INI format.
+
+      -
+        - h3: Configuration Sections
+        - code: |
+            $ cat ansible.cfg
+            [defaults]
+            ...
+        - class_notes: |
+            Sections are literally section headers for INI files. Configuration
+            directives for each section are placed under their appropriate,
+            respective section header.
+
+      -
+        - h3: Configuration Options
+        - p: Each section has its own directives
+        - code: |
+            [defaults]
+            hostfile = hosts
+            private_key_file = ~/.ssh/id_rsa
+            ...
+        - class_notes: |
+            The directives are defined under their respective section.
+            The Ansible documentation provides all the configuration directives
+            for each section.
+      -
+        - h3: Configuration Options
+        - link: [ 'http://docs.ansible.com/intro_configuration.html', 'http://docs.ansible.com/intro_configuration.html' ]
+
+      -
+        - h3: Example Configuration
+        - code: |
+            [defaults]
+            hostfile = hosts
+            private_key_file = /Users/username/.ssh/id_rsa
+            nocows = 1
+            forks = 50
+            transport = ssh
+            remote_user = ansibleuser
+            ask_sudo_pass = True
+            ask_vault_pass = True
+            roles_path = roles
+            
+            [ssh_connection]
+            pipelining = True
+            scp_if_ssh = True
+        - class_notes: |
+            This is configuration file that was made to ensure Ansible complies
+            with the local environment configuration.  For example, it explictly 
+            forces ssh, asks for a sudo pass, sets forks to 50, etc.
+
+      -
+        - h3: Config File Tour
+        - class_notes: |
+            Students check their config files
+

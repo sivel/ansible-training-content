@@ -1,0 +1,168 @@
+---
+header:
+  author: Jesse K
+  title: Delegation
+  description: "How delegation can be used to redirect tasks to a different host."
+
+slides:
+
+  -
+    - nested:
+      - 
+        - h1: Delegation
+        - p: I like things done my way but by somebody else.
+        - class_notes: |
+            In this chapter we discuss delegation, how tasks in a play
+            can be redirected to an alternate host for execution.
+            What use cases can you think of for looping over hosts to
+            execute a task, but have that task execute somewhere else?
+
+      - 
+        - h2: Delegation
+        - ul:
+          - Local actions and actions on other hosts
+          - Delegation to a host in inventory
+          - Delegation to a host not in inventory
+          - Task execution concurrency with delegation
+        - class_notes: |
+            Actions can be done locally, or on another system in your
+            inventory, or out of your inventory. Execution concurrency
+            is a concern as well.
+
+      - 
+        - h2: Local actions and actions on other hosts
+        - p: "Task control keyword: delegate_to"
+        - code: |
+            - name: take out of load balancer pool
+              command: /usr/bin/take_out_of_pool {{ inventory_hostname }}
+              delegate_to: localhost
+
+            - name: update packages
+              yum: name=acme-web-stack state=latest
+
+            - name: add back to load balancer pool
+              command: /usr/bin/add_back_to_pool {{ inventory_hostname }}
+              delegate_to: localhost
+        - class_notes: |
+            The delegate_to keyword is what tells Ansible to redirect the
+            task to the system listed. The variables you reference are
+            attached to the host in the loop, not the host you are
+            delegating to. So the task has the context of the host in the
+            loop but it just gets executed on the host you delegate to.
+
+            Is there another way to indicate that an action needs to
+            happen locally?
+
+      -
+        - h2: Delegation to a host in inventory
+        - p: Delegation most often targets another host in your inventory
+        - p: Uses connection variable data from delegate target
+        - ul:
+          - ansible_connection
+          - ansible_ssh_host
+          - ansible_ssh_port
+          - ansible_ssh_user
+          - etc...
+        - class_notes: |
+            When delegating to a host listed in your inventory, data
+            from your delegation target will be used when creating the
+            connection to the delegation target, but only the connection
+            related variables. The rest will be read from the host in the
+            loop.
+
+      -
+        - h2: Delegation to a host not in inventory
+        - p: "Delegation: not just limited to hosts in your inventory"
+        - p: Make use of add_host to adjust connection details
+        - code: |
+            - name: add delegation host
+              add_host: name=hubert ansible_ssh_host=192.168.10.2
+                        ansible_ssh_user=fred
+        - class_notes: |
+            You can also delegate to a host that doesn't exist in your
+            inventory. In this case, ansible will use the string provided
+            verbatim and attempt to connect to it with the current connection
+            type and details. If you need to adjust the connection details,
+            make use of the add_host task to create an ephemeral host in your
+            inventory with connection data defined.
+
+      -
+        - h2: 'Lab: ephemeral host task delegation'
+        - p: Create an ephemeral host and delegate a task to it
+        - ul:
+          - Create a play for localhost
+          - Create a host using add_host with detailed connection variables
+          - Create a simple task that is delegated to the added host
+          - Run playbook with -vvvv to observe the connection details
+        - class_notes: |
+            This is a simple contrived lab that will exercise making use of
+            add_host to create an ephemeral host to delegate a task to. This
+            host doesn't have to actually exist, a connection failure on the
+            task will suffice to see the connection details to observe the
+            delegation. Feel free to play with values and observe how they
+            reflect in running the lab.
+        - h6: 'Objective: Using an ephemeral host to delegate a single task to'
+
+      -
+        - h2: Sample Play
+        - code: |
+            ---
+            - name: test play
+              hosts: localhost
+
+              tasks:
+                - name: add delegation host
+                  add_host: name=hubert ansible_ssh_host=192.168.10.2
+                            ansible_ssh_user=fred
+
+                - name: silly echo
+                  command: echo {{ inventory_hostname }}
+                  delegate_to: hubert
+
+        - code: |
+            $ ansible-playbook test-play.yml -vvvv
+
+      -
+        - h2: Task execution concurrency with delegation
+        - p: Delegated tasks will run for every host in the loop
+        - p: Tasks will run with configured forks / serial
+        - p: Be aware of race conditions and concurrency issues
+        - class_notes: |
+            Delegated tasks will run for every host in the hosts: , but this
+            can create issues with race conditions, particularly when using
+            conditionals in the task, as the forks count will be used to create
+            multiple concurrent tasks. This can also create a thundering
+            herd problem of too many connections opening at once to a single
+            host. SSH servers have a MaxStartups config option that can limit
+            how many concurrent connections it'll allow. Easy to overflow.
+
+            What happens when you have five hosts in your set, five or more
+            forks, a task that is conditional on the existence of a file, and
+            the task creates the file. All five tasks will run at once, racing
+            to create the file.
+
+      -
+        - h2: 'Lab: multi-host task delegation'
+        - ul:
+          - Create a play to loop over 'webservers' group
+          - Create a task to use mysql_user module to add a user
+          - Use host specific mysql user / password data
+          - delegate_to should be used to execute on the first 'databases' server
+        - h6: 'Objective: Add mysql users to a database for a set of hosts'
+
+      -
+        - h2: Sample Play
+        - code: |
+            ---
+            - name: MySQL Users
+              hosts: webservers
+
+              tasks:
+                - name: add a mysql user for the server
+                  mysql_user: name={{ db_username }} host={{ inventory_hostname }}
+                              password='{{ db_password }}' priv='ansible.*:ALL'
+                              state=present
+                  delegate_to: databases[0]
+        - p: |
+            When ran with -vvvv one can clearly see the connection debugging
+            output which will show the delegation in action.

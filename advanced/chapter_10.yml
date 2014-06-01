@@ -1,0 +1,69 @@
+---
+header:
+  author: Matt Martz
+  title: jinja2 template labs
+  description: Some jinja2 stuff
+
+slides:
+
+  -
+    - nested:
+      -
+        - h1: Jinja2 Templates Labs
+
+      -
+        - h2: Lab
+        - p: Create playbook and a jinja2 template to achieve the following results
+        - ul:
+          - Template out /etc/sysconfig/iptables
+          - Only allow access to MySQL (tcp/3306) from servers in the webservers group
+          - A play to create this file from the template
+          - The play should have a handler to reload iptables when the file changes
+          - iptables should be enabled and configured to start on boot
+
+      -
+        - h2: Sample template
+        - code: |
+            *filter
+            :INPUT ACCEPT [0:0]
+            :FORWARD ACCEPT [0:0]
+            :OUTPUT ACCEPT [0:0]
+            
+            {% for server in groups['webservers'] %}
+            -A INPUT -p tcp -s {{ hostvars[server].ansible_eth1.ipv4.address }} -i eth1 -d {{ ansible_eth1.ipv4.address }} --dport 3306 -j ACCEPT
+            {% endfor %}
+            
+            {% for server in groups['databases'] %}
+            {% if server != inventory_hostname %}
+            -A INPUT -p tcp -s {{ hostvars[server].ansible_eth1.ipv4.address }} -i eth1 -d {{ ansible_eth1.ipv4.address }} --dport 3306 -j ACCEPT
+            {% endif %}
+            {% endfor %}
+            
+            -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+            -A INPUT -p icmp -j ACCEPT
+            -A INPUT -i lo -j ACCEPT
+            -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+            -A INPUT -j REJECT --reject-with icmp-host-prohibited
+            -A FORWARD -j REJECT --reject-with icmp-host-prohibited
+            COMMIT
+
+      -
+        - h2: Sample play
+        - code: |
+            ---
+            - hosts: webservers
+              gather_facts: true
+
+            - hosts: databases
+              handlers:
+                - name: Reload iptables
+                  service: name=iptables state=reloaded
+            
+              tasks:
+                - name: Template /etc/sysconfig/iptables
+                  template: src=templates/iptables.j2 dest=/etc/sysconfig/iptables
+                  notify: Reload iptables
+            
+                - name: Ensure iptables is started and enabled
+                  service: name=iptables state=started enabled=yes
+

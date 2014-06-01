@@ -1,0 +1,111 @@
+---
+header:
+  author: Matt Martz
+  title: jinja2 templates
+  description: Some jinja2 stuff
+
+slides:
+
+  -
+    - nested:
+      -
+        - h1: Jinja2 Templates
+        - p: I mustache you a question.
+
+      -
+        - h2: Jinja2 Templates
+        - ul:
+            - Delimiters
+            - Control Structures
+            - Jinja2 Environment
+            - Python Data Types
+            - Filters and Tests
+
+      -
+        - h2: Delimiters
+        - code: |
+            {{ variable }}
+        - code: |
+            {% for server in groups.webservers %}
+        - class_notes: There are 2 (default) delimiters in jinja2. The first prints the result of the expression. The latter is used to execute statements such as for loops or assigning values.
+
+      -
+        - h2: Control Structures
+        - p: |
+            <ul>
+              <li>for</li>
+              <li>if</li>
+              <li>macros</li>
+              <li>call</li>
+              <li>filters</li>
+              <li>assignments</li>
+              <li>extends</li>
+              <li>block</li>
+              <li>include</li>
+              <li>import</li>
+            </ul>
+        - class_notes: This is a list of all control strucutres as mentioned in the jinja2 docs.  The ones most people need to know about are "for" and "if".  Point students to <a href="http://jinja.pocoo.org/docs/templates/">http://jinja.pocoo.org/docs/templates/</a> for additional information about the other types.
+
+      -
+        - h2: For Loop
+        - code: |
+            {% for server in groups.webservers %}
+            {{ hostvars[server].ansible_default_ipv4.address }}
+            {% endfor %}
+        - class_notes: Ending a control structure in jinja2 is generally done with endTYPE, where TYPE in the above case is "for".
+
+      -
+        - h2: If Statement
+        - code: |
+            {% if server == inventory_hostname %}
+            {{ 127.0.0.1 }}
+            {% else if server in groups.database %}
+            {{ hostvars[server].ansible_eth1.address }}
+            {% else %}
+            {{ hostvars[server].ansible_default_ipv4.address }}
+            {% endif %}
+        - class_notes: This is an example of an if/else if/else statement, nothing too special here.
+
+      -
+        - h2: Accessing Variables from Other Hosts
+        - p: The "hostvars" variable contains facts for all hosts that have had facts gathered.
+        - code:
+            hostvars['web01'].ansible_eth1.address
+        - class_notes: Group variables are not held independent of the hosts. During inventory parsing, group vars are merged into the individual hosts facts.
+
+      -
+        - h2: Manipulating Jinja2 Environment
+        - p: Ansible configures jinja2 with a set of sane defaults. In some cases these defaults are not optimal, usually in the case of variable_start_string or trim_blocks. The first line of a jinja2 template can include a jinja2 environment configuration line
+        - code: |
+            #jinja2:variable_start_string:'[%' , variable_end_string:'%]'
+        - class_notes: This example shows changing "{{ ... }}" to "[% ... %]". This is valuable in the case where you may need to use the "{{" or "}}" strings in your template that are not part of jinja2. <a href="http://jinja.pocoo.org/docs/api/#jinja2.Environment">http://jinja.pocoo.org/docs/api/#jinja2.Environment</a>
+
+      -
+        - h2: Jinja2 Variables are Python Data Types
+        - p: In some cases there will not be Jinja2 filters that do what you want, such as a lack of a "split" filter. This can be achieved using the ".split()" method on a python string object.
+        - code: |
+            {% set servers = "server1,server2,server3" %}
+            {% for server in servers.split(",") %}
+            {{ server }}
+            {% endfor %}
+
+      -
+        - h2: Filters and Tests
+        - p: Jinja2 provides you with a number of filters and tests to manipulate and test data. Ansible also provides a number of filters.
+        - link:
+            - http://docs.ansible.com/playbooks_variables.html#jinja2-filters
+            - http://docs.ansible.com/playbooks_variables.html#jinja2-filters
+
+      -
+        - h2: Filters
+        - p: Filters are invoked similarly to unix shell pipes and manipulate variables and return the results
+        - code: |
+            variable | replace("-", "_")
+        - class_notes: Additional details can be found at <a href="http://jinja.pocoo.org/docs/templates/#filters">http://jinja.pocoo.org/docs/templates/#filters</a>
+
+      -
+        - h2: Tests
+        - p: Tests can be used to test a variable against a common expression
+        - code: |
+            {% if variable is defined %}
+        - class_notes: Additional details can be found at <a href="http://jinja.pocoo.org/docs/templates/#tests">http://jinja.pocoo.org/docs/templates/#tests</a>

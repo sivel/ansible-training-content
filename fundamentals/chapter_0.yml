@@ -5,7 +5,18 @@ header:
   description: Ansible Fundamentals Course
 
 slides:
-   -
+  - set_global:
+      transition: none
+  - 
      - nested:
          -
            - h1: Ansible Fundamentals
+
+         - 
+           - h1: Audio and Chat
+
+           - p: "Chat: #ansible-training on FreeNode (http://freenode.net/)"
+            
+           - p: ""
+
+           - p: "Audio: click on the Join.me phone icon and follow directions."
