@@ -63,4 +63,4 @@ slides:
 
        -
          - h2: Handlers
-         - h3: PLACEHOLDER -- talk about handlers
+         - h3: "Actions triggered upon change"
