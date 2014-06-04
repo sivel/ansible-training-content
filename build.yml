@@ -5,7 +5,7 @@
   tasks:
 
   - name: create reveal link
-    file: state=link src=revelator/reveal_js_261 path=reveal_js_261
+    command: ln -s revelator/reveal_js_261 ./reveal_js_261 creates=./reveal_js_261
 
   - name: create dest dir
     command: mkdir -p output

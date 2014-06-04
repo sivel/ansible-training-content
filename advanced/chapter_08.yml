@@ -54,7 +54,7 @@ slides:
 
       -
         - h3: "Parameterize Your Roles:"
-        - code |
+        - code: |
             ---
             - hosts: webservers
               roles:
@@ -64,7 +64,7 @@ slides:
 
       -
         - h3: "Call Roles Conditionally:"
-        - code | 
+        - code: | 
             ---
             - hosts: webservers
               roles:
@@ -72,7 +72,7 @@ slides:
 
       -
         - h3: "Pre and Post Tasks, Use of roles in a top level playbook:"
-        - code |
+        - code: |
             ---
             - hosts: webservers
 
@@ -99,8 +99,8 @@ slides:
         - class_notes: Role dependencies allow you to automatically pull in other roles when using a role. Role dependencies are stored in the meta/main.yml file contained within the role directory. This file should contain a list of roles and parameters to insert before the specified role.
 
       - 
-        - h3: Example role dependency entry in the meta/main.yml file:
-        - code |
+        - h3: Example role dependency entry in the meta/main.yml file
+        - code: |
             ---
             dependencies:
               - { role: common, some_parameter: 3 }
@@ -109,7 +109,7 @@ slides:
       - 
         - h3: Duplicate Role Dependiencies
         - p: You can call a role dependency multiple times with various parameters.
-        - code |
+        - code: |
             ---
             allow_duplicates: yes
             dependencies:
@@ -124,7 +124,7 @@ slides:
 
       - 
         - h3: "Examples of embedding a custom module in a role:"
-        - code |
+        - code: |
             roles/
             my_role/
               library/
@@ -134,7 +134,7 @@ slides:
 
       - 
         - h3: "Calling the role with a custom module in a playbook:"
-        - code |
+        - code: |
             - hosts: webservers
               roles:
                 - my_role
