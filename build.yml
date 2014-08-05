@@ -5,10 +5,10 @@
   tasks:
 
   - name: create reveal link
-    file: state=link src=revelator/reveal_js_261 path=reveal_js_261
+    command: ln -s revelator/reveal_js_261 ./reveal_js_261 creates=./reveal_js_261
 
   - name: create dest dir
-    file: state=directory path=output/
+    command: mkdir -p output
  
   - name: syntax check fundamentals
     shell: python syntax_check.py fundamentals/*.yml
@@ -16,11 +16,17 @@
   - name: syntax check operational 
     shell: python syntax_check.py operational/*.yml
 
+  - name: syntax check advanced 
+    shell: python syntax_check.py advanced/*.yml
+
   - name: build fundamentals
     shell: python build_single.py fundamentals > output/fundamentals.yml
  
   - name: build operational
     shell: python build_single.py operational > output/operational.yml
+
+  - name: build advanced 
+    shell: python build_single.py advanced > output/advanced.yml
 
   - name: render fundamentals
     command: revelator/write_it output/fundamentals.yml output/fundamentals/
@@ -28,3 +34,5 @@
   - name: render operational 
     command: revelator/write_it output/operational.yml output/operational/
 
+  - name: render advanced 
+    command: revelator/write_it output/advanced.yml output/advanced/
